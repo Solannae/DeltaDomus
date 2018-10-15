@@ -1,64 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="image/png" href="icon1.png"/>
+    <link rel="shortcut icon" type="image/png" href="icon1.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Delta Domus</title>
     <script type="text/javascript">
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
 
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
 
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
                 }
             }
         }
-    }
     </script>
 </head>
+
 <body>
     <div id="header">
-        <div id="menu">
-            <p id="icon-text">
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn"><img src="icon-menu.svg" width="40px" height="40px" alt="icon" id="icon-menu"></button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="#">Mes capteurs</a>
-                        <a href="#">Mon profil</a>
-                        <a href="#">Ajouter un capteur</a>
-                        <a href="#">Ajouter un utilisateur</a>
-                        <a href="#">Gestion des droits</a>
-                        <a href="#">Mon suivi conso</a>
-                        <a href="#">Contact</a>
-                    </div>
-                </div>
-                <img src="icon.svg" width="70px" height="70px" alt="icon" id="icon">Delta Domus
-            </p>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn"><img src="icon-menu.svg" width="40px" height="40px" alt="icon" id="icon-menu"></button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#">Mon profil</a>
+                <a href="#">Mes capteurs</a>
+                <a href="#">Ajouter un capteur</a>
+                <a href="#">Ajouter un utilisateur</a>
+                <a href="#">Gestion des droits</a>
+                <a href="#">Mon suivi conso</a>
+                <a href="#">Contact</a>
+            </div>
+            <img src="icon.svg" width="70px" height="70px" alt="icon" id="icon"><span id="title-text">Delta Domus</span>
         </div>
     </div>
 
-
-
     <div id="container">
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sem eu urna commodo, quis cursus magna luctus. Nulla pharetra mi ut urna varius laoreet. Quisque volutpat quam at nulla sagittis, pellentesque porttitor lectus rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor fermentum tempus. Aliquam id tincidunt nisl. Quisque ac nisl id velit iaculis dapibus. Suspendisse malesuada vel odio vitae ultricies. Praesent quam enim, imperdiet et volutpat ac, sagittis ut nulla. Ut id dolor nec purus vulputate ultrices lobortis vel augue. Proin iaculis leo et odio pharetra tristique. Ut at nisl erat. Nam porttitor sit amet ex vitae tempor. Vivamus ornare suscipit felis, ut varius libero cursus pharetra. Ut facilisis imperdiet neque a dignissim.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sem eu urna commodo, quis cursus magna luctus. Nulla pharetra mi ut urna varius laoreet. Quisque volutpat quam at nulla sagittis, pellentesque porttitor lectus
+            rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor fermentum tempus. Aliquam id tincidunt nisl. Quisque ac nisl id velit iaculis dapibus. Suspendisse malesuada vel odio vitae ultricies. Praesent quam enim,
+            imperdiet et volutpat ac, sagittis ut nulla. Ut id dolor nec purus vulputate ultrices lobortis vel augue. Proin iaculis leo et odio pharetra tristique. Ut at nisl erat. Nam porttitor sit amet ex vitae tempor. Vivamus ornare suscipit
+            felis, ut varius libero cursus pharetra. Ut facilisis imperdiet neque a dignissim.
         </p>
     </div>
 
     <div id="footer">
-        <p>Nous contacter</p>
+        <div id="contact">
+            <p id="contact-text">
+                Nous contacter: </br> Delta Domus </br> <a href="mailto:deltadomus@gmail.com">deltadomus@gmail.com</a>
+            </p>
+        </div>
     </div>
 </body>
+
 </html>
