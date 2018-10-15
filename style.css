@@ -1,7 +1,45 @@
+
 html {
+    background-color: #e8e8e8;
+}
+
+#header {
+    background-color: #615e5e;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 3px;
+}
+
+#footer {
+    background-color: #615e5e;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+}
+
+#container {
+    margin: 100px;
+    margin-top: 150px;
     background-color: #009688;
 }
 
-p {
-    text-align: center;
+#icon {
+    vertical-align: middle;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+#icon-menu {
+    vertical-align: middle;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+#icon-text {
+    line-height: 60px;
+    font-size: x-large;
 }
