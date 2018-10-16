@@ -21,10 +21,15 @@ html {
 }
 
 #container {
-    margin: 100px;
-    margin-top: 150px;
-    margin-left: 200px;
+    text-align: justify;
+    margin: 150px 100px 100px 200px;
+    padding: 20px;
     background-color: #009688;
+    position: absolute;
+    top: 20px;
+    bottom: 40px;
+    border-radius: 12px;
+    flex-grow: 8;
 }
 
 #icon {
@@ -54,25 +59,17 @@ html {
 
 .dropbtn img {
     -webkit-transition: all 0.2s ease;
-    /* Safari and Chrome */
     -moz-transition: all 0.2s ease;
-    /* Firefox */
     -ms-transition: all 0.2s ease;
-    /* IE 9 */
     -o-transition: all 0.2s ease;
-    /* Opera */
     transition: all 0.2s ease;
 }
 
 .dropbtn:hover img {
     -webkit-transform: scale(1.1);
-    /* Safari and Chrome */
     -moz-transform: scale(1.1);
-    /* Firefox */
     -ms-transform: scale(1.1);
-    /* IE 9 */
     -o-transform: scale(1.1);
-    /* Opera */
     transform: scale(1.1);
 }
 
