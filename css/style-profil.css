@@ -1,0 +1,56 @@
+#profil {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#image {
+    text-align: center;
+    cursor: pointer;
+}
+
+#image-text {
+    font-size: 1.5em;
+    margin: 50px;
+}
+
+#submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+label {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: left;
+    margin: 10px;
+}
+
+input {
+    display: inline-block;
+    float: left;
+    padding: 10px;
+}
+
+@media all and (max-width: 600px) {
+    #profil {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media all and (max-height: 550px) {
+    #profil {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
