@@ -1,11 +1,20 @@
-@import url("https://fonts.googleapis.com/css?family=Ubuntu");
-
+@font-face {
+    font-family: Ubuntu;
+    src: local("Ubuntu"),
+       local("Ubuntu"),
+       url("assets/Ubuntu.ttf");
+    font-weight: normal;
+}
 * {
     font-family: 'Ubuntu';
 }
 
 html {
     background-color: #e8e8e8;
+}
+
+nav > h1 {
+    font-size: 2em;
 }
 
 nav > ul > li > a {
@@ -84,14 +93,26 @@ nav #main-nav li:hover {
     background-color: #f8b500;
 }
 
-#placeholder h1 {
-    text-align: center;
-    margin-top: 100px;
+#placeholder h1{
+    text-align: left;
+    margin-top: 20px;
     font-size: 2em;
 }
 
+#placeholder {
+    text-align: justify;
+    padding: 10px;
+    margin-left: 5%;
+    position: fixed;
+    top: 110px;
+    left: 10px;
+    bottom: 110px;
+    overflow-y: scroll;
+}
+
 #footer {
-    padding: 20px;
+    padding: 1%;
+    padding-right: 20px;
     background: #ddd;
     position: absolute;
     bottom: 0;

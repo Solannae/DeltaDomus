@@ -3,7 +3,7 @@ let firstLine = document.querySelector('.first');
 let secondLine = document.querySelector('.second');
 let thirdLine = document.querySelector('.third');
 let menu = document.querySelector('#main-nav');
-var x = 0;
+var x = false;
 document.getElementById('main-nav').style.display = "none";
 
 
@@ -13,10 +13,10 @@ menuToggle.addEventListener('click', (e) => {
     secondLine.classList.toggle('hide-second');
     thirdLine.classList.toggle('rotate-third');
     menu.classList.toggle('display-menu');
-    if (window.x % 2 == 0) {
+    if (!window.x ) {
         document.getElementById('main-nav').style.display = "flex";
     } else {
         document.getElementById('main-nav').style.display = "none";
     }
-    x++;
+    x = !x;
 });
