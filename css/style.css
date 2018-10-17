@@ -203,7 +203,7 @@ nav #main-nav li:hover {
 
 .bubbly-button:before {
     display: none;
-    top: -75%;
+    top: -100%;
     background-image:
         radial-gradient(circle, #009688 20%, transparent 20%),
         radial-gradient(circle, transparent 20%, #009688 20%, transparent 30%),
@@ -220,7 +220,7 @@ nav #main-nav li:hover {
 
 .bubbly-button:after {
     display: none;
-    bottom: -75%;
+    bottom: -100%;
     background-image:
         radial-gradient(circle, #009688 20%, transparent 20%),
         radial-gradient(circle, #009688 20%, transparent 20%),
