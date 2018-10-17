@@ -1,0 +1,25 @@
+#title {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-top: 10px;
+}
+
+#title-button {
+    flex-grow: 8;
+    text-align: right;
+    margin-right: 40px;
+}
+
+#capteurs-pannel {
+    margin-right: 50px;
+    padding: 10px;
+}
+
+@media all and (max-width: 500px) {
+    #title {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+}
