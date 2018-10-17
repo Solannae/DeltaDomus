@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+
+* {
+    font-family: 'Ubuntu';
+}
+
+html {
+    background-color: #e8e8e8;
+}
+
+nav > ul > li > a {
+    color: black;
+    text-decoration: none;
+}
+
+nav {
+    max-width: 93%;
+    margin: 0 auto;
+    height: 106px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .logo-link {
+    z-index: 10;
+    color: #f8b500;
+}
+
+nav .logo-link .logo-img {
+    font-size: 3em;
+}
+
+nav .toggle-menu {
+    display: block;
+    height: 30px;
+    width: 30px;
+    margin-right: 20px;
+    z-index: 10;
+}
+
+nav .toggle-menu .toggle-icon-line {
+    margin-bottom: 8px;
+    width: 40px;
+    height: 3px;
+    background: #f8b500;
+    transition: 500ms;
+    opacity: 1;
+}
+
+nav #main-nav {
+    background-color: #009688;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    opacity: 0;
+    transition: 500ms;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    list-style: none;
+}
+
+nav #main-nav li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 2em;
+    font-weight: 900;
+    width: 100%;
+    text-align: center;
+    transition: 300ms;
+    cursor: pointer;
+    color: #fff;
+}
+
+nav #main-nav li:hover {
+    background-color: #f8b500;
+}
+
+#placeholder h1 {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 2em;
+}
+
+#footer {
+    padding: 20px;
+    background: #ddd;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#contact {
+    float: right;
+    text-align: right;
+}
+
+.rotate-first {
+    transform: rotate(45deg) translateY(15px);
+}
+
+.hide-second {
+    opacity: 0 !important;
+}
+
+.rotate-third {
+    transform: rotate(-45deg) translateY(-15px);
+}
+
+.display-menu {
+    opacity: 1 !important;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media all and (max-width: 600px) {
+    nav #main-nav {
+        padding-top: 100px;
+    }
+}
+
+@media all and (max-height: 550px) {
+    nav #main-nav {
+        padding-top: 100px;
+    }
+}
