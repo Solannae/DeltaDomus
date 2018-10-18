@@ -12,8 +12,31 @@
 }
 
 #capteurs-pannel {
+    border: solid;
+    border-color: green;
+    border-radius: 10px;
     margin-right: 50px;
     padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.piece-pannel {
+    margin: 10px;
+    padding: 10px;
+    border: solid;
+    border-color: blue;
+    border-radius: 10px;
+}
+
+.piece-pannel-sub {
+    margin: 10px;
+    padding: 10px;
+    border: solid;
+    border-color: blue;
+    border-radius: 10px;
 }
 
 @media all and (max-width: 500px) {
