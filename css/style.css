@@ -60,6 +60,7 @@ nav .toggle-menu .toggle-icon-line {
     background: #f8b500;
     transition: 500ms;
     opacity: 1;
+    border-radius: 30px;
 }
 
 nav #main-nav {
