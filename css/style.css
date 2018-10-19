@@ -358,53 +358,17 @@ nav #main-nav li:hover {
     0% {
         opacity: 0.4;
     }
-
-    5% {
-        opacity: 1;
-    }
-
-    6% {
-        opacity: 0.1;
-    }
-
-    100% {
-        opacity: 0.1;
-    }
 }
 
 @-moz-keyframes wifianimation {
     0% {
         opacity: 0.4;
     }
-
-    5% {
-        opacity: 1;
-    }
-
-    6% {
-        opacity: 0.1;
-    }
-
-    100% {
-        opacity: 0.1;
-    }
 }
 
 @-webkit-keyframes wifianimation {
     0% {
         opacity: 0.4;
-    }
-
-    5% {
-        opacity: 1;
-    }
-
-    6% {
-        opacity: 0.1;
-    }
-
-    100% {
-        opacity: 0.1;
     }
 }
 
