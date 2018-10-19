@@ -1,0 +1,35 @@
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+#prenom-nom, #email {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#message-text {
+    padding: 10px;
+}
+
+#contact-form > * > input {
+    margin: 20px;
+}
+
+textarea {
+    padding: 10px;
+}
+
+@media all and (max-width: 800px) {
+    #prenom-nom, #email {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
