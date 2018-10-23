@@ -115,7 +115,7 @@ nav #main-nav li:hover {
     left: 10px;
     bottom: 110px;
     right: 5px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #footer {
