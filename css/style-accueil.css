@@ -6,14 +6,15 @@
     padding-right: 0px;
     left: 0px;
     right: 0px;
+    bottom: 0;
 }
 
-.media
+/* .media
 {
     width: 100%;
-}
+} */
 
-#motto h2 
+#motto h2
 {
     text-align: center;
     margin-bottom: 10%;
@@ -22,7 +23,7 @@
 #offers
 {
     display: flex;
-
+    justify-content: space-around;
 }
 
 #offers img
@@ -46,6 +47,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    width: 75%;
 }
 
 .section h3
@@ -56,6 +58,8 @@
 .section
 {
     margin: 10px;
+    margin-left: 5%;
+    margin-right: 2%;
 }
 
 #review
@@ -64,7 +68,45 @@
     margin: auto;
 }
 
-.section p 
+.section p
 {
     text-align: justify;
+}
+
+#diapo-media {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: visible;
+    width: 100%;
+    height: 100%;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+
+    /* animation: slider 20s infinite */
+}
+
+figure {
+    position:relative;
+	display:inline-block;
+	padding:0; margin:0;
+    width: 49.9%;
+}
+
+.media {
+    width: 100%;
+}
+
+#footer {
+    display: none;
+}
+
+@keyframes slider {
+    0%, 45%, 100% {left: 0}
+    50%, 95% {left: -100%}
 }
