@@ -1,77 +1,112 @@
-input
+#placeholder
 {
-    margin: 5px;
-    padding: 5px;
-}
-
-.toggle-menu
-{
-    visibility: hidden;
-}
-
-.banner
-{
-    margin: auto;
-    position: relative;
-    max-width: 80%;
-    height: auto;
-}
-
-.form
-{
-    margin: auto;
-    margin-top: 2%;
-    display: flex;
-    flex-direction: column;
-}
-
-.form a
-{
-    margin: auto;
-    margin: 5px;
-}
-
-#ad-image
-{
-    max-width: 100%;
-    height: auto;
-}
-
-#previous-ad
-{
-    position: absolute;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
     left: 0px;
-    top:40%;
-    padding: 0px;
-}
-
-#next-ad
-{
-    position: absolute;
     right: 0px;
-    top: 40%;
+    bottom: 0;
 }
 
-#placeholder
+/* .media
+{
+    width: 100%;
+} */
+
+#motto h2
+{
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+#offers
 {
     display: flex;
+    justify-content: space-around;
+}
+
+#offers img
+{
+    height: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+}
+
+#offers h4
+{
+    text-align: center;
+    margin-top: 2%;
+}
+
+#offers span
+{
+    margin: 10px;
+    padding: 10px;
+    display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    width: 75%;
 }
 
-
-/*Affichage différent de la page d'accueil*/
-
-nav
+.section h3
 {
-    position: static;
+    text-align: center;
 }
 
-#placeholder
+.section
 {
-    position: static;
+    margin: 10px;
+    margin-left: 5%;
+    margin-right: 2%;
 }
 
-#footer
+#review
 {
-    position: static;
+    width: 70%;
+    margin: auto;
+}
+
+.section p
+{
+    text-align: justify;
+}
+
+#diapo-media {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: visible;
+    width: 100%;
+    height: 100%;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+
+    /* animation: slider 20s infinite */
+}
+
+figure {
+    position:relative;
+	display:inline-block;
+	padding:0; margin:0;
+    width: 49.9%;
+}
+
+.media {
+    width: 100%;
+}
+
+#footer {
+    display: none;
+}
+
+@keyframes slider {
+    0%, 45%, 100% {left: 0}
+    50%, 95% {left: -100%}
 }
