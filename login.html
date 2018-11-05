@@ -38,28 +38,26 @@
 
     <div id="placeholder">
         <form action="/index.php">
-
             <div id="container">
+                <div id="login-form">
+                    <div class="imgcontainer">
+                        <img src="assets/person.svg" width="100px" height="100px" alt="Avatar" class="avatar">
+                    </div>
 
-                <div class="imgcontainer">
-                    <img src="assets/person.svg" width="100px" height="100px" alt="Avatar" class="avatar">
+                    <label class="form-text" for="uname"><b>Identifiant</b></label>
+                    <input type="text" placeholder="Entrez votre identifiant" name="uname" required oninvalid="this.setCustomValidity('Veuillez rentrer un identifiant')">
+
+                    <label class="form-text" for="psw"><b>Mot de passe</b></label>
+                    <input type="password" placeholder="Entrez votre mot de passe" name="psw" required oninvalid="this.setCustomValidity('Veuillez rentrer un mot de passe')">
+
+                    <button type="submit" class="bubbly-button" id="login-button">Se connecter</button>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
+                    </label>
+
+                    <span class="psw"><a href="#">Mot de passe oublié</a></span>
+                    <span><a href="#">Créer un compte</a></span>
                 </div>
-
-                <label for="uname"><b>Identifiant</b></label>
-                <input type="text" placeholder="Entrez votre identifiant" name="uname" required oninvalid="this.setCustomValidity('Veuillez rentrer un identifiant')">
-
-                <label for="psw"><b>Mot de passe</b></label>
-                <input type="password" placeholder="Entrez votre mot de passe" name="psw" required oninvalid="this.setCustomValidity('Veuillez rentrer un mot de passe')">
-
-                <button type="submit" class="bubbly-button" id="login-button">Se connecter</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
-                </label>
-            </div>
-
-            <div id="container">
-                <span class="psw"><a href="#">Mot de passe oublié</a></span>
-                <span><a href="#">Créer un compte</a></span>
             </div>
         </form>
     </div>
