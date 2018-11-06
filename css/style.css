@@ -1,8 +1,6 @@
 @font-face {
     font-family: Ubuntu;
-    src: local("Ubuntu"),
-        local("Ubuntu"),
-        url("assets/Ubuntu.ttf");
+    src: local("Ubuntu"), url("../assets/Ubuntu.ttf");
     font-weight: normal;
 }
 
