@@ -33,7 +33,7 @@
 
         <h1>Delta Domus</h1>
 
-        <a href="index.php?action=redirect" class="logo-link">
+        <a href="index.php?action=redirect&amp;page=accueil.php" class="logo-link">
             <img src="public/assets/icon.svg" width="100px" height="100px" alt="icon" id="icon">
             <div class="wifi-symbol">
                 <div class="wifi-circle first"></div>

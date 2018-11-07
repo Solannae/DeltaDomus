@@ -4,12 +4,12 @@
 ?>
 
 <?php ob_start(); ?>
-<form action="/index.php">
+<form method="post" action="index.php?action=login">
 
     <div id="container">
 
         <div class="imgcontainer">
-            <img src="../../public/assets/person.svg" width="100px" height="100px" alt="Avatar" class="avatar">
+            <img src="public/assets/person.svg" width="100px" height="100px" alt="Avatar" class="avatar">
         </div>
 
         <label for="uname"><b>Identifiant</b></label>
