@@ -1,6 +1,7 @@
 <?php
     $title = 'Capteurs';
     $cssFile = 'style-capteurs.css';
+    $jsFile = '';
 ?>
 
 <?php ob_start(); ?>

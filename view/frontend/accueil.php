@@ -1,6 +1,7 @@
 <?php
     $title = 'Accueil';
     $cssFile = 'style-accueil.css';
+    $jsFile = '';
 ?>
 
 <?php ob_start(); ?>
@@ -18,14 +19,6 @@
 <div id="motto">
     <h2>Connectez votre maison</h2>
 </div>
-
-<!-- Outil pour développer -->
-<?php if (isset($_SESSION['idUser'])) { ?>
-<a href="index.php?action=disconnect">Déconnecter</a>
-<?php } else { ?>
-<a href="index.php?action=redirect&amp;page=login.php">log in</a>
-<?php } ?>
-
 
 <div class="section">
     <h3>Nos offres</h3>

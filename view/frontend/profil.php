@@ -1,6 +1,7 @@
 <?php
     $title = 'Profil';
     $cssFile = 'style-profil.css';
+    $jsFile = '';
 ?>
 
 <?php ob_start(); ?>

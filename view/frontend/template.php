@@ -22,13 +22,22 @@
             <div class="toggle-icon-line third"></div>
         </a>
         <ul id="main-nav">
-            <li><a href="index.php?action=redirect&amp;page=profil.php">Mon profil</a></li>
-            <li><a href="index.php?action=redirect&amp;page=capteurs.php">Mes capteurs</a></li>
-            <li><a href="index.php?action=redirect&amp;page=ajout-capteur.php">Ajouter un capteur</a></li>
-            <li><a href="index.php?action=redirect&amp;page=ajout-utilisateur.php">Ajouter un utilisateur</a></li>
-            <li><a href="index.php?action=redirect&amp;page=gestion-droits.php">Gestion des droits</a></li>
-            <li><a href="index.php?action=redirect&amp;page=suivi-conso.php">Mon suivi conso</a></li>
-            <li><a href="index.php?action=redirect&amp;page=contact.php">Contact</a></li>
+            <?php if (isset($_SESSION['idUser'])) { ?>
+                <li><a href="index.php?action=redirect&amp;page=profil.php">Mon profil</a></li>
+                <li><a href="index.php?action=redirect&amp;page=capteurs.php">Mes capteurs</a></li>
+                <li><a href="index.php?action=redirect&amp;page=ajout-capteur.php">Ajouter un capteur</a></li>
+                <li><a href="index.php?action=redirect&amp;page=ajout-utilisateur.php">Ajouter un utilisateur</a></li>
+                <li><a href="index.php?action=redirect&amp;page=gestion-droits.php">Gestion des droits</a></li>
+                <li><a href="index.php?action=redirect&amp;page=suivi-conso.php">Mon suivi conso</a></li>
+                <li><a href="index.php?action=redirect&amp;page=contact.php">Contact</a></li>
+                <li><a href="index.php?action=disconnect">Se déconnecter</a></li>
+            <?php } else { ?>
+                <li><a href="index.php?action=redirect&amp;page=login.php">Se connecter</a></li>
+                <li><a href="index.php?action=redirect&amp;page=create-account.php">Créer un compte</a></li>
+                <li><a href="index.php?action=redirect&amp;page=contact.php">Contact</a></li>
+                <!--Exemple de page inaccessible  -->
+                <li><a href="index.php?action=redirect&amp;page=profil.php">Mon profil</a></li>
+            <?php } ?>
         </ul>
 
         <h1>Delta Domus</h1>

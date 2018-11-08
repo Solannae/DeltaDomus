@@ -1,6 +1,7 @@
 <?php
     $title = 'Ajout Utilisateur';
     $cssFile = 'style-ajout-utilisateur.css';
+    $jsFile = '';
 ?>
 
 <?php ob_start(); ?>
@@ -19,8 +20,8 @@
     </form>
 </div>
 <div id="bouton-avatar">
-        <button type="button" class="avatar-button">Ajouter un avatar</button>
-    </div>
+    <button type="button" class="avatar-button">Ajouter un avatar</button>
+</div>
 <div id="bouton-utilisateur">
     <button type="button" class="user-button">Ajouter l'utilisateur</button>
 </div>

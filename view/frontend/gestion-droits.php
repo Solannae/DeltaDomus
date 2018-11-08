@@ -1,6 +1,7 @@
 <?php
     $title = 'Gestion Des Droits';
     $cssFile = 'style-gestion-droits.css';
+    $jsFile = '';
 ?>
 
 <?php ob_start(); ?>

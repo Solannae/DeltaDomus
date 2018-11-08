@@ -25,7 +25,7 @@ try
             elseif ($_GET['action'] == 'disconnect')
             {
                 disconnect();
-                require('index.php');
+                redirect('accueil.php');
             }
 
         }
@@ -42,10 +42,17 @@ try
             {
                 login($_POST['uname'], $_POST['psw'], isset($_POST['remember']));
             }
-            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']) AND $_GET['page'] == 'accueil.php')
+
+            elseif ($_GET['action'] == 'signin' AND isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) AND isset($_POST['password']))
             {
-                redirect('accueil.php');
+                    createUser();
             }
+
+            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']) AND ($_GET['page'] == 'accueil.php' OR $_GET['page'] == 'create-account.php' OR $_GET['page'] == 'contact.php'))
+            {
+                redirect($_GET['page']);
+            }
+
             else
             {
                 if (isset($_COOKIE['remember']) AND $_COOKIE['remember'] == true AND isset($_COOKIE['idUser']) AND isset($_COOKIE['pswUser']))

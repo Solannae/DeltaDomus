@@ -1,5 +1,12 @@
 <?php
 
+function dbConnect()
+{
+    $db = new PDO('mysql:host=localhost;dbname=delta_domus;charset=utf8', 'root', '');
+    return $db;
+}
+
+
 function verifyUser($idUser, $password)
 {
     $db = dbConnect();
@@ -11,8 +18,14 @@ function verifyUser($idUser, $password)
     return $id;
 }
 
-function dbConnect()
+function addUser($nom, $prenom, $email, $password)
 {
-    $db = new PDO('mysql:host=localhost;dbname=delta_domus;charset=utf8', 'root', '');
-    return $db;
+    $db = dbConnect();
+    $adding = $db->prepare("INSERT INTO table_utilisateur(nom, prenom, email, password) VALUES(:nom, :prenom, :email, :password)");
+    $adding->execute(array(
+        'nom' => $nom,
+        'prenom' => $prenom,
+        'email' => $email,
+        'password' => $password
+    ));
 }

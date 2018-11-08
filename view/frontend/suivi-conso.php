@@ -1,6 +1,7 @@
 <?php
     $title = 'Suivi Consommation';
     $cssFile = 'style-suivi-conso.css';
+    $jsFile = '';
 ?>
 
 <?php ob_start(); ?>

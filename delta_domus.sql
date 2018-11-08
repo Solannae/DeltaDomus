@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 07 nov. 2018 à 08:09
+-- Généré le :  jeu. 08 nov. 2018 à 16:54
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -151,10 +151,17 @@ CREATE TABLE IF NOT EXISTS `table_utilisateur` (
   `nom` text NOT NULL,
   `prenom` text NOT NULL,
   `email` text NOT NULL,
-  `image_profil` text NOT NULL,
+  `image_profil` text,
   `password` text NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=137 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `table_utilisateur`
+--
+
+INSERT INTO `table_utilisateur` (`ID`, `nom`, `prenom`, `email`, `image_profil`, `password`) VALUES
+(1, 'nom_admin', 'prenom_admin', 'admin', NULL, 'admin');
 
 -- --------------------------------------------------------
 

@@ -1,6 +1,7 @@
 <?php
     $title = 'F.A.Q';
     $cssFile = 'style-faq.css';
+    $jsFile = '';
 ?>
 
 <?php ob_start(); ?>

@@ -1,6 +1,7 @@
 <?php
     $title = 'Contact';
     $cssFile = 'style-contact.css';
+    $jsFile = '';
 ?>
 
 <?php ob_start(); ?>

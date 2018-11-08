@@ -1,6 +1,7 @@
 <?php
     $title = 'Se Connecter';
     $cssFile = 'style-login.css';
+    $jsFile = '';
 ?>
 
 <?php ob_start(); ?>
@@ -26,7 +27,7 @@
 
     <div id="container">
         <span class="psw"><a href="#">Mot de passe oublié</a></span>
-        <span><a href="#">Créer un compte</a></span>
+        <span><a href="index.php?action=redirect&amp;page=create-account.php">Créer un compte</a></span>
     </div>
 </form>
 <?php $content = ob_get_clean(); ?>
