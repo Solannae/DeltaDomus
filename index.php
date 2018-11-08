@@ -22,8 +22,9 @@ try
                 }
             }
 
-            elseif ($_GET['action'] == 'disconnect') {
-                session_destroy();
+            elseif ($_GET['action'] == 'disconnect')
+            {
+                disconnect();
                 require('index.php');
             }
 
@@ -39,14 +40,22 @@ try
         {
             if ($_GET['action'] == 'login' AND isset($_POST['uname']) AND isset($_POST['psw']))
             {
-                login();
+                login($_POST['uname'], $_POST['psw'], isset($_POST['remember']));
             }
-            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']) AND $_GET['page'] == 'accueil.php') {
+            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']) AND $_GET['page'] == 'accueil.php')
+            {
                 redirect('accueil.php');
             }
             else
             {
-                redirect('login.php');
+                if (isset($_COOKIE['remember']) AND $_COOKIE['remember'] == true AND isset($_COOKIE['idUser']) AND isset($_COOKIE['pswUser']))
+                {
+                    login($_COOKIE['idUser'], $_COOKIE['pswUser'], false);
+                }
+                else
+                {
+                    redirect('login.php');
+                }
             }
         }
 
