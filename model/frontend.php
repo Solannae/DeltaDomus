@@ -29,3 +29,14 @@ function addUser($nom, $prenom, $email, $password)
         'password' => $password
     ));
 }
+
+function getInfoUser($idUser)
+{
+    $db = dbConnect();
+    $query = $db->prepare("SELECT * FROM table_utilisateur WHERE id = ?");
+    $query->execute(array($idUser));
+    $info = $query->fetch();
+    $query->closeCursor();
+
+    return $info;
+}

@@ -14,7 +14,15 @@ try
             {
                 if (isset($_GET['page']))
                 {
-                    redirect($_GET['page']);
+                    if ($_GET['page'] == "profil.php")
+                    {
+                        profil();
+                    }
+                    else
+                    {
+                        redirect($_GET['page']);
+                    }
+
                 }
                 else
                 {

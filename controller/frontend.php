@@ -46,3 +46,12 @@ function createUser()
         throw new Exception("User already existing");
     }
 }
+
+function profil()
+{
+    $user = getInfoUser($_SESSION['idUser']);
+    $nomUser = $user['nom'];
+    $prenomUser = $user['prenom'];
+    $emailUser = $user['email'];
+    require('view/frontend/profil.php');
+}

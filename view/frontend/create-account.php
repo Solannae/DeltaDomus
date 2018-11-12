@@ -11,7 +11,7 @@
         <label>Prénom: </label><input type="text" name="prenom" placeholder="Prénom"><br>
         <label>Adresse mail: </label><input type="text" name="email" placeholder="Adresse mail"><br>
         <label>Mot de passe: </label><input type="password" name="password" placeholder="Mot de passe"><br>
-        <input type="submit" name="submit" value="Créer un compte">
+        <input class="bubbly-button" type="submit" name="submit" value="Créer un compte">
     </div>
 </form>
 

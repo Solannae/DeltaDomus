@@ -12,9 +12,9 @@
     </div>
     <form action="">
         <div id="image-text">
-            <label>Nom: </label><input type="text" name="nom" value="Tortosa"><br>
-            <label>Prénom: </label><input type="text" name="prenom" value="Hugo"><br>
-            <label>Adresse mail: </label><input type="text" name="email" value="hugoguillem@gmail.com"><br>
+            <label>Nom: </label><input type="text" name="nom" value="<?= $nomUser ?>"><br>
+            <label>Prénom: </label><input type="text" name="prenom" value="<?= $prenomUser ?>"><br>
+            <label>Adresse mail: </label><input type="text" name="email" value="<?= $emailUser ?>"><br>
             <label>Statut: </label><input type="text" name="statut" value="Utilisateur" disabled><br>
         </div>
     </form>
