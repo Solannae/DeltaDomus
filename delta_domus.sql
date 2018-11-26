@@ -51,7 +51,9 @@ CREATE TABLE IF NOT EXISTS `table_capteurs` (
   `type` text NOT NULL,
   `donnee` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (id_piece) REFERENCES table_pieces(id)
+  FOREIGN KEY (id_piece)
+  REFERENCES table_pieces(id)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
