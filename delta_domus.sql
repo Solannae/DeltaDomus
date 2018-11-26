@@ -66,7 +66,6 @@ CREATE TABLE IF NOT EXISTS `table_consommation` (
   `id_appartement` int(11) NOT NULL,
   `conso_electricité` float NOT NULL,
   `conso_gaz` float NOT NULL,
-  PRIMARY KEY (`id`),
   FOREIGN KEY (id_appartement) REFERENCES table_appartements(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -79,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `table_consommation` (
 DROP TABLE IF EXISTS `table_lotissement`;
 CREATE TABLE IF NOT EXISTS `table_lotissement` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_gestionnnaire` int(11) NOT NULL,
+  `id_gestionnaire` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (id_gestionnaire) REFERENCES table_utilisateur(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -179,7 +178,7 @@ INSERT INTO `table_utilisateur` (`ID`, `nom`, `prenom`, `email`, `image_profil`,
 DROP TABLE IF EXISTS `tr_lotissement_appartement`;
 CREATE TABLE IF NOT EXISTS `tr_lotissement_appartement` (
   `id_lotissement` int(11) NOT NULL,
-  `id_appartement` int(11) NOT NULL
+  `id_appartement` int(11) NOT NULL,
   FOREIGN KEY (id_appartement) REFERENCES table_appartements(id),
   FOREIGN KEY (id_lotissement) REFERENCES table_lotissement(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -209,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `tr_role_utilisateur_maison` (
 DROP TABLE IF EXISTS `tr_utilisateur_appartements`;
 CREATE TABLE IF NOT EXISTS `tr_utilisateur_appartements` (
   `id_utilisateur` int(11) NOT NULL,
-  `id_appartement` int(11) NOT NULL
+  `id_appartement` int(11) NOT NULL,
   FOREIGN KEY (id_utilisateur) REFERENCES table_utilisateur(id),
   FOREIGN KEY (id_appartement) REFERENCES table_appartements(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
