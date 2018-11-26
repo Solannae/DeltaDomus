@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `table_appartements` (
   `adresse` text NOT NULL,
   `superficie` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id_proprietaire` (`id_proprietaire`)
+  FOREIGN KEY (proprietaire_id_fk) REFERENCES table_utlisateur(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -50,8 +50,8 @@ CREATE TABLE IF NOT EXISTS `table_capteurs` (
   `id_piece` int(11) NOT NULL,
   `type` text NOT NULL,
   `donnee` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (piece_id_fk) REFERENCES table_pieces(id)
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,9 @@ DROP TABLE IF EXISTS `table_consommation`;
 CREATE TABLE IF NOT EXISTS `table_consommation` (
   `id_appartement` int(11) NOT NULL,
   `conso_electricité` float NOT NULL,
-  `conso_gaz` float NOT NULL
+  `conso_gaz` float NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (appartement_id_fk) REFERENCES table_appartements(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -76,7 +78,8 @@ DROP TABLE IF EXISTS `table_lotissement`;
 CREATE TABLE IF NOT EXISTS `table_lotissement` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_gestionnnaire` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (gestionnaire_id_fk) REFERENCES table_utilisateur(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -93,7 +96,8 @@ CREATE TABLE IF NOT EXISTS `table_message_forum` (
   `date_creation` date NOT NULL,
   `date_modification` date NOT NULL,
   `contenu` text NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (sujet_id_fk) REFERENCES table_sujet_forum(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -108,7 +112,8 @@ CREATE TABLE IF NOT EXISTS `table_pieces` (
   `id_appartement` int(11) NOT NULL,
   `nom` text NOT NULL,
   `taille` float NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (appartement_pieces_id_fk) REFERENCES table_appartements(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -173,6 +178,8 @@ DROP TABLE IF EXISTS `tr_lotissement_appartement`;
 CREATE TABLE IF NOT EXISTS `tr_lotissement_appartement` (
   `id_lotissement` int(11) NOT NULL,
   `id_appartement` int(11) NOT NULL
+  FOREIGN KEY (lotissement_appartement_appartement_id_fk) REFERENCES table_appartements(id),
+  FOREIGN KEY (lotissement_appartement_lotissement_id_fk) REFERENCES table_lotissement(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -185,7 +192,10 @@ DROP TABLE IF EXISTS `tr_role_utilisateur_maison`;
 CREATE TABLE IF NOT EXISTS `tr_role_utilisateur_maison` (
   `id_role` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
-  `id_maison` int(11) NOT NULL
+  `id_maison` int(11) NOT NULL,
+  FOREIGN KEY (role_utilisateur_maison_role_id_fk) REFERENCES table_roles(id),
+  FOREIGN KEY (role_utilisateur_maison_user_id_fk) REFERENCES table_utilisateur(id),
+  FOREIGN KEY (role_utilisateur_maison_home_id_fk) REFERENCES table_appartements(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -198,6 +208,8 @@ DROP TABLE IF EXISTS `tr_utilisateur_appartements`;
 CREATE TABLE IF NOT EXISTS `tr_utilisateur_appartements` (
   `id_utilisateur` int(11) NOT NULL,
   `id_appartement` int(11) NOT NULL
+  FOREIGN KEY (utilisateur_appartement_utilisateur_id_fk) REFERENCES table_utilisateur(id),
+  FOREIGN KEY (utilisateur_appartement_appartement_id_fk) REFERENCES table_appartements(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
