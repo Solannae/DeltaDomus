@@ -1,10 +1,12 @@
 <?php
+//Définition des infos spécifiques a chaque page
     $title = 'Contact';
     $cssFile = 'style-contact.css';
     $jsFile = '';
 ?>
 
 <?php ob_start(); ?>
+
 <h1>Contact</h1>
 <form action="">
     <div id="contact-form">
@@ -19,14 +21,14 @@
             <label>Message:</label>
         </div>
         <div id="message-box">
-            <textarea rows="8" cols="70">
-            </textarea>
+            <textarea rows="8" cols="70"></textarea>
         </div>
         <div id="send">
             <button type="button" class="bubbly-button">Envoyer</button>
         </div>
     </div>
 </form>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

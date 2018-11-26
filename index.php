@@ -5,12 +5,11 @@ session_start();
 
 try
 {
-    if (isset($_SESSION['idUser']))
+    if (isset($_SESSION['idUser'])) //Condition connecté au site
     {
         if (isset($_GET['action']))
         {
-
-            if ($_GET['action'] == 'redirect')
+            if ($_GET['action'] == 'redirect')//Si on demande seulement a rediriger vers une page
             {
                 if (isset($_GET['page']))
                 {
@@ -30,7 +29,7 @@ try
                 }
             }
 
-            elseif ($_GET['action'] == 'disconnect')
+            elseif ($_GET['action'] == 'disconnect')//Si déconnexion
             {
                 disconnect();
                 redirect('accueil.php');
@@ -46,24 +45,24 @@ try
     {
         if (isset($_GET['action']))
         {
-            if ($_GET['action'] == 'login' AND isset($_POST['uname']) AND isset($_POST['psw']))
+            if ($_GET['action'] == 'login' AND isset($_POST['uname']) AND isset($_POST['psw']))//Connecter l'utilisateur depuis la page de connexion
             {
                 login($_POST['uname'], $_POST['psw'], isset($_POST['remember']));
             }
 
-            elseif ($_GET['action'] == 'signin' AND isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) AND isset($_POST['password']))
+            elseif ($_GET['action'] == 'signin' AND isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) AND isset($_POST['password']))//Créer l'utilisateur
             {
                     createUser();
             }
 
-            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']) AND ($_GET['page'] == 'accueil.php' OR $_GET['page'] == 'create-account.php' OR $_GET['page'] == 'contact.php'))
+            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']) AND ($_GET['page'] == 'accueil.php' OR $_GET['page'] == 'create-account.php' OR $_GET['page'] == 'contact.php'))//Pages accessibles sans se connecter
             {
                 redirect($_GET['page']);
             }
 
             else
             {
-                if (isset($_COOKIE['remember']) AND $_COOKIE['remember'] == true AND isset($_COOKIE['idUser']) AND isset($_COOKIE['pswUser']))
+                if (isset($_COOKIE['remember']) AND $_COOKIE['remember'] == true AND isset($_COOKIE['idUser']) AND isset($_COOKIE['pswUser'])) //Si "Se souvenir de moi" est coché, se connecter automatiquement
                 {
                     login($_COOKIE['idUser'], $_COOKIE['pswUser'], false);
                 }
@@ -73,7 +72,6 @@ try
                 }
             }
         }
-
         else
         {
             redirect('accueil.php');

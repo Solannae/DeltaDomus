@@ -23,6 +23,7 @@
         </a>
         <ul id="main-nav">
             <?php if (isset($_SESSION['idUser'])) { ?>
+                <!-- Si l'utilisateur est connecté afficher ce menu -->
                 <li><a href="index.php?action=redirect&amp;page=profil.php">Mon profil</a></li>
                 <li><a href="index.php?action=redirect&amp;page=capteurs.php">Mes capteurs</a></li>
                 <li><a href="index.php?action=redirect&amp;page=ajout-capteur.php">Ajouter un capteur</a></li>
@@ -32,6 +33,7 @@
                 <li><a href="index.php?action=redirect&amp;page=contact.php">Contact</a></li>
                 <li><a href="index.php?action=disconnect">Se déconnecter</a></li>
             <?php } else { ?>
+                <!-- Sinon afficher ce menu -->
                 <li><a href="index.php?action=redirect&amp;page=login.php">Se connecter</a></li>
                 <li><a href="index.php?action=redirect&amp;page=create-account.php">Créer un compte</a></li>
                 <li><a href="index.php?action=redirect&amp;page=contact.php">Contact</a></li>
