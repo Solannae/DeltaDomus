@@ -50,10 +50,46 @@ CREATE TABLE IF NOT EXISTS `table_capteurs` (
   `id_piece` int(11) NOT NULL,
   `type` text NOT NULL,
   `donnee` int(11) NOT NULL,
+  `est_actionneur` boolean NOT NULL DEFAULT 0,
+  `est_cemac` boolean NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   FOREIGN KEY (id_piece)
   REFERENCES table_pieces(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+--
+-- structure de la table `table_notifications`
+--
+
+drop table if exists `table_notifications`;
+create table if not exists `table_notifications` (
+  `id` int(11) not null auto_increment,
+  `id_capteur` int(11) not null,
+  `texte` text not null,
+  primary key (`id`),
+  foreign key (id_capteur)
+  references table_capteurs(id)
+) engine=myisam default charset=latin1;
+
+
+--
+-- structure de la table `table_preferences`
+--
+
+drop table if exists `table_preferences`;
+create table if not exists `table_preferences` (
+  `id` int(11) not null auto_increment,
+  `id_capteur` int(11) not null,
+  `actif` boolean not null default 0,
+  `heure_activation` timestamp,
+  `heure_desactivation` timestamp,
+  `valeur_cible` int(11),
+  primary key (`id`),
+  foreign key (id_capteur)
+  references table_capteurs(id)
+) engine=myisam default charset=latin1;
+
 
 -- --------------------------------------------------------
 
@@ -93,12 +129,13 @@ DROP TABLE IF EXISTS `table_message_forum`;
 CREATE TABLE IF NOT EXISTS `table_message_forum` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_sujet` int(11) NOT NULL,
-  `auteur` text NOT NULL,
+  `id_auteur` int(11) NOT NULL,
   `date_creation` date NOT NULL,
   `date_modification` date NOT NULL,
   `contenu` text NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (id_sujet) REFERENCES table_sujet_forum(id)
+  FOREIGN KEY (id_sujet) REFERENCES table_sujet_forum(id),
+  FOREIGN KEY (id_auteur) REFERENCES table_utilisateur(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -139,10 +176,11 @@ CREATE TABLE IF NOT EXISTS `table_roles` (
 DROP TABLE IF EXISTS `table_sujet_forum`;
 CREATE TABLE IF NOT EXISTS `table_sujet_forum` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `auteur` text NOT NULL,
+  `id_auteur` int(11) NOT NULL,
   `date_creation` date NOT NULL,
   `nom` text NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (id_auteur) REFERENCES table_utilisateur(id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
