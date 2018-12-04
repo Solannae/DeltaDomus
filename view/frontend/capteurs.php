@@ -12,35 +12,38 @@
     <div id="title-button">
         <button type="button" class="bubbly-button">Ajouter un capteur</button>
     </div>
+    <div id="house-button">
+        <button type="button" class="bubbly-button">Changer de maison</button>
+    </div>
 </div>
+
 <div id="capteurs-pannel">
-    <div class="piece-pannel">
-        Salon
-        <div class="piece-pannel-sub">
+    <?php foreach ($pieceArray as $piece) { ?>
+        <div class="piece-pannel">
+            <?=  $piece['nom'] ;?>
+
+            <?php foreach ($piece[2] as $capteur) { ?>
+                <div class="piece-pannel-sub">
+                    <?php
+                    if ($capteur['type'] == "temp") {
+                        echo "Temperature = ";
+                        echo $capteur['donnee'];
+                    }
+                    elseif ($capteur['type'] == "lum") {
+                        echo "Lumière = ";
+                        if ($capteur['donnee'] == 1) {
+                            echo "ON";
+                        }
+                        else {
+                            echo "OFF";
+                        }
+                    }
+                    ?>
+                </div>
+            <?php } ?>
 
         </div>
-        <div class="piece-pannel-sub">
-
-        </div>
-    </div>
-    <div class="piece-pannel">
-        Chambre
-        <div class="piece-pannel-sub">
-
-        </div>
-        <div class="piece-pannel-sub">
-
-        </div>
-    </div>
-    <div class="piece-pannel">
-        Jardin
-        <div class="piece-pannel-sub">
-
-        </div>
-        <div class="piece-pannel-sub">
-
-        </div>
-    </div>
+    <?php } ?>
 </div>
 <?php $content = ob_get_clean(); ?>
 

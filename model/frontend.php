@@ -44,3 +44,38 @@ function getInfoUser($idUser)
 
     return $info;
 }
+
+function getHouse($id)
+{
+    $db = dbConnect();
+    $query = $db->prepare("SELECT table_appartements.id FROM table_appartements JOIN tr_utilisateur_appartements ON table_appartements.id = id_appartement WHERE id_utilisateur = :id");
+    $query->execute(array('id' => $id));
+    $info = $query->fetch();
+    $query->closeCursor();
+
+    return $info[0];
+}
+
+function getPieces($idHouse) {
+    $db = dbConnect();
+    $query = $db->prepare("SELECT id, nom FROM table_pieces WHERE id_appartement = :id");
+    $query->execute(array('id' => $idHouse));
+
+    while ($donnees = $query->fetch()) {
+        $pieces[] = $donnees;
+    }
+    
+    return $pieces;
+}
+
+function getCapteur($idPiece) {
+    $db = dbConnect();
+    $query = $db->prepare("SELECT type, donnee FROM table_capteurs WHERE id_piece = :id");
+    $query->execute(array('id' => $idPiece));
+
+    while ($donnees = $query->fetch()) {
+        $capteur[] = $donnees;
+    }
+
+    return $capteur;
+}

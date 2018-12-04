@@ -14,6 +14,7 @@ function login($id, $password, $isChecked)
     {
 
         $_SESSION['idUser'] = $idFound['id'];
+        $_SESSION['idHouse'] = getHouse($idFound['id']);
 
         if ($isChecked)
         {
@@ -58,4 +59,20 @@ function profil()
     $prenomUser = $user['prenom'];
     $emailUser = $user['email'];
     require('view/frontend/profil.php');
+}
+
+function infosCapteurs()
+{
+    //Appel des infos pour la page profil
+    if (isset($_SESSION['idHouse'])) {
+        $pieceArray = getPieces($_SESSION['idHouse']);
+        foreach ($pieceArray as &$piece) {
+            $piece[] = getCapteur($piece['id']);
+        }
+
+        return $pieceArray;
+    }
+    else {
+        return array();
+    }
 }

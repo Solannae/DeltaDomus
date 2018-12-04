@@ -17,6 +17,10 @@ try
                     {
                         profil();
                     }
+                    elseif ($_GET['page'] == "capteurs.php") {
+                        $pieceArray = infosCapteurs();
+                        require('view/frontend/capteurs.php');
+                    }
                     else
                     {
                         redirect($_GET['page']);
@@ -32,7 +36,7 @@ try
             elseif ($_GET['action'] == 'disconnect')//Si déconnexion
             {
                 disconnect();
-                redirect('accueil.php');
+                header("Refresh:0; url=index.php");
             }
 
         }
@@ -64,7 +68,7 @@ try
             {
                 if (isset($_COOKIE['remember']) AND $_COOKIE['remember'] == true AND isset($_COOKIE['idUser']) AND isset($_COOKIE['pswUser'])) //Si "Se souvenir de moi" est coché, se connecter automatiquement
                 {
-                    login($_COOKIE['idUser'], $_COOKIE['pswUser'], false);
+                    login($_COOKIE['idUser'], $_COOKIE['pswUser'], true);
                 }
                 else
                 {
