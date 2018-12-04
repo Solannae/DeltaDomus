@@ -62,9 +62,12 @@ function getPieces($idHouse) {
     $query->execute(array('id' => $idHouse));
 
     while ($donnees = $query->fetch()) {
-        $pieces[] = $donnees;
+        $pieces[] = array(
+            'id' => $donnees['id'],
+            'nom' => $donnees['nom']
+        );
     }
-    
+
     return $pieces;
 }
 
@@ -74,7 +77,10 @@ function getCapteur($idPiece) {
     $query->execute(array('id' => $idPiece));
 
     while ($donnees = $query->fetch()) {
-        $capteur[] = $donnees;
+        $capteur[] = array(
+            'type' => $donnees['type'],
+            'donnee' => $donnees['donnee']
+        );
     }
 
     return $capteur;

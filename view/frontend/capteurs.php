@@ -22,7 +22,7 @@
         <div class="piece-pannel">
             <?=  $piece['nom'] ;?>
 
-            <?php foreach ($piece[2] as $capteur) { ?>
+            <?php foreach ($piece['capteurs'] as $capteur) { ?>
                 <div class="piece-pannel-sub">
                     <?php
                     if ($capteur['type'] == "temp") {

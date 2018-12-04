@@ -67,7 +67,7 @@ function infosCapteurs()
     if (isset($_SESSION['idHouse'])) {
         $pieceArray = getPieces($_SESSION['idHouse']);
         foreach ($pieceArray as &$piece) {
-            $piece[] = getCapteur($piece['id']);
+            $piece['capteurs'] = getCapteur($piece['id']);
         }
 
         return $pieceArray;
