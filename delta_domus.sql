@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 08 nov. 2018 à 16:54
+-- Généré le :  mar. 04 déc. 2018 à 18:50
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -36,7 +36,14 @@ CREATE TABLE IF NOT EXISTS `table_appartements` (
   `superficie` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_proprietaire` (`id_proprietaire`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `table_appartements`
+--
+
+INSERT INTO `table_appartements` (`id`, `id_proprietaire`, `adresse`, `superficie`) VALUES
+(1, 137, '135 Avenue du général de Gaulle', 18);
 
 -- --------------------------------------------------------
 
@@ -51,7 +58,17 @@ CREATE TABLE IF NOT EXISTS `table_capteurs` (
   `type` text NOT NULL,
   `donnee` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `table_capteurs`
+--
+
+INSERT INTO `table_capteurs` (`id`, `id_piece`, `type`, `donnee`) VALUES
+(1, 1, 'temp', 20),
+(2, 1, 'lum', 1),
+(3, 2, 'lum', 0),
+(4, 2, 'temp', 19);
 
 -- --------------------------------------------------------
 
@@ -109,7 +126,15 @@ CREATE TABLE IF NOT EXISTS `table_pieces` (
   `nom` text NOT NULL,
   `taille` float NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `table_pieces`
+--
+
+INSERT INTO `table_pieces` (`id`, `id_appartement`, `nom`, `taille`) VALUES
+(1, 1, 'salon', 5),
+(2, 1, 'chambre', 5);
 
 -- --------------------------------------------------------
 
@@ -154,14 +179,15 @@ CREATE TABLE IF NOT EXISTS `table_utilisateur` (
   `image_profil` text,
   `password` text NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=137 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=138 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_utilisateur`
 --
 
 INSERT INTO `table_utilisateur` (`ID`, `nom`, `prenom`, `email`, `image_profil`, `password`) VALUES
-(1, 'nom_admin', 'prenom_admin', 'admin', NULL, 'admin');
+(1, 'nom_admin', 'prenom_admin', 'admin', NULL, 'admin'),
+(137, 'Moll', 'Galaad', 'email', NULL, 'lol');
 
 -- --------------------------------------------------------
 
@@ -199,6 +225,13 @@ CREATE TABLE IF NOT EXISTS `tr_utilisateur_appartements` (
   `id_utilisateur` int(11) NOT NULL,
   `id_appartement` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `tr_utilisateur_appartements`
+--
+
+INSERT INTO `tr_utilisateur_appartements` (`id_utilisateur`, `id_appartement`) VALUES
+(137, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
