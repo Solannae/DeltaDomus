@@ -83,7 +83,6 @@ function drawGraph(graph, values) {
     var c = graph.getContext('2d');
     
     maxY = getMaxY(values);
-    alert(maxY);
     scale = getScale();
 
     c.lineWidth = 2;
