@@ -5,6 +5,7 @@
 ?>
 
 <?php ob_start(); ?>
+
 <h1>Ajout d'un utilisateur</h1>
 <div id="profil">
     <div id="image">
@@ -25,6 +26,7 @@
 <div id="bouton-utilisateur">
     <button type="button" class="user-button">Ajouter l'utilisateur</button>
 </div>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
