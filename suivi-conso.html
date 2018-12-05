@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style-suivi-conso.css">
     <title>Delta Domus</title>
-
     <script src="js/index.js" defer></script>
+    <script src="js/suivi-conso.js" defer></script>
 </head>
 
 <body>
@@ -42,13 +42,18 @@
         </a>
     </nav>
 
-
-
-    <div id="placeholder">
-
+    <div id="placeholder" style="width:70%">
+        <h3>Ma consommation</h3>
+        <br />
+        <label>Electricité</label><p style="text-align: right">Consommation du mois: inserer valeur</p>
+        <br />
+        <canvas id="graph_elec" width="600" height="400"></canvas>
+        <br />
+        <label>Eau</label><p style="text-align: right">Consommation du mois: inserer valeur</p>
+        <br />
+        <canvas id="graph_eau" width="600" height="400"></canvas>
+        <br />
     </div>
-
-
 
     <div id="footer">
         <p id="contact">
