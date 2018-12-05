@@ -7,53 +7,26 @@
 <?php ob_start(); ?>
 
 <h1>Gestion des droits</h1>
+    <?php foreach ($roles as $role) { ?>
 
-<button class="collapsible"><h2>Parents</h2></button>
+        <button class="collapsible"><h2><?= $role['nom'] ?></h2></button>
 
-<div class="content">
-    <div>
-        <h3>Température</h3>
-        <p>
-            <input type="checkbox" name="temp-salon">Température salon<br>
-            <input type="checkbox" name="temp-cuisine">Température cuisine<br>
-            <h3>Light</h3>
-            <input type="checkbox" name="light-salon">Light salon<br>
-            <input type="checkbox" name="light-cuisine">Light cuisine<br>
-        </p>
-    </div>
-</div>
-
-<button class="collapsible"><h2>Enfant 1</h2></button>
-
-<div class="content">
-    <div>
-        <p>
-            <h3>Température</h3>
-            <input type="checkbox" name="temp-salon">Température salon<br>
-            <input type="checkbox" name="temp-cuisine">Température cuisine<br>
-            <h3>Light</h3>
-            <input type="checkbox" name="light-salon">Light salon<br>
-            <input type="checkbox" name="light-cuisine">Light cuisine<br>
-        </p>
-    </div>
-</div>
-
-<button class="collapsible"><h2>Enfant 2</h2></button>
-
-<div class="content">
-    <div>
-        <p>
-            <h3>Température</h3>
-            <input type="checkbox" name="temp-salon">Température salon<br>
-            <input type="checkbox" name="temp-cuisine">Température cuisine<br>
-            <h3>Light</h3>
-            <input type="checkbox" name="light-salon">Light salon<br>
-            <input type="checkbox" name="light-cuisine">Light cuisine<br>
-        </p>
-    </div>
-</div>
-
-
+        <div class="content">
+            <?php foreach ($role['piece'] as $piece) { ?>
+                <div>
+                    <h3><?= $piece['nom'] ?></h3>
+                    <?php foreach ($piece['capteurs'] as $capteur) {?>
+                        <input type="checkbox" name="temp-salon" <?php if ($capteur['droit']) {echo "checked";} ?>>
+                        <?php if ($capteur['type'] == "temp") {
+                            echo "Température";
+                        } elseif ($capteur['type'] == "lum") {
+                            echo "Lumière";
+                        } ?><br>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+        </div>
+    <?php } ?>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

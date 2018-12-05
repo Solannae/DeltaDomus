@@ -12,7 +12,7 @@ function verifyUser($idUser, $password)
 {
     //Vérification de l'utilisateur dans la base de donnée
     $db = dbConnect();
-    $query = $db->prepare("SELECT id FROM table_utilisateur WHERE email = ? AND password = ?");
+    $query = $db->prepare("SELECT ID FROM table_utilisateur WHERE email = ? AND password = ?");
     $query->execute(array($idUser, $password));
     $id = $query->fetch();
     $query->closeCursor();
@@ -37,7 +37,7 @@ function getInfoUser($idUser)
 {
     //Récupère les infos d'un utilisateur
     $db = dbConnect();
-    $query = $db->prepare("SELECT * FROM table_utilisateur WHERE id = ?");
+    $query = $db->prepare("SELECT * FROM table_utilisateur WHERE ID = ?");
     $query->execute(array($idUser));
     $info = $query->fetch();
     $query->closeCursor();
@@ -48,7 +48,7 @@ function getInfoUser($idUser)
 function getHouse($id)
 {
     $db = dbConnect();
-    $query = $db->prepare("SELECT table_appartements.id FROM table_appartements JOIN tr_utilisateur_appartements ON table_appartements.id = id_appartement WHERE id_utilisateur = :id");
+    $query = $db->prepare("SELECT table_appartements.ID FROM table_appartements JOIN tr_role_utilisateur_maison ON table_appartements.ID = id_maison WHERE id_utilisateur = :id");
     $query->execute(array('id' => $id));
     $info = $query->fetch();
     $query->closeCursor();
@@ -58,12 +58,12 @@ function getHouse($id)
 
 function getPieces($idHouse) {
     $db = dbConnect();
-    $query = $db->prepare("SELECT id, nom FROM table_pieces WHERE id_appartement = :id");
+    $query = $db->prepare("SELECT ID, nom FROM table_pieces WHERE id_appartement = :id");
     $query->execute(array('id' => $idHouse));
 
     while ($donnees = $query->fetch()) {
         $pieces[] = array(
-            'id' => $donnees['id'],
+            'id' => $donnees['ID'],
             'nom' => $donnees['nom']
         );
     }
@@ -73,15 +73,52 @@ function getPieces($idHouse) {
 
 function getCapteur($idPiece) {
     $db = dbConnect();
-    $query = $db->prepare("SELECT type, donnee FROM table_capteurs WHERE id_piece = :id");
+    $query = $db->prepare("SELECT ID, type, donnee FROM table_capteurs WHERE id_piece = :id");
     $query->execute(array('id' => $idPiece));
 
     while ($donnees = $query->fetch()) {
         $capteur[] = array(
+            'id' => $donnees['ID'],
             'type' => $donnees['type'],
             'donnee' => $donnees['donnee']
         );
     }
 
     return $capteur;
+}
+
+function getRole($idUser, $idHouse) {
+    $db = dbConnect();
+    $query = $db->prepare("SELECT nom FROM table_roles JOIN tr_role_utilisateur_maison ON ID = id_role WHERE id_utilisateur = :idUser AND id_maison = :idHouse");
+    $query->execute(array('idUser' => $idUser, 'idHouse' => $idHouse));
+    $info = $query->fetch();
+    $query->closeCursor();
+
+    return $info[0];
+}
+
+function getUsers($idHouse) {
+    $db = dbConnect();
+    $query = $db->prepare("SELECT DISTINCT ID, nom FROM table_roles JOIN tr_role_utilisateur_maison ON id_role = table_roles.ID WHERE id_maison = :id");
+    $query->execute(array('id' => $idHouse));
+
+    while ($donnees = $query->fetch()) {
+        $roles[] = array('id' => $donnees['ID'], 'nom' => $donnees['nom']);
+    }
+
+    $query->closeCursor();
+    return $roles;
+}
+
+function getDroit($idRole, $idCapteur) {
+    $db = dbConnect();
+    $query = $db->prepare("SELECT droit FROM table_droit WHERE id_capteur = :capteur AND id_role = :role");
+    $query->execute(array(
+        'capteur' => $idCapteur,
+        'role' => $idRole
+    ));
+
+    $droit = $query->fetch();
+    $query->closeCursor();
+    return $droit['droit'];
 }

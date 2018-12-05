@@ -58,6 +58,12 @@ function profil()
     $nomUser = $user['nom'];
     $prenomUser = $user['prenom'];
     $emailUser = $user['email'];
+    if (isset($_SESSION['idHouse'])) {
+        $role = getRole($_SESSION['idUser'], $_SESSION['idHouse']);
+    }
+    else {
+        $role = "Undefined";
+    }
     require('view/frontend/profil.php');
 }
 
@@ -74,5 +80,25 @@ function infosCapteurs()
     }
     else {
         return array();
+    }
+}
+
+function infosDroits() {
+    //Appel infos sur les droits
+    if (isset($_SESSION['idHouse'])) {
+        $roles = getUsers($_SESSION['idHouse']);
+        foreach ($roles as &$role) {
+            $role['piece'] = getPieces($_SESSION['idHouse']);
+            foreach ($role['piece'] as &$piece) {
+                $piece['capteurs'] = getCapteur($piece['id']);
+                foreach ($piece['capteurs'] as &$capteur) {
+                    $capteur['droit'] = getDroit($role['id'], $capteur['id']);
+                }
+            }
+        }
+        return $roles;
+    }
+    else {
+        return  array();
     }
 }

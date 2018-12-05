@@ -21,6 +21,15 @@ try
                         $pieceArray = infosCapteurs();
                         require('view/frontend/capteurs.php');
                     }
+                    elseif ($_GET['page'] == "gestion-droits.php") {
+                        $roles = infosDroits();
+
+                        // echo "<pre>";
+                        // print_r($roles);
+                        // echo "</pre>";
+
+                        require('view/frontend/gestion-droits.php');
+                    }
                     else
                     {
                         redirect($_GET['page']);

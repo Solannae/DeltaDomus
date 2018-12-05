@@ -15,7 +15,7 @@
             <label>Nom: </label><input type="text" name="nom" value="<?= $nomUser ?>"><br>
             <label>Prénom: </label><input type="text" name="prenom" value="<?= $prenomUser ?>"><br>
             <label>Adresse mail: </label><input type="text" name="email" value="<?= $emailUser ?>"><br>
-            <label>Statut: </label><input type="text" name="statut" value="Utilisateur" disabled><br>
+            <label>Statut: </label><input type="text" name="statut" value="<?= $role ?>" disabled><br>
         </div>
     </form>
 </div>
