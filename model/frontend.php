@@ -37,11 +37,12 @@ function getInfoUser($idUser)
 {
     //Récupère les infos d'un utilisateur
     $db = dbConnect();
-    $query = $db->prepare("SELECT * FROM table_utilisateur WHERE ID = ?");
+    $query = $db->prepare("SELECT ID, nom, prenom, email, image_profil FROM table_utilisateur WHERE ID = ?");
     $query->execute(array($idUser));
     $info = $query->fetch();
     $query->closeCursor();
 
+    //Return ID, nom, prenom, email,image_profil de l'utilisateur
     return $info;
 }
 
@@ -53,6 +54,7 @@ function getHouse($id)
     $info = $query->fetch();
     $query->closeCursor();
 
+    //Return ID de la maison
     return $info[0];
 }
 
@@ -68,6 +70,13 @@ function getPieces($idHouse) {
         );
     }
 
+    /*Return
+    pieces {
+        (int) {
+            ['id']
+            ['nom']
+        }
+    }*/
     return $pieces;
 }
 
@@ -84,6 +93,14 @@ function getCapteur($idPiece) {
         );
     }
 
+    /*Return
+    capteur {
+        (int) {
+            ['id']
+            ['type']
+            ['donnee']
+        }
+    }*/
     return $capteur;
 }
 
@@ -94,6 +111,7 @@ function getRole($idUser, $idHouse) {
     $info = $query->fetch();
     $query->closeCursor();
 
+    //Return nom du role de l'utilisateur
     return $info[0];
 }
 
@@ -105,8 +123,14 @@ function getUsers($idHouse) {
     while ($donnees = $query->fetch()) {
         $roles[] = array('id' => $donnees['ID'], 'nom' => $donnees['nom']);
     }
-
     $query->closeCursor();
+
+    /*Return roles {
+        (int) {
+            ['id']
+            ['nom']
+        }
+    }*/
     return $roles;
 }
 
@@ -117,9 +141,10 @@ function getDroit($idRole, $idCapteur) {
         'capteur' => $idCapteur,
         'role' => $idRole
     ));
-
     $droit = $query->fetch();
     $query->closeCursor();
+
+    //Return la valeur de droit pour un role et un capteur
     return $droit['droit'];
 }
 

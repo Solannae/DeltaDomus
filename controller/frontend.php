@@ -76,6 +76,20 @@ function infosCapteurs()
             $piece['capteurs'] = getCapteur($piece['id']);
         }
 
+        /*Return pieceArray {
+            (int) {
+                ['id']
+                ['nom']
+                ['capteurs']{
+                    (int) {
+                        ['id']
+                        ['type']
+                        ['donnee']
+                    }
+                }
+            }
+        }
+        */
         return $pieceArray;
     }
     else {
@@ -96,6 +110,27 @@ function infosDroits() {
                 }
             }
         }
+
+        /*Return roles {
+            (int) {
+                ['id']
+                ['nom']
+                ['piece'] {
+                    (int) {
+                        ['id']
+                        ['nom']
+                        ['capteurs'] {
+                            (int) {
+                                ['id']
+                                ['type']
+                                ['donnee']
+                                ['droit']
+                            }
+                        }
+                    }
+                }
+            }
+        }*/
         return $roles;
     }
     else {

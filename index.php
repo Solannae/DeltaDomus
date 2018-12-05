@@ -23,7 +23,7 @@ try
                     }
                     elseif ($_GET['page'] == "gestion-droits.php") {
                         $roles = infosDroits();
-                        require('view/frontend/gestion-droits.php');
+                        // require('view/frontend/gestion-droits.php');
                     }
                     else
                     {
