@@ -27,6 +27,7 @@
                 <li><a href="index.php?action=redirect&amp;page=profil.php">Mon profil</a></li>
                 <li><a href="index.php?action=redirect&amp;page=capteurs.php">Mes capteurs</a></li>
                 <li><a href="index.php?action=redirect&amp;page=ajout-capteur.php">Ajouter un capteur</a></li>
+                <li><a href="index.php?action=redirect&amp;page=ajout-maison.php">Ajouter une maison</a></li>
                 <li><a href="index.php?action=redirect&amp;page=ajout-utilisateur.php">Ajouter un utilisateur</a></li>
                 <li><a href="index.php?action=redirect&amp;page=gestion-droits.php">Gestion des droits</a></li>
                 <li><a href="index.php?action=redirect&amp;page=suivi-conso.php">Mon suivi conso</a></li>
@@ -60,7 +61,7 @@
 
     <div id="footer">
         <p id="contact">
-           
+
         </p>
     </div>
 </body>
