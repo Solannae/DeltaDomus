@@ -1,5 +1,5 @@
 <?php
-    $title = 'Gestion Des Droits';
+    $title = 'Ajout maison';
     $cssFile = 'style-ajout-maison.css';
     $jsFile = '';
 ?>
