@@ -13,8 +13,8 @@ function login($id, $password, $isChecked)
     if ($idFound)
     {
 
-        $_SESSION['idUser'] = $idFound['id'];
-        $_SESSION['idHouse'] = getHouse($idFound['id']);
+        $_SESSION['idUser'] = $idFound['ID'];
+        $_SESSION['idHouse'] = getHouse($idFound['ID']);
 
         if ($isChecked)
         {
