@@ -111,7 +111,7 @@ nav #main-nav li:hover {
     position: fixed;
     top: 110px;
     left: 10px;
-    bottom: 70px;
+    bottom: 32px;
     right: 5px;
     overflow-y: auto;
 }

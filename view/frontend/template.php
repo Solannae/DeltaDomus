@@ -60,7 +60,7 @@
 
     <div id="footer">
         <p id="contact">
-            Nous contacter: <br /> <a href="mailto:deltadomus@gmail.com">deltadomus@gmail.com</a>
+           
         </p>
     </div>
 </body>
