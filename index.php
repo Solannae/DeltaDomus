@@ -23,11 +23,6 @@ try
                     }
                     elseif ($_GET['page'] == "gestion-droits.php") {
                         $roles = infosDroits();
-
-                        // echo "<pre>";
-                        // print_r($roles);
-                        // echo "</pre>";
-
                         require('view/frontend/gestion-droits.php');
                     }
                     else
@@ -46,6 +41,10 @@ try
             {
                 disconnect();
                 header("Refresh:0; url=index.php");
+            }
+            elseif ($_GET['action'] == 'saveDroits') {
+                saveDroits();
+                header("Refresh:0; url=index.php?action=redirect&page=gestion-droits.php");
             }
 
         }

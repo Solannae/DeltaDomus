@@ -122,3 +122,16 @@ function getDroit($idRole, $idCapteur) {
     $query->closeCursor();
     return $droit['droit'];
 }
+
+function setDroit($idRole, $idCapteur, $droit) {
+    if ($droit == "") {
+        $droit = 0;
+    }
+    $db = dbConnect();
+    $query = $db->prepare("UPDATE table_droit SET droit = :droit WHERE id_role = :role AND id_capteur = :capteur");
+    $query->execute(array(
+        'droit' => $droit,
+        'role' => $idRole,
+        'capteur' => $idCapteur
+    ));
+}

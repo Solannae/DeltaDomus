@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 04 déc. 2018 à 18:50
+-- Généré le :  mer. 05 déc. 2018 à 11:57
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -30,11 +30,11 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `table_appartements`;
 CREATE TABLE IF NOT EXISTS `table_appartements` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `id_proprietaire` int(11) NOT NULL,
   `adresse` text NOT NULL,
   `superficie` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`ID`),
   UNIQUE KEY `id_proprietaire` (`id_proprietaire`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `table_appartements` (
 -- Déchargement des données de la table `table_appartements`
 --
 
-INSERT INTO `table_appartements` (`id`, `id_proprietaire`, `adresse`, `superficie`) VALUES
+INSERT INTO `table_appartements` (`ID`, `id_proprietaire`, `adresse`, `superficie`) VALUES
 (1, 137, '135 Avenue du général de Gaulle', 18);
 
 -- --------------------------------------------------------
@@ -53,20 +53,20 @@ INSERT INTO `table_appartements` (`id`, `id_proprietaire`, `adresse`, `superfici
 
 DROP TABLE IF EXISTS `table_capteurs`;
 CREATE TABLE IF NOT EXISTS `table_capteurs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `id_piece` int(11) NOT NULL,
   `type` text NOT NULL,
   `donnee` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_capteurs`
 --
 
-INSERT INTO `table_capteurs` (`id`, `id_piece`, `type`, `donnee`) VALUES
-(1, 1, 'temp', 20),
-(2, 1, 'lum', 1),
+INSERT INTO `table_capteurs` (`ID`, `id_piece`, `type`, `donnee`) VALUES
+(2, 1, 'temp', 20),
+(1, 1, 'lum', 1),
 (3, 2, 'lum', 0),
 (4, 2, 'temp', 19);
 
@@ -86,14 +86,45 @@ CREATE TABLE IF NOT EXISTS `table_consommation` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `table_droit`
+--
+
+DROP TABLE IF EXISTS `table_droit`;
+CREATE TABLE IF NOT EXISTS `table_droit` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `id_role` int(11) NOT NULL,
+  `id_capteur` int(11) NOT NULL,
+  `droit` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `table_droit`
+--
+
+INSERT INTO `table_droit` (`ID`, `id_role`, `id_capteur`, `droit`) VALUES
+(1, 1, 1, 1),
+(2, 1, 2, 1),
+(3, 1, 3, 1),
+(4, 1, 4, 1),
+(5, 2, 1, 0),
+(6, 2, 2, 1),
+(7, 2, 3, 0),
+(8, 2, 4, 0),
+(9, 1, 0, 1),
+(10, 2, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `table_lotissement`
 --
 
 DROP TABLE IF EXISTS `table_lotissement`;
 CREATE TABLE IF NOT EXISTS `table_lotissement` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `id_gestionnnaire` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -104,13 +135,13 @@ CREATE TABLE IF NOT EXISTS `table_lotissement` (
 
 DROP TABLE IF EXISTS `table_message_forum`;
 CREATE TABLE IF NOT EXISTS `table_message_forum` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `id_sujet` int(11) NOT NULL,
   `auteur` text NOT NULL,
   `date_creation` date NOT NULL,
   `date_modification` date NOT NULL,
   `contenu` text NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -121,20 +152,20 @@ CREATE TABLE IF NOT EXISTS `table_message_forum` (
 
 DROP TABLE IF EXISTS `table_pieces`;
 CREATE TABLE IF NOT EXISTS `table_pieces` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `id_appartement` int(11) NOT NULL,
   `nom` text NOT NULL,
   `taille` float NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_pieces`
 --
 
-INSERT INTO `table_pieces` (`id`, `id_appartement`, `nom`, `taille`) VALUES
-(1, 1, 'salon', 5),
-(2, 1, 'chambre', 5);
+INSERT INTO `table_pieces` (`ID`, `id_appartement`, `nom`, `taille`) VALUES
+(1, 1, 'Salon', 5),
+(2, 1, 'Chambre', 5);
 
 -- --------------------------------------------------------
 
@@ -144,10 +175,18 @@ INSERT INTO `table_pieces` (`id`, `id_appartement`, `nom`, `taille`) VALUES
 
 DROP TABLE IF EXISTS `table_roles`;
 CREATE TABLE IF NOT EXISTS `table_roles` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `nom` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `table_roles`
+--
+
+INSERT INTO `table_roles` (`ID`, `nom`) VALUES
+(1, 'Parent'),
+(2, 'Enfant');
 
 -- --------------------------------------------------------
 
@@ -157,11 +196,11 @@ CREATE TABLE IF NOT EXISTS `table_roles` (
 
 DROP TABLE IF EXISTS `table_sujet_forum`;
 CREATE TABLE IF NOT EXISTS `table_sujet_forum` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `auteur` text NOT NULL,
   `date_creation` date NOT NULL,
   `nom` text NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -179,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `table_utilisateur` (
   `image_profil` text,
   `password` text NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=138 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=140 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_utilisateur`
@@ -187,7 +226,9 @@ CREATE TABLE IF NOT EXISTS `table_utilisateur` (
 
 INSERT INTO `table_utilisateur` (`ID`, `nom`, `prenom`, `email`, `image_profil`, `password`) VALUES
 (1, 'nom_admin', 'prenom_admin', 'admin', NULL, 'admin'),
-(137, 'Moll', 'Galaad', 'email', NULL, 'lol');
+(137, 'Moll', 'Galaad', 'email', NULL, 'lol'),
+(138, 'nom_enfant1', 'prenom_enfant1', 'emailenfant1', NULL, 'password'),
+(139, 'nom_enfant2', 'prenom_enfant2', 'emailenfant2', NULL, 'password');
 
 -- --------------------------------------------------------
 
@@ -214,6 +255,15 @@ CREATE TABLE IF NOT EXISTS `tr_role_utilisateur_maison` (
   `id_maison` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `tr_role_utilisateur_maison`
+--
+
+INSERT INTO `tr_role_utilisateur_maison` (`id_role`, `id_utilisateur`, `id_maison`) VALUES
+(1, 137, 1),
+(2, 138, 1),
+(2, 139, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -231,7 +281,9 @@ CREATE TABLE IF NOT EXISTS `tr_utilisateur_appartements` (
 --
 
 INSERT INTO `tr_utilisateur_appartements` (`id_utilisateur`, `id_appartement`) VALUES
-(137, 1);
+(137, 1),
+(138, 1),
+(139, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

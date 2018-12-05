@@ -102,3 +102,17 @@ function infosDroits() {
         return  array();
     }
 }
+
+function saveDroits() {
+    $previous = infosDroits();
+
+    foreach ($previous as $role) {
+        foreach ($role['piece'] as $piece) {
+            foreach ($piece['capteurs'] as $capteur) {
+                if (isset($_POST[$role['id'].'_'.$capteur['id']]) != $capteur['droit']) { //test si droits modifiés
+                    setDroit($role['id'], $capteur['id'], isset($_POST[$role['id'].'_'.$capteur['id']]));
+                }
+            }
+        }
+    }
+}
