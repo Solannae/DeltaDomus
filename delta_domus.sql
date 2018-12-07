@@ -233,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `table_utilisateur` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `nom` text NOT NULL,
   `prenom` text NOT NULL,
-  `email` text NOT NULL,
+  `email` varchar(128) NOT NULL UNIQUE,
   `image_profil` text,
   `password` text NOT NULL,
   PRIMARY KEY (`ID`)
