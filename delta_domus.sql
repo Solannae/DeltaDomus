@@ -79,9 +79,28 @@ INSERT INTO `table_capteurs` (`ID`, `id_piece`, `type`, `donnee`) VALUES
 DROP TABLE IF EXISTS `table_consommation`;
 CREATE TABLE IF NOT EXISTS `table_consommation` (
   `id_appartement` int(11) NOT NULL,
+  `date` date NOT NULL,
   `conso_electricité` float NOT NULL,
   `conso_gaz` float NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `table_consommation`
+--
+
+INSERT INTO `table_consommation` (`id_appartement`, `date`, `conso_electricité`, `conso_gaz`) VALUES
+(1, "2018-01-01", 110, 110),
+(1, "2018-02-01", 116, 116),
+(1, "2018-03-01", 105, 105),
+(1, "2018-04-01", 92, 92),
+(1, "2018-05-01", 79, 79),
+(1, "2018-06-01", 78.5, 78.5),
+(1, "2018-07-01", 0, 0),
+(1, "2018-08-01", 0, 0),
+(1, "2018-09-01", 0, 0),
+(1, "2018-10-01", 0, 0),
+(1, "2018-11-01", 0, 0),
+(1, "2018-12-01", 0, 0);
 
 -- --------------------------------------------------------
 
