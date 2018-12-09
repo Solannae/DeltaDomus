@@ -15,6 +15,7 @@ function login($id, $password, $isChecked)
 
         $_SESSION['idUser'] = $idFound['ID'];
         $_SESSION['idHouse'] = getHouse($idFound['ID']);
+        $_SESSION['droitAdmin'] = getDroit(getRole($idFound['ID'], $_SESSION['idHouse'])['ID'], 0);
 
         if ($isChecked)
         {
@@ -52,7 +53,11 @@ function createUser()
 }
 
 function createCapteur() {
-    addCapteur($_POST['roomSelect'], $_POST['sensorTypeSelect']);
+    $idCapteur = addCapteur($_POST['roomSelect'], $_POST['sensorTypeSelect']);
+    $roles = getRolesHouse($_SESSION['idHouse']);
+    foreach ($roles as $role) {
+        addDroit($role['id'], $idCapteur, 1);
+    }
 }
 
 function profil()
@@ -69,7 +74,7 @@ function profil()
         $image = $user['image_profil'];
     }
     if (isset($_SESSION['idHouse'])) {
-        $role = getRole($_SESSION['idUser'], $_SESSION['idHouse']);
+        $role = getRole($_SESSION['idUser'], $_SESSION['idHouse'])['nom'];
     }
     else {
         $role = "Undefined";
@@ -110,8 +115,10 @@ function infosCapteurs()
 function infosDroits() {
     //Appel infos sur les droits
     if (isset($_SESSION['idHouse'])) {
-        $roles = getUsers($_SESSION['idHouse']);
+        $roles = getRolesHouse($_SESSION['idHouse']);
         foreach ($roles as &$role) {
+            $role['droitAdmin'] = getDroit($role['id'], 0);
+            $role['users'] = getUsersFromRole($role['id']);
             $role['piece'] = getPieces($_SESSION['idHouse']);
             foreach ($role['piece'] as &$piece) {
                 $piece['capteurs'] = getCapteur($piece['id']);
@@ -125,6 +132,15 @@ function infosDroits() {
             (int) {
                 ['id']
                 ['nom']
+                ['droitAdmin']
+                ['users'] {
+                    (int) {
+                        ['id']
+                        ['nom']
+                        ['prenom']
+                        ['email']
+                    }
+                }
                 ['piece'] {
                     (int) {
                         ['id']
@@ -152,6 +168,9 @@ function saveDroits() {
     $previous = infosDroits();
 
     foreach ($previous as $role) {
+        if (isset($_POST[$role['id'].'_0']) != $role['droitAdmin']) { //test si droits modifiés
+            setDroit($role['id'], 0, isset($_POST[$role['id'].'_0']));
+        }
         foreach ($role['piece'] as $piece) {
             foreach ($piece['capteurs'] as $capteur) {
                 if (isset($_POST[$role['id'].'_'.$capteur['id']]) != $capteur['droit']) { //test si droits modifiés

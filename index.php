@@ -22,8 +22,10 @@ try
                         require('view/frontend/capteurs.php');
                     }
                     elseif ($_GET['page'] == "gestion-droits.php") {
-                        $roles = infosDroits();
-                        require('view/frontend/gestion-droits.php');
+                        if ($_SESSION['droitAdmin']) {
+                            $roles = infosDroits();
+                            require('view/frontend/gestion-droits.php');
+                        }
                     }
                     elseif ($_GET['page'] == "ajout-capteur.php") {
                         if (isset($_SESSION['idHouse'])) {

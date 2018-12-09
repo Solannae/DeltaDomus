@@ -40,6 +40,18 @@ function addCapteur($idPiece, $type) {
     $db = dbConnect();
     $adding = $db->prepare("INSERT INTO table_capteurs(id_piece, type) VALUES(?, ?)");
     $adding->execute(array($idPiece, $type));
+
+    $max = $db->query("SELECT MAX(ID) FROM table_capteurs");
+    $id = $max->fetch()['MAX(ID)'];
+    $max->closeCursor();
+
+    return $id;
+}
+
+function addDroit($idRole, $idCapteur, $droit) {
+    $db = dbConnect();
+    $adding = $db->prepare("INSERT INTO table_droit(id_role, id_capteur, droit) VALUES(?, ?, ?)");
+    $adding->execute(array($idRole, $idCapteur, $droit));
 }
 
 function getInfoUser($idUser)
@@ -115,16 +127,16 @@ function getCapteur($idPiece) {
 
 function getRole($idUser, $idHouse) {
     $db = dbConnect();
-    $query = $db->prepare("SELECT nom FROM table_roles JOIN tr_role_utilisateur_maison ON ID = id_role WHERE id_utilisateur = :idUser AND id_maison = :idHouse");
+    $query = $db->prepare("SELECT ID, nom FROM table_roles JOIN tr_role_utilisateur_maison ON ID = id_role WHERE id_utilisateur = :idUser AND id_maison = :idHouse");
     $query->execute(array('idUser' => $idUser, 'idHouse' => $idHouse));
     $info = $query->fetch();
     $query->closeCursor();
 
-    //Return nom du role de l'utilisateur
-    return $info[0];
+    //Return ID et nom du role de l'utilisateur
+    return $info;
 }
 
-function getUsers($idHouse) {
+function getRolesHouse($idHouse) {
     $db = dbConnect();
     $query = $db->prepare("SELECT DISTINCT ID, nom FROM table_roles JOIN tr_role_utilisateur_maison ON id_role = table_roles.ID WHERE id_maison = :id");
     $query->execute(array('id' => $idHouse));
@@ -155,6 +167,19 @@ function getDroit($idRole, $idCapteur) {
 
     //Return la valeur de droit pour un role et un capteur
     return $droit['droit'];
+}
+
+function getUsersFromRole($role) {
+    $db = dbConnect();
+    $query = $db->prepare("SELECT id_utilisateur, nom, prenom FROM tr_role_utilisateur_maison JOIN table_utilisateur ON table_utilisateur.ID = id_utilisateur WHERE id_role = :role");
+    $query->execute(array('role' => $role));
+
+    while ($donnees = $query->fetch()) {
+        $users[] = array('id' => $donnees['id_utilisateur'], 'nom' => $donnees['nom'], 'prenom' => $donnees['prenom']);
+    }
+    $query->closeCursor();
+
+    return $users;
 }
 
 function setDroit($idRole, $idCapteur, $droit) {
