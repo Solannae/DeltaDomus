@@ -2,8 +2,9 @@ a {
     cursor: pointer;
 }
 
-h1 {
-    align-items: center;
+h2 {
+    text-align: center;
+    font-size: 2em;
 }
 
 #total {
@@ -49,7 +50,7 @@ input {
     padding: 10px;
 }
 
-#maison {
+.content {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -62,17 +63,17 @@ input {
     margin: 50 0 0 0;
 }
 
-#submit {
+.submit {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#dynamic-list {
+.dynamic-list {
     font-size: 1.5em;
 }
 
-#resume {
+.resume {
     font-size: 1.5em;
     padding: 10px;
 }
@@ -103,6 +104,10 @@ input {
 
 .arrow {
     padding: 15px;
+}
+
+.confirm:hover {
+
 }
 
 @media all and (max-width: 500px) {
