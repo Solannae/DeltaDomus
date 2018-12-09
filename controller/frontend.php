@@ -161,3 +161,7 @@ function saveDroits() {
         }
     }
 }
+
+function saveUser() {
+    setUser($_SESSION['idUser'], $_POST['nom'], $_POST['prenom'], $_POST['email']);
+}

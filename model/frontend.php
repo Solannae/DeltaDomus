@@ -169,3 +169,21 @@ function setDroit($idRole, $idCapteur, $droit) {
         'capteur' => $idCapteur
     ));
 }
+
+function setUser($idUser, $nom, $prenom, $email) {
+    $db = dbConnect();
+    $query = $db->prepare("UPDATE table_utilisateur
+        SET nom = :nom,
+        prenom = :prenom,
+        email = :email
+        WHERE ID = :idUser");
+    $query->execute(array(
+        'nom' => $nom,
+        'prenom' => $prenom,
+        'email' => $email,
+        'idUser' =>$idUser
+    ));
+}
+
+function setRole($idHouse) {
+}

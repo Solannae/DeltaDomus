@@ -10,7 +10,7 @@
         <h1>Mes capteurs</h1>
     </div>
     <div id="title-button">
-        <button type="button" class="bubbly-button">Ajouter un capteur</button>
+        <a href="index.php?action=redirect&amp;page=ajout-capteur.php"><button type="button" class="bubbly-button">Ajouter un capteur</button></a> 
     </div>
     <div id="house-button">
         <button type="button" class="bubbly-button">Changer de maison</button>

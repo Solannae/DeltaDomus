@@ -10,7 +10,7 @@
 
 <h3>Type</h3>
 <form class="" action="index.php?action=addCapteur" method="post">
-    <select id="sensorTypeSelect">
+    <select id="sensorTypeSelect" name="sensorTypeSelect">
         <option value="temp">Capteur de température</option>
         <option value="co2">Capteur de Co2</option>
         <option value="presence">Capteur de présence</option>
@@ -18,11 +18,15 @@
 
     <h3>Pièce</h3>
 
-    <select id="roomSelect">
+    <select id="roomSelect" name="roomSelect">
         <?php foreach ($pieceArray as $piece) { ?>
             <option value="<?= $piece['id'] ?>"><?= $piece['nom'] ?></option>
         <?php } ?>
     </select>
+
+    <?php if (isset($_GET['capteurAjoute'])) {
+        echo "<p>Capteur ajouté</p>";
+    } ?>
 
     <div id="submit">
         <input type="submit" class="bubbly-button" value="Ajouter">

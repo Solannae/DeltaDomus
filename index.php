@@ -55,8 +55,15 @@ try
                 saveDroits();
                 header("Refresh:0; url=index.php?action=redirect&page=gestion-droits.php");
             }
+            elseif ($_GET['action'] == 'saveUser') {
+                if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email'])) {
+                    saveUser();
+                    header("Refresh:0; url=index.php?action=redirect&page=profil.php&updated");
+                }
+            }
             elseif ($_GET['action'] == 'addCapteur') {
                 createCapteur();
+                header("Refresh:0; url=index.php?action=redirect&page=ajout-capteur.php&capteurAjoute");
             }
 
         }
