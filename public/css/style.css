@@ -124,18 +124,19 @@ nav #main-nav li:hover {
     padding: 10px;
     margin-left: 5%;
     margin-right: 2%;
-    position: fixed;
+    margin-bottom: 2%;
     top: 110px;
     left: 10px;
     bottom: 32px;
     right: 5px;
-    overflow-y: auto;
+    overflow-y: inherit;
 }
 
 #footer {
+    margin-top: 20px;
     padding-right: 20px;
     background: #ddd;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;

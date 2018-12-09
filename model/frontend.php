@@ -13,7 +13,8 @@ function verifyUser($idUser, $password)
     //Vérification de l'utilisateur dans la base de donnée
     $db = dbConnect();
     $query = $db->prepare("SELECT ID FROM table_utilisateur WHERE email = ? AND password = ?");
-    $query->execute(array($idUser, $password));
+	$hash = hash("sha256", $password);
+    $query->execute(array($idUser, $hash));
     $id = $query->fetch();
     $query->closeCursor();
 
@@ -24,12 +25,13 @@ function addUser($nom, $prenom, $email, $password)
 {
     //Ajout d'un utilisateur dans la base de donnée
     $db = dbConnect();
+	$hash = hash("sha256", $password);
     $adding = $db->prepare("INSERT INTO table_utilisateur(nom, prenom, email, password) VALUES(:nom, :prenom, :email, :password)");
     $adding->execute(array(
         'nom' => $nom,
         'prenom' => $prenom,
         'email' => $email,
-        'password' => $password
+        'password' => $hash
     ));
 }
 
