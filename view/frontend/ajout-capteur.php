@@ -9,24 +9,25 @@
 <h1>Ajouter un capteur</h1>
 
 <h3>Type</h3>
+<form class="" action="index.php?action=addCapteur" method="post">
+    <select id="sensorTypeSelect">
+        <option value="temp">Capteur de température</option>
+        <option value="co2">Capteur de Co2</option>
+        <option value="presence">Capteur de présence</option>
+    </select>
 
-<select id="sensorTypeSelect">
-    <option value="temperature">Capteur de température</option>
-    <option value="co2">Capteur de Co2</option>
-    <option value="presence">Capteur de présence</option>
-</select>
+    <h3>Pièce</h3>
 
-<h3>Pièce</h3>
+    <select id="roomSelect">
+        <?php foreach ($pieceArray as $piece) { ?>
+            <option value="<?= $piece['id'] ?>"><?= $piece['nom'] ?></option>
+        <?php } ?>
+    </select>
 
-<select id="roomSelect">
-    <option value="chambre">Chambre</option>
-    <option value="cuisine">Cuisine</option>
-    <option value="salon">Salon</option>
-</select>
-
-<div id="submit">
-    <button type="button" class="bubbly-button">Ajouter</button>
-</div>
+    <div id="submit">
+        <input type="submit" class="bubbly-button" value="Ajouter">
+    </div>
+</form>
 
 <?php $content = ob_get_clean(); ?>
 

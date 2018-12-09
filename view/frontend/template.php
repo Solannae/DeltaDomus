@@ -38,8 +38,6 @@
                 <li><a href="index.php?action=redirect&amp;page=login.php">Se connecter</a></li>
                 <li><a href="index.php?action=redirect&amp;page=create-account.php">Créer un compte</a></li>
                 <li><a href="index.php?action=redirect&amp;page=contact.php">Contact</a></li>
-                <!--Exemple de page inaccessible  -->
-                <li><a href="index.php?action=redirect&amp;page=profil.php">Mon profil</a></li>
             <?php } ?>
         </ul>
 

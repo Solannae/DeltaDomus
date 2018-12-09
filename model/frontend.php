@@ -33,6 +33,13 @@ function addUser($nom, $prenom, $email, $password)
     ));
 }
 
+function addCapteur($idPiece, $type) {
+    //Ajout d'un capteur dans la base de donnée
+    $db = dbConnect();
+    $adding = $db->prepare("INSERT INTO table_capteurs(id_piece, type) VALUES(?, ?)");
+    $adding->execute(array($idPiece, $type));
+}
+
 function getInfoUser($idUser)
 {
     //Récupère les infos d'un utilisateur

@@ -25,6 +25,15 @@ try
                         $roles = infosDroits();
                         require('view/frontend/gestion-droits.php');
                     }
+                    elseif ($_GET['page'] == "ajout-capteur.php") {
+                        if (isset($_SESSION['idHouse'])) {
+                            $pieceArray = getPieces($_SESSION['idHouse']);
+                        }
+                        else {
+                            $pieceArray[] = "";
+                        }
+                        require('view/frontend/ajout-capteur.php');
+                    }
                     else
                     {
                         redirect($_GET['page']);
@@ -45,6 +54,9 @@ try
             elseif ($_GET['action'] == 'saveDroits') {
                 saveDroits();
                 header("Refresh:0; url=index.php?action=redirect&page=gestion-droits.php");
+            }
+            elseif ($_GET['action'] == 'addCapteur') {
+                createCapteur();
             }
 
         }

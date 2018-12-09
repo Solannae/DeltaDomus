@@ -51,6 +51,10 @@ function createUser()
     }
 }
 
+function createCapteur() {
+    addCapteur($_POST['roomSelect'], $_POST['sensorTypeSelect']);
+}
+
 function profil()
 {
     //Appel des infos utilisateur pour la page profil
@@ -58,6 +62,12 @@ function profil()
     $nomUser = $user['nom'];
     $prenomUser = $user['prenom'];
     $emailUser = $user['email'];
+    if ($user['image_profil'] == null) {
+        $image = 'photo.svg';
+    }
+    else {
+        $image = $user['image_profil'];
+    }
     if (isset($_SESSION['idHouse'])) {
         $role = getRole($_SESSION['idUser'], $_SESSION['idHouse']);
     }
