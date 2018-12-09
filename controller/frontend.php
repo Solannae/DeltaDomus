@@ -165,3 +165,8 @@ function saveDroits() {
 function saveUser() {
     setUser($_SESSION['idUser'], $_POST['nom'], $_POST['prenom'], $_POST['email']);
 }
+
+function saveImage() {
+    move_uploaded_file($_FILES['file']['tmp_name'], "public/assets/imageProfil/".$_SESSION['idUser'].".jpg");
+    setProfileImage($_SESSION['idUser']);
+}

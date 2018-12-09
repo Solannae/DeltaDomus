@@ -8,7 +8,7 @@
 <h1>Profil</h1>
 <div id="profil">
     <div id="image">
-        <img src="public/assets/<?= $image ?>" width="200px" height="200px" alt="icon" id="icon">
+        <a href="index.php?action=redirect&amp;page=ajout-image.php"><img src="public/assets/imageProfil/<?= $image ?>" width="200px" height="200px" alt="icon" id="icon"></a>
     </div>
     <form action="index.php?action=saveUser" method="post">
         <div id="image-text">

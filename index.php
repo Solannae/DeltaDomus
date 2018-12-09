@@ -61,6 +61,32 @@ try
                     header("Refresh:0; url=index.php?action=redirect&page=profil.php&updated");
                 }
             }
+            elseif ($_GET['action'] == 'saveImage') {
+                if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0)
+                {
+                    if ($_FILES['file']['size'] <= 1000000)
+                    {
+                        echo "good size";
+                        $infosfichier = pathinfo($_FILES['file']['name']);
+                        $extension_upload = $infosfichier['extension'];
+                        $extensions_autorisees = array('jpg', 'jpeg', 'png');
+                        if (in_array(strtolower($extension_upload), $extensions_autorisees))
+                        {
+                            saveImage();
+                            header("Refresh:0; url=index.php?action=redirect&page=profil.php");
+                        }
+                        else {
+                            echo "Choisissez une image";
+                        }
+                    }
+                    else {
+                        echo "Fichier trop gros";
+                    }
+                }
+                else {
+                    throw new Exception("errorFile");
+                }
+            }
             elseif ($_GET['action'] == 'addCapteur') {
                 createCapteur();
                 header("Refresh:0; url=index.php?action=redirect&page=ajout-capteur.php&capteurAjoute");

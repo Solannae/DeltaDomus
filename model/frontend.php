@@ -187,3 +187,9 @@ function setUser($idUser, $nom, $prenom, $email) {
 
 function setRole($idHouse) {
 }
+
+function setProfileImage($idUser) {
+    $db = dbConnect();
+    $query = $db->prepare("UPDATE table_utilisateur SET image_profil = :image WHERE ID = :idUser");
+    $query->execute(array('image' => $idUser.".jpg", 'idUser' => $idUser));
+}
