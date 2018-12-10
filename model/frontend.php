@@ -21,8 +21,7 @@ function verifyUser($idUser, $password)
     return $id;
 }
 
-function addUser($nom, $prenom, $email, $password)
-{
+function addUser($nom, $prenom, $email, $password) {
     //Ajout d'un utilisateur dans la base de donnée
     $db = dbConnect();
 	$hash = hash("sha256", $password);

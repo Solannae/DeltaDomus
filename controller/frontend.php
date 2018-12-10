@@ -62,6 +62,20 @@ function createCapteur() {
     }
 }
 
+function createTotal() {
+    echo gettype($_POST['input_utilisateur']);
+    echo gettype($_POST['input_capteur']);
+    $test = explode(",", $_POST['input_utilisateur']);
+    foreach ($test as $eltUtilisateur) {
+        echo $eltUtilisateur;
+    }
+    foreach ($_POST['input_capteur'] as $eltCapteur) {
+        echo $eltCapteur;
+    }
+    // addUser();
+    // addCapteur();
+}
+
 function profil()
 {
     //Appel des infos utilisateur pour la page profil

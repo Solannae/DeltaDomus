@@ -34,6 +34,7 @@
                     <li><a href="index.php?action=redirect&amp;page=suivi-conso.php">Mon suivi conso</a></li>
                 <?php } ?>
 
+                <li><a href="index.php?action=redirect&amp;page=faq.php">FAQ</a></li>
                 <li><a href="index.php?action=redirect&amp;page=contact.php">Contact</a></li>
                 <li><a href="index.php?action=disconnect">Se déconnecter</a></li>
             <?php } else { ?>

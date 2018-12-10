@@ -93,6 +93,10 @@ try
                     throw new Exception("errorFile");
                 }
             }
+            elseif ($_GET['action'] == 'addTotal') {
+                createTotal();
+                #header("Refresh:0; url=index.php?action=redirect&page=accueil.php");
+            }
             elseif ($_GET['action'] == 'addCapteur') {
                 createCapteur();
                 header("Refresh:0; url=index.php?action=redirect&page=ajout-capteur.php&capteurAjoute");
@@ -121,7 +125,7 @@ try
 
             elseif ($_GET['action'] == 'signin' AND isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) AND isset($_POST['password']))//Créer l'utilisateur
             {
-                    createUser();
+                createUser();
             }
 
             elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']) AND ($_GET['page'] == 'accueil.php' OR $_GET['page'] == 'create-account.php' OR $_GET['page'] == 'contact.php'))//Pages accessibles sans se connecter
