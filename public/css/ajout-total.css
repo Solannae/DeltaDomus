@@ -2,8 +2,9 @@ a {
     cursor: pointer;
 }
 
-h1 {
-    align-items: center;
+h2 {
+    text-align: center;
+    font-size: 2em;
 }
 
 #total {
@@ -49,7 +50,11 @@ input {
     padding: 10px;
 }
 
-#maison {
+select {
+    margin-top: 10px;
+}
+
+.content {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -62,17 +67,17 @@ input {
     margin: 50 0 0 0;
 }
 
-#submit {
+.submit {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#dynamic-list {
+.dynamic-list {
     font-size: 1.5em;
 }
 
-#resume {
+.resume {
     font-size: 1.5em;
     padding: 10px;
 }
@@ -104,6 +109,7 @@ input {
 .arrow {
     padding: 15px;
 }
+
 
 @media all and (max-width: 500px) {
     .slideAjout:hover {
@@ -278,4 +284,21 @@ input {
     animation-timing-function: ease-in-out;
     -webkit-animation-iteration-count: 1;
     animation-iteration-count: 1;
+}
+
+
+.hvr-bounce-in {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.hvr-bounce-in:hover, .hvr-bounce-in:focus, .hvr-bounce-in:active {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
 }
