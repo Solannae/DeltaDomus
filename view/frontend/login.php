@@ -20,7 +20,7 @@
         <input type="password" placeholder="Entrez votre mot de passe" name="psw" required oninvalid="this.setCustomValidity('Veuillez rentrer un mot de passe')">
 
 		<br />
-		<label id="failed_login" style="visibility: hidden; color: red;">Identifiants invalides.
+		<label id="error_message" style="visibility: hidden; color: red;">
 		</label>
 
         <button type="submit" class="bubbly-button" id="login-button">Se connecter</button>
