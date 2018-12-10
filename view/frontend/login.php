@@ -1,7 +1,7 @@
 <?php
     $title = 'Se Connecter';
     $cssFile = 'style-login.css';
-    $jsFile = '';
+    $jsFile = 'login.js';
 ?>
 
 <?php ob_start(); ?>
@@ -18,6 +18,10 @@
 
         <label for="psw"><b>Mot de passe</b></label>
         <input type="password" placeholder="Entrez votre mot de passe" name="psw" required oninvalid="this.setCustomValidity('Veuillez rentrer un mot de passe')">
+
+		<br />
+		<label id="failed_login" style="visibility: hidden; color: red;">Identifiants invalides.
+		</label>
 
         <button type="submit" class="bubbly-button" id="login-button">Se connecter</button>
         <label>

@@ -30,7 +30,8 @@ function login($id, $password, $isChecked)
     }
     else
     {
-        throw new Exception("No user found");
+		header("Refresh:0; url=index.php?action=redirect&page=login.php&updated&failed_login=true");
+        //throw new Exception("No user found");
     }
 }
 
