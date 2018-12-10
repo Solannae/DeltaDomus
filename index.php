@@ -124,7 +124,7 @@ try
                 createUser();
             }
 
-            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']) AND ($_GET['page'] == 'accueil.php' OR $_GET['page'] == 'create-account.php' OR $_GET['page'] == 'contact.php' OR $_GET['page'] == 'ajout-total.php'))//Pages accessibles sans se connecter
+            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']) AND ($_GET['page'] == 'accueil.php' OR $_GET['page'] == 'create-account.php' OR $_GET['page'] == 'contact.php' OR $_GET['page'] == 'ajout-total.php' OR $_GET['page'] == 'faq.php'))//Pages accessibles sans se connecter
             {
                 redirect($_GET['page']);
             }
