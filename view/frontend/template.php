@@ -40,7 +40,8 @@
             <?php } else { ?>
                 <!-- Sinon afficher ce menu -->
                 <li><a href="index.php?action=redirect&amp;page=login.php">Se connecter</a></li>
-                <li><a href="index.php?action=redirect&amp;page=create-account.php">Créer un compte</a></li>
+                <li><a href="index.php?action=redirect&amp;page=ajout-total.php">Créer un compte</a></li>
+                <li><a href="index.php?action=redirect&amp;page=faq.php">FAQ</a></li>
                 <li><a href="index.php?action=redirect&amp;page=contact.php">Contact</a></li>
             <?php } ?>
         </ul>
