@@ -19,9 +19,10 @@
     <h3>Pièce</h3>
 
     <select id="roomSelect" name="roomSelect">
-        <?php foreach ($pieceArray as $piece) { ?>
+        <?php foreach ($pieceArray as $piece) {
+            if (isset($piece['id'])) { ?>
             <option value="<?= $piece['id'] ?>"><?= $piece['nom'] ?></option>
-        <?php } ?>
+        <?php }} ?>
     </select>
 
     <?php if (isset($_GET['capteurAjoute'])) {

@@ -52,3 +52,8 @@
         flex-direction: column;
     }
 }
+
+a {
+    color: black;
+    text-decoration: none;
+}

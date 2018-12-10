@@ -36,6 +36,10 @@ try
                         }
                         require('view/frontend/ajout-capteur.php');
                     }
+                    elseif ($_GET['page'] == "houses.php") {
+                        $houseArray = getHouse($_SESSION['idUser']);
+                        require('view/frontend/houses.php');
+                    }
                     else
                     {
                         redirect($_GET['page']);
@@ -92,6 +96,12 @@ try
             elseif ($_GET['action'] == 'addCapteur') {
                 createCapteur();
                 header("Refresh:0; url=index.php?action=redirect&page=ajout-capteur.php&capteurAjoute");
+            }
+            elseif ($_GET['action'] == 'changeHouse') {
+                if (isset($_GET['house'])) {
+                    $_SESSION['idHouse'] = $_GET['house'];
+                }
+                header("Refresh:0; url=index.php?action=redirect&page=capteurs.php");
             }
 
         }

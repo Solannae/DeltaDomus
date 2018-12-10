@@ -14,8 +14,10 @@ function login($id, $password, $isChecked)
     {
 
         $_SESSION['idUser'] = $idFound['ID'];
-        $_SESSION['idHouse'] = getHouse($idFound['ID']);
-        $_SESSION['droitAdmin'] = getDroit(getRole($idFound['ID'], $_SESSION['idHouse'])['ID'], 0);
+        if (isset(getHouse($idFound['ID'])[0]['ID'])) {
+            $_SESSION['idHouse'] = getHouse($idFound['ID'])[0]['ID'];
+            $_SESSION['droitAdmin'] = getDroit(getRole($idFound['ID'], $_SESSION['idHouse'])['ID'], 0);
+        }
 
         if ($isChecked)
         {
@@ -162,6 +164,11 @@ function infosDroits() {
     else {
         return  array();
     }
+}
+
+function infosHouses() {
+    $houseArray = getHouse($_SESSION['idUser']);
+
 }
 
 function saveDroits() {

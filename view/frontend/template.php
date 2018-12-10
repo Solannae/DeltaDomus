@@ -26,10 +26,9 @@
                 <!-- Si l'utilisateur est connecté afficher ce menu -->
                 <li><a href="index.php?action=redirect&amp;page=profil.php">Mon profil</a></li>
                 <li><a href="index.php?action=redirect&amp;page=capteurs.php">Mes capteurs</a></li>
-                <li><a href="index.php?action=redirect&amp;page=ajout-maison.php">Ajouter une maison</a></li>
-
-                <?php if ($_SESSION['droitAdmin']) { ?>
-                    <li><a href="index.php?action=redirect&amp;page=ajout-capteur.php">Ajouter un capteur</a></li>
+                <li><a href="index.php?action=redirect&amp;page=houses.php">Mes logements</a></li>
+                <!-- Si l'utilisateur a les droits admin -->
+                <?php if (isset($_SESSION['droitAdmin']) && $_SESSION['droitAdmin']) { ?>
                     <li><a href="index.php?action=redirect&amp;page=ajout-utilisateur.php">Ajouter un utilisateur</a></li>
                     <li><a href="index.php?action=redirect&amp;page=gestion-droits.php">Gestion des droits</a></li>
                     <li><a href="index.php?action=redirect&amp;page=suivi-conso.php">Mon suivi conso</a></li>

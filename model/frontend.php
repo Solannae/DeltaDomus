@@ -70,20 +70,26 @@ function getInfoUser($idUser)
 function getHouse($id)
 {
     $db = dbConnect();
-    $query = $db->prepare("SELECT table_appartements.ID FROM table_appartements JOIN tr_role_utilisateur_maison ON table_appartements.ID = id_maison WHERE id_utilisateur = :id");
+    $query = $db->prepare("SELECT table_appartements.ID, nom, adresse, superficie FROM table_appartements JOIN tr_role_utilisateur_maison ON table_appartements.ID = id_maison WHERE id_utilisateur = :id");
     $query->execute(array('id' => $id));
-    $info = $query->fetch();
+    while ($info = $query->fetch()) {
+        $infoArray[] = $info;
+    }
     $query->closeCursor();
 
-    //Return ID de la maison
-    return $info[0];
+    //Return infos des maison
+    if (isset($infoArray)) {
+        return $infoArray;
+    }
+    else {
+        return [];
+    }
 }
 
 function getPieces($idHouse) {
     $db = dbConnect();
     $query = $db->prepare("SELECT ID, nom FROM table_pieces WHERE id_appartement = :id");
     $query->execute(array('id' => $idHouse));
-
     while ($donnees = $query->fetch()) {
         $pieces[] = array(
             'id' => $donnees['ID'],
@@ -98,7 +104,12 @@ function getPieces($idHouse) {
             ['nom']
         }
     }*/
-    return $pieces;
+    if (isset($pieces)) {
+        return $pieces;
+    }
+    else {
+        return [];
+    }
 }
 
 function getCapteur($idPiece) {
@@ -152,7 +163,12 @@ function getRolesHouse($idHouse) {
             ['nom']
         }
     }*/
-    return $roles;
+    if (isset($roles)) {
+        return $roles;
+    }
+    else {
+        return [];
+    }
 }
 
 function getDroit($idRole, $idCapteur) {
