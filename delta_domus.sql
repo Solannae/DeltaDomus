@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 09 déc. 2018 à 14:39
+-- Généré le :  lun. 10 déc. 2018 à 10:54
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -32,18 +32,19 @@ DROP TABLE IF EXISTS `table_appartements`;
 CREATE TABLE IF NOT EXISTS `table_appartements` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `id_proprietaire` int(11) NOT NULL,
+  `nom` text NOT NULL,
   `adresse` text NOT NULL,
   `superficie` int(11) NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `id_proprietaire` (`id_proprietaire`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_appartements`
 --
 
-INSERT INTO `table_appartements` (`ID`, `id_proprietaire`, `adresse`, `superficie`) VALUES
-(1, 137, '135 Avenue du général de Gaulle', 18);
+INSERT INTO `table_appartements` (`ID`, `id_proprietaire`, `nom`, `adresse`, `superficie`) VALUES
+(1, 137, 'Maison', '135 Avenue du général de Gaulle', 18),
+(2, 137, 'Maison2', 'Adresse', 7);
 
 -- --------------------------------------------------------
 
@@ -58,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `table_capteurs` (
   `type` text NOT NULL,
   `donnee` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_capteurs`
@@ -96,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `table_droit` (
   `id_capteur` int(11) NOT NULL,
   `droit` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_droit`
@@ -109,7 +110,7 @@ INSERT INTO `table_droit` (`ID`, `id_role`, `id_capteur`, `droit`) VALUES
 (4, 1, 4, 1),
 (5, 2, 1, 1),
 (6, 2, 2, 1),
-(7, 2, 3, 0),
+(7, 2, 3, 1),
 (8, 2, 4, 0),
 (9, 1, 0, 1),
 (10, 2, 0, 0);
@@ -218,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `table_utilisateur` (
   `image_profil` text,
   `password` text NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=145 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=146 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_utilisateur`
@@ -262,28 +263,8 @@ CREATE TABLE IF NOT EXISTS `tr_role_utilisateur_maison` (
 INSERT INTO `tr_role_utilisateur_maison` (`id_role`, `id_utilisateur`, `id_maison`) VALUES
 (1, 137, 1),
 (2, 138, 1),
-(2, 139, 1);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `tr_utilisateur_appartements`
---
-
-DROP TABLE IF EXISTS `tr_utilisateur_appartements`;
-CREATE TABLE IF NOT EXISTS `tr_utilisateur_appartements` (
-  `id_utilisateur` int(11) NOT NULL,
-  `id_appartement` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `tr_utilisateur_appartements`
---
-
-INSERT INTO `tr_utilisateur_appartements` (`id_utilisateur`, `id_appartement`) VALUES
-(137, 1),
-(138, 1),
-(139, 1);
+(2, 139, 1),
+(3, 137, 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
