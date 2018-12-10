@@ -63,17 +63,32 @@ function createCapteur() {
 }
 
 function createTotal() {
-    echo gettype($_POST['input_utilisateur']);
-    echo gettype($_POST['input_capteur']);
-    $test = explode(",", $_POST['input_utilisateur']);
-    foreach ($test as $eltUtilisateur) {
-        echo $eltUtilisateur;
+    $elt_utilisateur = explode(",", $_POST['input_utilisateur']);
+    $i = 1;
+    $temp = array();
+    foreach ($elt_utilisateur as $elt) {
+        $temp[] = $elt;
+        $i ++;
+        if ($i % 5 == 0) {
+            addUser($temp[0], $temp[1], $temp[2], $temp[3]);
+            $i = 1;
+            $temp = array();
+        }
+        // echo nl2br ("\n");
     }
-    foreach ($_POST['input_capteur'] as $eltCapteur) {
-        echo $eltCapteur;
+    $elt_capteur = explode(",", $_POST['input_capteur']);
+    $i = 1;
+    $temp = array();
+    foreach ($elt_capteur as $elt) {
+        $temp[] = $elt;
+        $i ++;
+        if ($i % 3 == 0) {
+            addCapteur($temp[1], $temp[0]);
+            $i = 1;
+            $temp = array();
+        }
+        // echo nl2br ("\n");
     }
-    // addUser();
-    // addCapteur();
 }
 
 function profil()

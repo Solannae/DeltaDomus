@@ -104,7 +104,8 @@ function addItemUtilisateur(){
         divNew.appendChild(removeLink)
         ul.appendChild(divNew);
 
-        utilisateurs[index] = [nom.value, prenom.value, email.value, statut.value, password.value];
+        // utilisateurs[index] = [nom.value, prenom.value, email.value, password.value, statut.value];
+        utilisateurs[index] = [nom.value, prenom.value, email.value, password.value];
 
         nombreUtilisateur ++;
         index ++;

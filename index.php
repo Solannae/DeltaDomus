@@ -95,7 +95,7 @@ try
             }
             elseif ($_GET['action'] == 'addTotal') {
                 createTotal();
-                #header("Refresh:0; url=index.php?action=redirect&page=accueil.php");
+                header("Refresh:0; url=index.php?action=redirect&page=accueil.php");
             }
             elseif ($_GET['action'] == 'addCapteur') {
                 createCapteur();
