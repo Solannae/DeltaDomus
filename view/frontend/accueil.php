@@ -1,27 +1,30 @@
 <?php
     $title = 'Accueil';
     $cssFile = 'style-accueil.css';
-    $jsFile = '';
+    $jsFile = 'accueil.js';
 ?>
 
 <?php ob_start(); ?>
-<div id="diapo-media">
-    <div class="slider">
-        <figure>
-            <img src="public/assets/banner-img2.jpeg" class="media">
-        </figure>
-        <figure>
-            <img src="public/assets/banner-img.jpg" class="media">
-        </figure>
-    </div>
-</div>
 
-<div id="motto">
-    <h2>Connectez votre maison</h2>
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+        <img src="public/assets/maison.jpeg" style="width:80%;">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="public/assets/maison2.jpg" style="width:80%;">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="public/assets/maison3.jpg" style="width:80%;">
+    </div>
+
 </div>
+<br/>
+
 
 <div class="section">
-    <h3>Nos offres</h3>
 
     <div id="offers">
         <span>
@@ -29,8 +32,7 @@
             <h4>Lumière</h4>
 
             <p>
-                Controlez la lumière où que vous soyez. <br />
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sem eu urna commodo, quis cursus magna luctus. Nulla pharetra mi ut urna varius laoreet. Quisque volutpat quam at nulla sagittis, pellentesque porttitor lectus
+                Controlez la lumière où que vous soyez. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sem eu urna commodo, quis cursus magna luctus. Nulla pharetra mi ut urna varius laoreet. Quisque volutpat quam at nulla sagittis, pellentesque porttitor lectus
             </p>
         </span>
 
