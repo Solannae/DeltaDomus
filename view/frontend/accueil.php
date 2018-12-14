@@ -29,7 +29,7 @@
     <div id="offers">
         <?php foreach ($capteurDispo as $capteur) { ?>
         <span>
-            <img src="public/assets/<?= $capteur['image'] ?>">
+            <img src="public/assets/imageCapteur/<?= $capteur['image'] ?>">
 
             <h4><?= $capteur['nom'] ?></h4>
 
