@@ -21,10 +21,10 @@
     </form>
 </div>
 <div id="bouton-avatar">
-    <button type="button" class="avatar-button">Ajouter un avatar</button>
+    <button type="button" class="bubbly-button">Ajouter un avatar</button>
 </div>
 <div id="bouton-utilisateur">
-    <button type="button" class="user-button">Ajouter l'utilisateur</button>
+    <button type="button" class="bubbly-button">Ajouter l'utilisateur</button>
 </div>
 
 <?php $content = ob_get_clean(); ?>

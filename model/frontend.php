@@ -197,6 +197,16 @@ function getUsersFromRole($role) {
     return $users;
 }
 
+function getCapteurDispo() {
+    $db = dbConnect();
+    $query = $db->query("SELECT * FROM table_capteur_dispo");
+    while($donnees = $query->fetch()) {
+        $capteurs[] = $donnees;
+    }
+
+    return $capteurs;
+}
+
 function setDroit($idRole, $idCapteur, $droit) {
     if ($droit == "") {
         $droit = 0;

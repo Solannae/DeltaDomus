@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 10 déc. 2018 à 10:54
+-- Généré le :  ven. 14 déc. 2018 à 12:30
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `table_capteurs` (
   `type` text NOT NULL,
   `donnee` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_capteurs`
@@ -74,6 +74,29 @@ INSERT INTO `table_capteurs` (`ID`, `id_piece`, `type`, `donnee`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `table_capteur_dispo`
+--
+
+DROP TABLE IF EXISTS `table_capteur_dispo`;
+CREATE TABLE IF NOT EXISTS `table_capteur_dispo` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` text NOT NULL,
+  `description` text NOT NULL,
+  `image` text,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `table_capteur_dispo`
+--
+
+INSERT INTO `table_capteur_dispo` (`ID`, `nom`, `description`, `image`) VALUES
+(1, 'Température', 'Controlez votre chauffage depuis notre site. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sem eu urna commodo, quis cursus magna luctus. Nulla pharetra mi ut urna varius laoreet. Quisque volutpat quam at nulla sagittis, pellentesque porttitor lectus\r\n                rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor fermentum tempus. Aliquam id tincidunt nisl. Quisque ac nisl id velit iaculis dapibus. Suspendisse malesuada vel odio vitae ultricies. Praesent quam enim,\r\n                imperdiet et volutpat ac, sagittis ut nulla. Ut id dolor nec purus vulputate ultrices lobortis vel augue. Proin iaculis leo et odio pharetra tristique. Ut at nisl erat. Nam porttitor sit amet ex vitae tempor. Vivamus ornare suscipit\r\n                felis, ut varius libero cursus pharetra. Ut facilisis imperdiet neque a dignissim.', 'logo-heat.png'),
+(2, 'Lumière', 'Controlez la lumière d\'un clic de souris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sem eu urna commodo, quis cursus magna luctus. Nulla pharetra mi ut urna varius laoreet. Quisque volutpat quam at nulla sagittis, pellentesque porttitor lectus\r\n                rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor fermentum tempus. Aliquam id tincidunt nisl. Quisque ac nisl id velit iaculis dapibus. Suspendisse malesuada vel odio vitae ultricies. Praesent quam enim,\r\n                imperdiet et volutpat ac, sagittis ut nulla. Ut id dolor nec purus vulputate ultrices lobortis vel augue. Proin iaculis leo et odio pharetra tristique. Ut at nisl erat. Nam porttitor sit amet ex vitae tempor. Vivamus ornare suscipit\r\n                felis, ut varius libero cursus pharetra. Ut facilisis imperdiet neque a dignissim.', 'logo-light.png');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `table_consommation`
 --
 
@@ -81,7 +104,8 @@ DROP TABLE IF EXISTS `table_consommation`;
 CREATE TABLE IF NOT EXISTS `table_consommation` (
   `id_appartement` int(11) NOT NULL,
   `conso_electricité` float NOT NULL,
-  `conso_gaz` float NOT NULL
+  `conso_gaz` float NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -97,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `table_droit` (
   `id_capteur` int(11) NOT NULL,
   `droit` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_droit`
@@ -105,15 +129,30 @@ CREATE TABLE IF NOT EXISTS `table_droit` (
 
 INSERT INTO `table_droit` (`ID`, `id_role`, `id_capteur`, `droit`) VALUES
 (1, 1, 1, 1),
-(2, 1, 2, 1),
+(2, 1, 2, 0),
 (3, 1, 3, 1),
 (4, 1, 4, 1),
-(5, 2, 1, 1),
-(6, 2, 2, 1),
+(5, 2, 1, 0),
+(6, 2, 2, 0),
 (7, 2, 3, 1),
 (8, 2, 4, 0),
 (9, 1, 0, 1),
 (10, 2, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `table_histo_capteur`
+--
+
+DROP TABLE IF EXISTS `table_histo_capteur`;
+CREATE TABLE IF NOT EXISTS `table_histo_capteur` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `id_capteur` int(11) NOT NULL,
+  `donnee` int(11) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -219,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `table_utilisateur` (
   `image_profil` text,
   `password` text NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=146 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=154 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_utilisateur`

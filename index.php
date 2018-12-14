@@ -34,21 +34,27 @@ try
                         else {
                             $pieceArray[] = "";
                         }
+                        $capteurDispo = getCapteurDispo();
                         require('view/frontend/ajout-capteur.php');
                     }
                     elseif ($_GET['page'] == "houses.php") {
                         $houseArray = getHouse($_SESSION['idUser']);
                         require('view/frontend/houses.php');
                     }
+                    elseif ($_GET['page'] == 'accueil.php') {
+                        $capteurDispo = getCapteurDispo();
+                        require('view/frontend/accueil.php');
+                    }
                     else
                     {
-                        redirect($_GET['page']);
+                        require('view/frontend/'.$_GET['page']);
                     }
 
                 }
                 else
                 {
-                    redirect('accueil.php');
+                    $capteurDispo = getCapteurDispo();
+                    require('view/frontend/accueil.php');
                 }
             }
 
@@ -107,7 +113,8 @@ try
         }
         else
         {
-            redirect('accueil.php');
+            $capteurDispo = getCapteurDispo();
+            require('view/frontend/accueil.php');
         }
     }
     else
@@ -116,7 +123,9 @@ try
         {
             if ($_GET['action'] == 'login' AND isset($_POST['uname']) AND isset($_POST['psw']))//Connecter l'utilisateur depuis la page de connexion
             {
-                login($_POST['uname'], $_POST['psw'], isset($_POST['remember']));
+                login(htmlspecialchars($_POST['uname']), htmlspecialchars($_POST['psw']), isset($_POST['remember']));
+                $capteurDispo = getCapteurDispo();
+                require('view/frontend/accueil.php');
             }
 
             elseif ($_GET['action'] == 'signin' AND isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) AND isset($_POST['password']))//Créer l'utilisateur
@@ -124,9 +133,14 @@ try
                 createUser();
             }
 
-            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']) AND ($_GET['page'] == 'accueil.php' OR $_GET['page'] == 'create-account.php' OR $_GET['page'] == 'contact.php' OR $_GET['page'] == 'ajout-total.php' OR $_GET['page'] == 'faq.php'))//Pages accessibles sans se connecter
+            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']) AND ($_GET['page'] == 'create-account.php' OR $_GET['page'] == 'contact.php' OR $_GET['page'] == 'ajout-total.php' OR $_GET['page'] == 'faq.php'))//Pages accessibles sans se connecter
             {
-                redirect($_GET['page']);
+                require('view/frontend/'.$_GET['page']);
+            }
+
+            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']) AND $_GET['page'] == 'accueil.php') {
+                $capteurDispo = getCapteurDispo();
+                require('view/frontend/accueil.php');
             }
 
             elseif ($_GET['action'] == 'addTotal') {
@@ -142,13 +156,14 @@ try
                 }
                 else
                 {
-                    redirect('login.php');
+                    require('view/frontend/login.php');
                 }
             }
         }
         else
         {
-            redirect('accueil.php');
+            $capteurDispo = getCapteurDispo();
+            require('view/frontend/accueil.php');
         }
     }
 }

@@ -1,11 +1,6 @@
 <?php
 require_once('model/frontend.php');
 
-function redirect($page)
-{
-    require('view/frontend/'.$page);
-}
-
 function login($id, $password, $isChecked)
 {
     //Connecter l'utilisateur
@@ -25,13 +20,10 @@ function login($id, $password, $isChecked)
             setcookie('pswUser', $password, time()+3600*24*30, null, null, false, true);
             setcookie('remember', true, time()+3600*24*30);
         }
-
-        require('view/frontend/accueil.php');
     }
     else
     {
 		header("Refresh:0; url=index.php?action=redirect&page=login.php&updated&failed_login=true");
-        //throw new Exception("No user found");
     }
 }
 
@@ -45,10 +37,10 @@ function disconnect()
 function createUser()
 {
     //Creation d'un utilisateur puis connection au site
-    if (!verifyUser($_POST['email'], $_POST['password']))
+    if (!verifyUser(htmlspecialchars($_POST['email']), htmlspecialchars($_POST['password'])))
     {
-        addUser($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['password']);
-        login($_POST['email'], $_POST['password'], false);
+        addUser(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['prenom']), htmlspecialchars($_POST['email']), htmlspecialchars($_POST['password']));
+        login(htmlspecialchars($_POST['email']), htmlspecialchars($_POST['password']), false);
     }
     else {
         throw new Exception("User already existing");
@@ -219,7 +211,7 @@ function saveDroits() {
 }
 
 function saveUser() {
-    setUser($_SESSION['idUser'], $_POST['nom'], $_POST['prenom'], $_POST['email']);
+    setUser($_SESSION['idUser'], htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['prenom']), htmlspecialchars($_POST['email']));
 }
 
 function saveImage() {

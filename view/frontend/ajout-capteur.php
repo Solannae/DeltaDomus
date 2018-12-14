@@ -11,18 +11,18 @@
 <h3>Type</h3>
 <form class="" action="index.php?action=addCapteur" method="post">
     <select id="sensorTypeSelect" name="sensorTypeSelect">
-        <option value="temp">Capteur de température</option>
-        <option value="co2">Capteur de Co2</option>
-        <option value="presence">Capteur de présence</option>
+        <?php foreach ($capteurDispo as $capteur): ?>
+            <option value=" <?= $capteur['nom'] ?>">Capteur de <?= $capteur['nom'] ?></option>
+        <?php endforeach; ?>
     </select>
 
     <h3>Pièce</h3>
 
     <select id="roomSelect" name="roomSelect">
-        <?php foreach ($pieceArray as $piece) {
-            if (isset($piece['id'])) { ?>
+        <?php foreach ($pieceArray as $piece):
+            if (isset($piece['id'])): ?>
             <option value="<?= $piece['id'] ?>"><?= $piece['nom'] ?></option>
-        <?php }} ?>
+        <?php endif;endforeach; ?>
     </select>
 
     <?php if (isset($_GET['capteurAjoute'])) {
