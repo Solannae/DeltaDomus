@@ -12,6 +12,14 @@ document.getElementById("resume2").innerHTML = "Vous avez actuellement ajouté: 
 document.getElementById("resume3").innerHTML = "Vous avez actuellement ajouté: " + nombreCapteur + " capteur(s).";
 showDivs(slideIndex);
 
+function mailRequest() {
+    var users = <?php
+                    $db = dbConnect();
+                    $query = $db->prepare("SELECT ID FROM table_utilisateur WHERE email = ?");
+                    $query->execute(array($idUser));
+                ?>
+}
+
 function plusDivs(n) {
     showDivs(slideIndex += n);
 }
@@ -34,7 +42,10 @@ function addItemMaison(){
     var adresse = document.getElementById("adresse");
     var superficie = document.getElementById("superficie");
 
-    if (!(name.value == '' && adresse.value == '' && superficie.value == '')) {
+    if (isNaN(superficie.value)) {
+        showError("Superficie invalide.");
+    }
+    else if (!(name.value == '' && adresse.value == '' && superficie.value == '')) {
 
         var divNew = document.createElement("div");
         divNew.setAttribute('class', "removeInline");
@@ -60,6 +71,8 @@ function addItemMaison(){
         nombreMaison ++;
         index ++;
         document.getElementById("resume").innerHTML = "Vous avez actuellement ajouté: " + nombreMaison + " maison(s).";
+
+        hideError();
     }
 }
 

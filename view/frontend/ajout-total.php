@@ -1,7 +1,8 @@
 <?php
     $title = 'Ajout total';
     $cssFile = 'ajout-total.css';
-    $jsFile = 'ajout-total.js';
+    $jsFile = 'ajout-total-js.php';
+	$errors = 'error_handler.js';
 ?>
 
 <?php ob_start(); ?>
@@ -17,6 +18,10 @@
             <input type="text" name="nom" placeholder="Nom" id="name"><br>
             <input type="text" name="adresse" placeholder="Adresse" id="adresse"><br>
             <input type="text" name="superficie" placeholder="Superficie en m²" id="superficie"><br>
+
+			<br />
+			<label id="error_message" style="visibility: hidden; color: red;">
+			</label>
 
             <div class="submit">
                 <button type="button" class="bubbly-button" onclick="addItemMaison()">Ajouter</button>

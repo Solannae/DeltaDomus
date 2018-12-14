@@ -12,6 +12,7 @@
 
     <script src="public/js/index.js" defer></script>
     <script src="public/js/<?= $jsFile ?>" defer></script>
+	<script src="public/js/<?= $errors ?>" defer></script>
 </head>
 
 <body>
