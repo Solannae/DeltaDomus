@@ -7,8 +7,8 @@ function login($id, $password, $isChecked)
     $idFound = verifyUser($id, $password);
     if ($idFound)
     {
-
         $_SESSION['idUser'] = $idFound['ID'];
+        $_SESSION['adminSite'] = isAdmin($idFound['ID']);
         if (isset(getHouse($idFound['ID'])[0]['ID'])) {
             $_SESSION['idHouse'] = getHouse($idFound['ID'])[0]['ID'];
             $_SESSION['droitAdmin'] = getDroit(getRole($idFound['ID'], $_SESSION['idHouse'])['ID'], 0);
@@ -23,6 +23,7 @@ function login($id, $password, $isChecked)
     }
     else
     {
+        setcookie('remember', false, time()+3600*24*30);
 		header("Refresh:0; url=index.php?action=redirect&page=login.php&updated&failed_login=true");
     }
 }
@@ -40,7 +41,6 @@ function createUser()
     if (!verifyUser(htmlspecialchars($_POST['email']), htmlspecialchars($_POST['password'])))
     {
         addUser(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['prenom']), htmlspecialchars($_POST['email']), htmlspecialchars($_POST['password']));
-        login(htmlspecialchars($_POST['email']), htmlspecialchars($_POST['password']), false);
     }
     else {
         throw new Exception("User already existing");

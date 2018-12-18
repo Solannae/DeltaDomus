@@ -21,6 +21,16 @@ function verifyUser($idUser, $password)
     return $id;
 }
 
+function isAdmin($idUser) {
+    $db = dbConnect();
+    $query = $db->prepare("SELECT admin FROM table_utilisateur WHERE ID = ?");
+    $query->execute(array($idUser));
+    $id = $query->fetch();
+    $query->closeCursor();
+
+    return $id[0];
+}
+
 function addUser($nom, $prenom, $email, $password) {
     //Ajout d'un utilisateur dans la base de donnée
     $db = dbConnect();
