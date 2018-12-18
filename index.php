@@ -10,12 +10,30 @@ try
     {
         //Partie site administrateur
         if ($_SESSION['adminSite']) {
-            if ($_GET['action'] == 'disconnect')//Si déconnexion
-            {
-                disconnect();
-                header("Refresh:0; url=index.php");
+            if (isset($_GET['action'])) {
+                //Redirection vers une page
+                if ($_GET['action'] == 'redirect' AND isset($_GET['page'])) {
+                    if ($_GET['page'] == 'accueil.php') {
+                        $capteurDispo = getCapteurDispo();
+                        require('view/backend/accueil.php');
+                    }
+                }
+                //Fin redirection page
+
+                //Fonctions en sortie de page
+                elseif ($_GET['action'] == 'disconnect')//Si déconnexion
+                {
+                    disconnect();
+                    header("Refresh:0; url=index.php");
+                }
+
+                else {
+                    $capteurDispo = getCapteurDispo();
+                    require('view/backend/accueil.php');
+                }
             }
             else {
+                $capteurDispo = getCapteurDispo();
                 require('view/backend/accueil.php');
             }
         }
@@ -26,10 +44,8 @@ try
             if (isset($_GET['action']))
             {
                 //Redirection vers une page
-                if ($_GET['action'] == 'redirect')
+                if ($_GET['action'] == 'redirect' AND isset($_GET['page']))
                 {
-                    if (isset($_GET['page']))
-                    {
                         if ($_GET['page'] == "profil.php")
                         {
                             profil();
@@ -66,13 +82,6 @@ try
                         {
                             require('view/frontend/'.$_GET['page']);
                         }
-
-                    }
-                    else
-                    {
-                        $capteurDispo = getCapteurDispo();
-                        require('view/frontend/accueil.php');
-                    }
                 }
                 //Fin redirection page
 
@@ -128,6 +137,12 @@ try
                         $_SESSION['idHouse'] = $_GET['house'];
                     }
                     header("Refresh:0; url=index.php?action=redirect&page=capteurs.php");
+                }
+
+                //Page par défaut si problème de lien
+                else {
+                    $capteurDispo = getCapteurDispo();
+                    require('view/frontend/accueil.php');
                 }
             }
         }
