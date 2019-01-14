@@ -1,6 +1,6 @@
 <?php
 require_once('controller/frontend.php');
-require_once('vendor/autoload.php');
+// require_once('vendor/autoload.php');
 
 session_start();
 
@@ -147,8 +147,9 @@ try
             //Connexion de l'utilisateur depuis la page de connexion
             if ($_GET['action'] == 'login' AND isset($_POST['uname']) AND isset($_POST['psw']))
             {
-                if (login(htmlspecialchars($_POST['uname']), htmlspecialchars($_POST['psw']), isset($_POST['remember'])))
+                if (login(htmlspecialchars($_POST['uname']), htmlspecialchars($_POST['psw']), isset($_POST['remember']))) {
                     header("Refresh:0; url=index.php?action=redirect&page=accueil.php");
+                }
             }
 
             //Création de l'utilisateur

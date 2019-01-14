@@ -28,6 +28,7 @@ function login($id, $password, $isChecked)
         setcookie('remember', false, time()+3600*24*30);
 		header("Refresh:0; url=index.php?action=redirect&page=login.php&updated&failed_login=true");
     }
+    return $connected;
 }
 
 function disconnect()
