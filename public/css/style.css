@@ -79,10 +79,10 @@ nav .toggle-menu .toggle-icon-line {
 
 nav #main-nav {
     background-color: #009688;
-    padding: 0;
+    padding-top: 100px;
     margin: 0;
     overflow-x: hidden;
-    height: 100%;
+    height: 400%;
     width: 100%;
     top: 0;
     left: 0;
@@ -91,7 +91,6 @@ nav #main-nav {
     opacity: 0;
     transition: 500ms;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     position: absolute;
     list-style: none;
