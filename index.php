@@ -1,5 +1,6 @@
 <?php
 require_once('controller/frontend.php');
+require_once('vendor/autoload.php');
 
 session_start();
 
@@ -105,24 +106,7 @@ try
                 elseif ($_GET['action'] == 'saveImage') {
                     if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0)
                     {
-                        if ($_FILES['file']['size'] <= 1000000)
-                        {
-                            echo "good size";
-                            $infosfichier = pathinfo($_FILES['file']['name']);
-                            $extension_upload = $infosfichier['extension'];
-                            $extensions_autorisees = array('jpg', 'jpeg', 'png');
-                            if (in_array(strtolower($extension_upload), $extensions_autorisees))
-                            {
-                                saveImage();
-                                header("Refresh:0; url=index.php?action=redirect&page=profil.php");
-                            }
-                            else {
-                                echo "Choisissez une image";
-                            }
-                        }
-                        else {
-                            echo "Fichier trop gros";
-                        }
+                        saveImage();
                     }
                     else {
                         throw new Exception("errorFile");
@@ -145,6 +129,10 @@ try
                     require('view/frontend/accueil.php');
                 }
             }
+            else {
+                    $capteurDispo = getCapteurDispo();
+                    require('view/frontend/accueil.php');
+            }
         }
         //Fin partie utilisateur
     }
@@ -159,8 +147,8 @@ try
             //Connexion de l'utilisateur depuis la page de connexion
             if ($_GET['action'] == 'login' AND isset($_POST['uname']) AND isset($_POST['psw']))
             {
-                login(htmlspecialchars($_POST['uname']), htmlspecialchars($_POST['psw']), isset($_POST['remember']));
-                header("Refresh:0; url=index.php?action=redirect&page=accueil.php");
+                if (login(htmlspecialchars($_POST['uname']), htmlspecialchars($_POST['psw']), isset($_POST['remember'])))
+                    header("Refresh:0; url=index.php?action=redirect&page=accueil.php");
             }
 
             //Création de l'utilisateur

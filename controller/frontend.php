@@ -3,6 +3,7 @@ require_once('model/frontend.php');
 
 function login($id, $password, $isChecked)
 {
+    $connected = false;
     //Connecter l'utilisateur
     $idFound = verifyUser($id, $password);
     if ($idFound)
@@ -20,6 +21,7 @@ function login($id, $password, $isChecked)
             setcookie('pswUser', $password, time()+3600*24*30, null, null, false, true);
             setcookie('remember', true, time()+3600*24*30);
         }
+        $connected = true;
     }
     else
     {
@@ -215,6 +217,22 @@ function saveUser() {
 }
 
 function saveImage() {
-    move_uploaded_file($_FILES['file']['tmp_name'], "public/assets/imageProfil/".$_SESSION['idUser'].".jpg");
-    setProfileImage($_SESSION['idUser']);
+    if ($_FILES['file']['size'] <= 1000000)
+    {
+        $infosfichier = pathinfo($_FILES['file']['name']);
+        $extension_upload = $infosfichier['extension'];
+        $extensions_autorisees = array('jpg', 'jpeg', 'png');
+        if (in_array(strtolower($extension_upload), $extensions_autorisees))
+        {
+            move_uploaded_file($_FILES['file']['tmp_name'], "public/assets/imageProfil/".$_SESSION['idUser'].".jpg");
+            setProfileImage($_SESSION['idUser']);
+            header("Refresh:0; url=index.php?action=redirect&page=profil.php");
+        }
+        else {
+            echo "Choisissez une image";
+        }
+    }
+    else {
+        echo "Fichier trop gros";
+    }
 }
