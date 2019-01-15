@@ -41,6 +41,35 @@
     border: none;
 }
 
+#fade {
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1001;
+    -moz-opacity: 0.8;
+    opacity: .80;
+    filter: alpha(opacity=80);
+}
+#light {
+    border: none;
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: white;
+    z-index: 1002;
+    overflow: auto;
+    font-size: 20px;
+}
+
 @media all and (max-width: 500px) {
     #title {
         display: flex;
