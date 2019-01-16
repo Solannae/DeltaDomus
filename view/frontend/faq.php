@@ -8,18 +8,58 @@
 
 <h1>FAQ</h1>
 
-<button class="collapsible"><h3>Question 1</h3></button>
+<button class="collapsible"> <h6>Bonjour, <br><br>
+Je n'arrive pas à ajouter un nouveau capteur pour ma maison. J'aimerai le placer dans la salle à manger de ma maison. <br> Quelqu'un peut-il m'aider ? <br><br> Merci d'avance, Jean Angarito.</h6></button>
 <div class="content">
-    <p class="answer"> Maecenas sagittis condimentum nibh, vehicula ornare lectus. Donec et magna sit amet eros convallis lacinia eget nec lorem. Morbi sagittis arcu arcu. Nunc lacus lectus, congue vel massa a, maximus tempus risus. Nullam eu justo vitae purus tempus vehicula. Aliquam suscipit diam aliquam, imperdiet risus vel, tempus magna. Aliquam sed dictum eros, luctus condimentum nisi. Maecenas scelerisque magna purus, sed bibendum felis finibus sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec ut ante eget ante pellentesque mollis quis ut mauris. Duis tellus mauris, pretium sed iaculis mattis, euismod venenatis ante. </p>
+    <p class="answer"> Bonjour Jean, <br>
+      C'est très simple, il faut que tu ailles dans l'onglet "Mes capteurs" puis que tu cliques sur le bouton "Ajouter un capteur" et enfin tu renseignes ton type de capteur ainsi que ta pièce.
+    <br> J'espere que ca t'as aidé :) 
+    <br>Bonne journée. 
+     </p>
 </div>
-<button class="collapsible"><h3>Question 2</h3></button>
+
+<button class="collapsible"><h6>Bonjour, <br><br>
+Mon fils vient d'avoir 18 ans et il aimerais pouvoir avoir accès au contrôle des capteurs. <br> Comment peut-on changer ses droits? <br><br>S'il vous plait signé Marie Duhamel <br> </h6></button>
 <div class="content">
-    <p class="answer"> Maecenas sagittis condimentum nibh, vehicula ornare lectus. Donec et magna sit amet eros convallis lacinia eget nec lorem. Morbi sagittis arcu arcu. Nunc lacus lectus, congue vel massa a, maximus tempus risus. Nullam eu justo vitae purus tempus vehicula. Aliquam suscipit diam aliquam, imperdiet risus vel, tempus magna. Aliquam sed dictum eros, luctus condimentum nisi. Maecenas scelerisque magna purus, sed bibendum felis finibus sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec ut ante eget ante pellentesque mollis quis ut mauris. Duis tellus mauris, pretium sed iaculis mattis, euismod venenatis ante. </p>
+    <p class="answer">Il faut aller dans l'onglet "Gestion des droits" puis décocher le contrôle parental.  </p>
 </div>
-<button class="collapsible"><h3>Quetion 3</h3></button>
+<button class="collapsible"><h6>Bonjour, <br><br>
+Combien coute le site?  <br> Comment peut-on changer ses droits? <br><br>S'il vous plait signé Marie Duhamel <br> </h6></button>
 <div class="content">
-    <p class="answer"> Maecenas sagittis condimentum nibh, vehicula ornare lectus. Donec et magna sit amet eros convallis lacinia eget nec lorem. Morbi sagittis arcu arcu. Nunc lacus lectus, congue vel massa a, maximus tempus risus. Nullam eu justo vitae purus tempus vehicula. Aliquam suscipit diam aliquam, imperdiet risus vel, tempus magna. Aliquam sed dictum eros, luctus condimentum nisi. Maecenas scelerisque magna purus, sed bibendum felis finibus sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec ut ante eget ante pellentesque mollis quis ut mauris. Duis tellus mauris, pretium sed iaculis mattis, euismod venenatis ante. </p>
+    <p class="answer"> Je ne sais pas  </p>
 </div>
+
+<h1> Questions à poser </h1>
+
+ <div class="container">
+  <form action="faq.php">
+
+    <label for="fname">Prénom</label>
+    <input type="text" id="fname" name="firstname" placeholder="Prénom">
+
+    <label for="lname">Nom</label>
+    <input type="text" id="lname" name="lastname" placeholder="Nom">
+
+  <label for="username">Nom d'utilisateur</label>
+    <input type="text" id="username" name="useername" placeholder="Nom">
+
+    <label for="country">Pays</label>
+    <select id="country" name="country">
+      <option value="Brance">France</option>
+      <option value="Belgique">Belgique</option>
+      <option value="Autre pays Européen">Autre pays européen</option>
+    </select>
+
+    <label for="subject">Sujet</label>
+    <textarea id="subject" name="subject" placeholder="Posez votre question.." style="height:200px"></textarea>
+
+    <input type="submit" value="Envoyer">
+
+
+
+  </form>
+</div>
+
 
 <?php $content = ob_get_clean(); ?>
 

@@ -19,6 +19,15 @@
     <div class="mySlides fade">
         <img src="public/assets/maison3.jpg" style="width:80%;">
     </div>
+    <div class="mySlides fade">
+        <img src="public/assets/maison4.jpg" style="width:80%;">
+    </div>
+    <div class="mySlides fade">
+        <img src="public/assets/maison5.jpg" style="width:80%;">
+    </div>
+    <div class="mySlides fade">
+        <img src="public/assets/maison6.jpg" style="width:80%;">
+    </div>
 
 </div>
 <br/>
