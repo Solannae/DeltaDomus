@@ -56,21 +56,23 @@ DROP TABLE IF EXISTS `table_capteurs`;
 CREATE TABLE IF NOT EXISTS `table_capteurs` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `id_piece` int(11) NOT NULL,
-  `type` text NOT NULL,
+  `id_type` int(11) NOT NULL,
   `donnee` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `id_piece` (`id_piece`)
+  KEY `id_piece` (`id_piece`),
+  FOREIGN KEY (`id_type`)
+  REFERENCES table_type_capteurs(`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_capteurs`
 --
 
-INSERT INTO `table_capteurs` (`ID`, `id_piece`, `type`, `donnee`) VALUES
-(2, 1, 'temp', 20),
-(1, 1, 'lum', 1),
-(3, 2, 'lum', 0),
-(4, 2, 'temp', 19);
+INSERT INTO `table_capteurs` (`ID`, `id_piece`, `id_type`, `donnee`) VALUES
+(2, 1, 1, 20),
+(1, 1, 2, 1),
+(3, 2, 2, 0),
+(4, 2, 1, 19);
 
 -- --------------------------------------------------------
 
@@ -94,6 +96,37 @@ CREATE TABLE IF NOT EXISTS `table_capteur_dispo` (
 INSERT INTO `table_capteur_dispo` (`ID`, `nom`, `description`, `image`) VALUES
 (1, 'Température', 'Controlez votre chauffage depuis notre site. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sem eu urna commodo, quis cursus magna luctus. Nulla pharetra mi ut urna varius laoreet. Quisque volutpat quam at nulla sagittis, pellentesque porttitor lectus\r\n                rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor fermentum tempus. Aliquam id tincidunt nisl. Quisque ac nisl id velit iaculis dapibus. Suspendisse malesuada vel odio vitae ultricies. Praesent quam enim,\r\n                imperdiet et volutpat ac, sagittis ut nulla. Ut id dolor nec purus vulputate ultrices lobortis vel augue. Proin iaculis leo et odio pharetra tristique. Ut at nisl erat. Nam porttitor sit amet ex vitae tempor. Vivamus ornare suscipit\r\n                felis, ut varius libero cursus pharetra. Ut facilisis imperdiet neque a dignissim.', 'logo-heat.png'),
 (2, 'Lumière', 'Lumière d\'un clic de souris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sem eu urna commodo, quis cursus magna luctus. Nulla pharetra mi ut urna varius laoreet. Quisque volutpat quam at nulla sagittis, pellentesque porttitor lectus\r\n                rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor fermentum tempus. Aliquam id tincidunt nisl. Quisque ac nisl id velit iaculis dapibus. Suspendisse malesuada vel odio vitae ultricies. Praesent quam enim,\r\n                imperdiet et volutpat ac, sagittis ut nulla. Ut id dolor nec purus vulputate ultrices lobortis vel augue. Proin iaculis leo et odio pharetra tristique. Ut at nisl erat. Nam porttitor sit amet ex vitae tempor. Vivamus ornare suscipit\r\n                felis, ut varius libero cursus pharetra. Ut facilisis imperdiet neque a dignissim.', 'logo-light.png');
+
+--
+-- structure de la table `table_donnees_capteurs`
+--
+
+drop table if exists `table_donnees_capteurs`;
+create table if not exists `table_donnees_capteurs` (
+  `id` int(11) not null,
+  `id_capteur` int(11) not null,
+  `valeur` int(11) not null,
+  primary key (`id`),
+  foreign key (`id_capteur`)
+  references table_capteurs(`id`)
+) engine=myisam default charset=latin1;
+
+--
+-- structure de la table `table_type_capteurs`
+--
+
+drop table if exists `table_type_capteurs`;
+create table if not exists `table_type_capteurs` (
+  `id` int(11) not null,
+  `valeur` text not null,
+  primary key (`id`)
+) engine=myisam default charset=latin1;
+
+INSERT INTO `table_type_capteurs` (`id`, `valeur`) VALUES
+(1, 'temperature'),
+(2, 'lumiere');
+
+
 
 -- --------------------------------------------------------
 

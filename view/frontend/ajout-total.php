@@ -89,9 +89,9 @@
         <div class="content">
 
             <select id="sensorTypeSelect" name="sensorTypeSelect">
-                <option value="temp">Capteur de température</option>
-                <option value="co2">Capteur de Co2</option>
-                <option value="presence">Capteur de présence</option>
+                <?php foreach ($capteurDispo as $capteur): ?>
+                    <option value=" <?= $capteur['nom'] ?>">Capteur de <?= $capteur['nom'] ?></option>
+                <?php endforeach; ?>
             </select>
 
             <select id="roomSelect" name="roomSelect">

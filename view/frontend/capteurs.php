@@ -1,7 +1,7 @@
 <?php
     $title = 'Capteurs';
     $cssFile = 'style-capteurs.css';
-    $jsFile = '';
+    $jsFile = 'capteurs.js';
 ?>
 
 <?php ob_start(); ?>
@@ -45,6 +45,13 @@
         </div>
     <?php } ?>
 </div>
+
+<div id="light">
+    <div id="popup-title"></div>
+    <div id="popup-text"></div>
+</div>
+<div id="fade"></div>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
