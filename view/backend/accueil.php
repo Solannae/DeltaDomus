@@ -1,10 +1,14 @@
 <?php
     $title = 'Accueil';
     $cssFile = 'style-accueil.css';
-    $jsFile = 'accueil.js';
+    $jsFile = 'accueil-backend.php';
 ?>
 
 <?php ob_start(); ?>
+
+<?php if (isset($_POST['array'])) {
+    echo "Ca marche ";
+}?>
 
 <div class="slideshow-container">
 
@@ -23,22 +27,26 @@
 </div>
 <br/>
 
-
 <div class="section">
 
     <div id="offers">
         <?php foreach ($capteurDispo as $capteur) { ?>
-        <span>
-            <img src="public/assets/imageCapteur/<?= $capteur['image'] ?>">
+        <span class="system" id="<?= $capteur['ID'] ?>" state="noChange">
+            <img src="<?= $capteur['image'] ?>">
 
             <h4><?= $capteur['nom'] ?></h4>
 
             <p>
                 <?= $capteur['description'] ?>
             </p>
+
+            <button type="button" name="delete" class="deleteButton">Supprimer</button>
         </span>
     <?php } ?>
+    <button type="button" name="button" id="add">Ajouter un système</button>
     </div>
+    <button type="button" name="button" id="save">Enregistrer</button>
+
 </div>
 
 <div class="section">

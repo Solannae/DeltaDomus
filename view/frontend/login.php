@@ -31,7 +31,7 @@
     </div>
 
     <div id="container">
-        <span class="psw"><a href="#">Mot de passe oublié</a></span>
+        <span class="psw"><a href="index.php?action=redirect&page=reset-password.php">Mot de passe oublié</a></span>
         <span><a href="index.php?action=redirect&page=ajout-total.php">Créer un compte</a></span>
     </div>
 </form>

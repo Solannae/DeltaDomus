@@ -253,3 +253,8 @@ function setProfileImage($idUser) {
     $query = $db->prepare("UPDATE table_utilisateur SET image_profil = :image WHERE ID = :idUser");
     $query->execute(array('image' => $idUser.".jpg", 'idUser' => $idUser));
 }
+
+function updatePassword($email, $password) {
+    $db = dbConnect();
+    $update = $db->prepare("UPDATE table_utilisateur SET password = :password WHERE email = :email");
+}

@@ -1,5 +1,6 @@
 <?php
 require_once('model/frontend.php');
+require_once('vendor/autoload.php');
 
 function login($id, $password, $isChecked)
 {
@@ -236,4 +237,42 @@ function saveImage() {
     else {
         echo "Fichier trop gros";
     }
+}
+
+function resetPassword($email) {
+    $newPassword = generatePassword(10);
+    updatePassword($email, hash("sha256", $newPassword));
+    sendPassword($email, $newPassword);
+}
+
+function generatePassword($length) {
+    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    $password = '';
+    for ($i=0; $i < $length; $i++) {
+        $password .= $chars[rand(0, strlen($chars)-1)];
+    }
+    return $password;
+}
+
+function sendPassword($email, $password) {
+    $body = '';
+
+    // Create the Transport
+    $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465,'ssl'))
+    ->setUsername('')
+    ->setPassword('');
+
+
+    // Create the Mailer using your created Transport
+    $mailer = new Swift_Mailer($transport);
+
+    // Create a message
+    $message = (new Swift_Message('Wonderful Subject'))
+      ->setFrom(['' => ''])
+      ->setTo([$email])
+      ->setBody($body)
+      ;
+
+    // Send the message
+    $result = $mailer->send($message);
 }

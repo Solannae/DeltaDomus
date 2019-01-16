@@ -11,8 +11,13 @@
     <title><?= $title ?></title>
 
     <script src="public/js/index.js" defer></script>
-    <script src="public/js/<?= $jsFile ?>" defer></script>
-	<script src="public/js/<?= $errors ?>" defer></script>
+    <?php if (isset($errors)): ?>
+        <script src="public/js/<?= $jsFile ?>" defer></script>
+    <?php endif; ?>
+    <?php if (isset($errors)): ?>
+        <script src="public/js/<?= $errors ?>" defer></script>
+    <?php endif; ?>
+
 </head>
 
 <body>

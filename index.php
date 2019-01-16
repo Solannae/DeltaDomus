@@ -1,14 +1,14 @@
 <?php
 require_once('controller/frontend.php');
-// require_once('vendor/autoload.php');
+require_once('controller/backend.php');
+require_once('vendor/autoload.php');
 
 session_start();
 
 try
 {
     //Connecté au site
-    if (isset($_SESSION['idUser']))
-    {
+    if (isset($_SESSION['idUser'])) {
         //Partie site administrateur
         if ($_SESSION['adminSite']) {
             if (isset($_GET['action'])) {
@@ -26,6 +26,10 @@ try
                 {
                     disconnect();
                     header("Refresh:0; url=index.php");
+                }
+
+                elseif ($_GET['action'] == 'saveSystems') {
+                    saveSystems($_POST['test']);
                 }
 
                 else {
@@ -142,27 +146,23 @@ try
     //Partie utilisateur lambda
     else
     {
-        if (isset($_GET['action']))
-        {
+        if (isset($_GET['action'])) {
             //Connexion de l'utilisateur depuis la page de connexion
-            if ($_GET['action'] == 'login' AND isset($_POST['uname']) AND isset($_POST['psw']))
-            {
+            if ($_GET['action'] == 'login' AND isset($_POST['uname']) AND isset($_POST['psw'])) {
                 if (login(htmlspecialchars($_POST['uname']), htmlspecialchars($_POST['psw']), isset($_POST['remember']))) {
                     header("Refresh:0; url=index.php?action=redirect&page=accueil.php");
                 }
             }
 
             //Création de l'utilisateur
-            elseif ($_GET['action'] == 'signin' AND isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) AND isset($_POST['password']))
-            {
+            elseif ($_GET['action'] == 'signin' AND isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) AND isset($_POST['password'])) {
                 createUser();
                 login(htmlspecialchars($_POST['email']), htmlspecialchars($_POST['password']), false);
                 header("Refresh:0; url=index.php?action=redirect&page=accueil.php");
             }
 
             //Redirection vers une page accessible sans compte
-            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page']))
-            {
+            elseif ($_GET['action'] == 'redirect' AND isset($_GET['page'])) {
                 if ($_GET['page'] == 'create-account.php') {
                     require('view/frontend/'.$_GET['page']);
                 }
@@ -182,6 +182,9 @@ try
                     $capteurDispo = getCapteurDispo();
                     require('view/frontend/accueil.php');
                 }
+                elseif ($_GET['page'] == 'reset-password.php') {
+                    require('view/frontend/reset-password.php');
+                }
             }
 
             //Creation d'un utilisateur avec toutes les infos
@@ -190,8 +193,14 @@ try
                 header("Refresh:0; url=index.php?action=redirect&page=accueil.php");
             }
 
-            else
-            {
+            elseif ($_GET['action'] == 'resetPassword' AND isset($_POST['email'])) {
+                /*
+                * Generate random password
+                * Send password to email
+                */
+            }
+
+            else {
                 //Connexion avec les cookies
                 if (isset($_COOKIE['remember']) AND $_COOKIE['remember'] == true AND isset($_COOKIE['idUser']) AND isset($_COOKIE['pswUser']))
                 {
