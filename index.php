@@ -71,6 +71,10 @@ try
                             $capteurDispo = getCapteurDispo();
                             require('view/frontend/ajout-capteur.php');
                         }
+                        elseif ($_GET['page'] == "ajout-total.php") {
+                            $capteurDispo = getCapteurDispo();
+                            require('view/frontend/ajout-total.php');
+                        }
                         elseif ($_GET['page'] == "houses.php") {
                             $houseArray = getHouse($_SESSION['idUser']);
                             require('view/frontend/houses.php');
