@@ -68,11 +68,11 @@ CREATE TABLE IF NOT EXISTS `table_capteurs` (
 -- Déchargement des données de la table `table_capteurs`
 --
 
-INSERT INTO `table_capteurs` (`ID`, `id_piece`, `type`, `donnee`) VALUES
-(2, 1, 'temp', 20),
-(1, 1, 'lum', 1),
-(3, 2, 'lum', 0),
-(4, 2, 'temp', 19);
+INSERT INTO `table_capteurs` (`ID`, `id_piece`, `id_type`, `donnee`) VALUES
+(2, 1, 1, 20),
+(1, 1, 2, 1),
+(3, 2, 2, 0),
+(4, 2, 1, 19);
 
 -- --------------------------------------------------------
 
@@ -121,6 +121,12 @@ create table if not exists `table_type_capteurs` (
   `valeur` text not null,
   primary key (`id`)
 ) engine=myisam default charset=latin1;
+
+INSERT INTO `table_type_capteurs` (`id`, `valeur`) VALUES
+(1, 'temperature'),
+(2, 'lumiere');
+
+
 
 -- --------------------------------------------------------
 
