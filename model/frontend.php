@@ -125,7 +125,7 @@ function getCapteur($idPiece) {
     $db = dbConnect();
     $query = $db->prepare("SELECT ID, type, donnee FROM table_capteurs WHERE id_piece = :id");
     $query->execute(array('id' => $idPiece));
-
+    $capteur = [];
     while ($donnees = $query->fetch()) {
         $capteur[] = array(
             'id' => $donnees['ID'],
