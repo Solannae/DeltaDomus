@@ -198,10 +198,7 @@ try
             }
 
             elseif ($_GET['action'] == 'resetPassword' AND isset($_POST['email'])) {
-                /*
-                * Generate random password
-                * Send password to email
-                */
+                resetPassword($_POST['email']);
             }
 
             else {

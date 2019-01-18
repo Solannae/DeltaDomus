@@ -255,22 +255,22 @@ function generatePassword($length) {
 }
 
 function sendPassword($email, $password) {
-    $body = '';
+    $body = 'Cliquez sur ce lien : <a href="deltadomus/index.php">deltadomus/index.php</a> </br>Connectez vous avec le mot de passe suivant : '.$password;
 
     // Create the Transport
     $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465,'ssl'))
-    ->setUsername('')
-    ->setPassword('');
+    ->setUsername('DeltaDomusAPP@gmail.com')
+    ->setPassword('deltadomuspassword1');
 
 
     // Create the Mailer using your created Transport
     $mailer = new Swift_Mailer($transport);
 
     // Create a message
-    $message = (new Swift_Message('Wonderful Subject'))
-      ->setFrom(['' => ''])
+    $message = (new Swift_Message('Mot de passe oubié'))
+      ->setFrom(['DeltaDomusAPP@gmail.com' => 'DeltaDomus'])
       ->setTo([$email])
-      ->setBody($body)
+      ->setBody($body, 'text/html')
       ;
 
     // Send the message
