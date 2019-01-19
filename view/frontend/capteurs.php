@@ -25,11 +25,11 @@
             <?php foreach ($piece['capteurs'] as $capteur) { ?>
                 <div class="piece-pannel-sub">
                     <?php
-                    if ($capteur['type'] == "temp") {
+                    if ($capteur['type'] == 1) {
                         echo "Temperature = ";
                         echo $capteur['donnee'];
                     }
-                    elseif ($capteur['type'] == "lum") {
+                    elseif ($capteur['type'] == 2) {
                         echo "Lumière = ";
                         if ($capteur['donnee'] == 1) {
                             echo "ON";

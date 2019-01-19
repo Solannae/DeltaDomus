@@ -57,6 +57,9 @@ try
                         }
                         elseif ($_GET['page'] == "capteurs.php") {
                             $pieceArray = infosCapteurs();
+                            echo "<pre>";
+                            print_r($pieceArray);
+                            echo "</pre>";
                             require('view/frontend/capteurs.php');
                         }
                         elseif ($_GET['page'] == "gestion-droits.php") {

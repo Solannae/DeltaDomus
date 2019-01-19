@@ -123,16 +123,19 @@ function getPieces($idHouse) {
 
 function getCapteur($idPiece) {
     $db = dbConnect();
-    $query = $db->prepare("SELECT ID, type, donnee FROM table_capteurs WHERE id_piece = :id");
+    $query = $db->prepare("SELECT ID, id_type, donnee FROM table_capteurs WHERE id_piece = :id");
     $query->execute(array('id' => $idPiece));
     $capteur = [];
     while ($donnees = $query->fetch()) {
         $capteur[] = array(
             'id' => $donnees['ID'],
-            'type' => $donnees['type'],
+            'type' => $donnees['id_type'],
             'donnee' => $donnees['donnee']
         );
     }
+    echo "<pre>";
+    print_r($capteur);
+    echo "</pre>";
 
     /*Return
     capteur {
