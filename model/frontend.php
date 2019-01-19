@@ -133,9 +133,6 @@ function getCapteur($idPiece) {
             'donnee' => $donnees['donnee']
         );
     }
-    echo "<pre>";
-    print_r($capteur);
-    echo "</pre>";
 
     /*Return
     capteur {
