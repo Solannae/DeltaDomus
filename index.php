@@ -133,6 +133,10 @@ try
                 elseif ($_GET['action'] == 'resetPassword') {
                   verifyPassword($_SESSION['idUser'], $_POST['oldPassword'], $_POST['newPassword']);
                 }
+                elseif ($_GET['action'] == 'sendMail') {
+                  sendMail($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['contenu']);
+                  header("Refresh:0; url=index.php?action=redirect&page=contact.php");
+                }
 
                 //Page par défaut si problème de lien
                 else {
@@ -203,6 +207,10 @@ try
             elseif ($_GET['action'] == 'resetPassword' AND isset($_POST['email'])) {
                 resetPassword($_POST['email']);
                 header("Refresh:0; url=index.php");
+            }
+            elseif ($_GET['action'] == 'sendMail') {
+              sendMail($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['contenu']);
+              header("Refresh:0; url=index.php?action=redirect&page=contact.php");
             }
 
             else {

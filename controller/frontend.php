@@ -267,7 +267,7 @@ function sendPassword($email, $password) {
     $mailer = new Swift_Mailer($transport);
 
     // Create a message
-    $message = (new Swift_Message('Mot de passe oubié'))
+    $message = (new Swift_Message('Mot de passe oublié'))
       ->setFrom(['DeltaDomusAPP@gmail.com' => 'DeltaDomus'])
       ->setTo([$email])
       ->setBody($body, 'text/html')
@@ -285,4 +285,24 @@ function verifyPassword($id, $oldPassword, $newPassword) {
   else {
     header("Refresh:0; url=index.php?action=redirect&page=profil.php");
   }
+}
+function sendMail($nom, $prenom, $email, $contenu) {
+  // Create the Transport
+  $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465,'ssl'))
+  ->setUsername('DeltaDomusAPP@gmail.com')
+  ->setPassword('deltadomuspassword1');
+
+
+  // Create the Mailer using your created Transport
+  $mailer = new Swift_Mailer($transport);
+
+  // Create a message
+  $message = (new Swift_Message('Nouveau message'))
+    ->setFrom([$email => $nom." ".$prenom])
+    ->setTo(["DeltaDomusAPP@gmail.com"])
+    ->setBody($contenu, 'text/html')
+    ;
+
+  // Send the message
+  $result = $mailer->send($message);
 }

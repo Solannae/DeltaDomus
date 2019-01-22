@@ -8,7 +8,7 @@
 <?php ob_start(); ?>
 
 <h1>Contact</h1>
-<form action="">
+<form action="index.php?action=sendMail" method="post">
     <div id="contact-form">
         <div id="prenom-nom">
             <label>Prénom:</label><input type="text" name="prenom"><br>
@@ -21,10 +21,10 @@
             <label>Message:</label>
         </div>
         <div id="message-box">
-            <textarea rows="8" cols="70"></textarea>
+            <textarea rows="8" cols="70" name="contenu"></textarea>
         </div>
         <div id="send">
-            <button type="button" class="bubbly-button">Envoyer</button>
+            <input type="submit" class="bubbly-button" value="Envoyer">
         </div>
     </div>
 </form>
