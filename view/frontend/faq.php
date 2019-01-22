@@ -23,11 +23,10 @@ Mon fils vient d'avoir 18 ans et il aimerais pouvoir avoir accès au contrôle d
 <div class="content">
     <p class="answer">Il faut aller dans l'onglet "Gestion des droits" puis décocher le contrôle parental.  </p>
 </div>
-<button class="collapsible"><h6>What is Lorem Ipsum?</h6></button>
+<button class="collapsible"><h6>Bonsoir, <br><br>  Je voudrais savoir comment changer la photo d'utilisateur par défault.   <br> Merci de bien vouloir me répondre ? <br><br>Cordialement, Hervé Grijean. <br> </h6></button>
 <div class="content">
-    <p class="answer"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.  </p>
+    <p class="answer"> Pour cela, clique sur le menu déroulant et clique sur l'onglet "Mon profil". Ensuite, il suffit de cliquer sur l'image de défault, tu seras demander à choisir une image (.png ou .jpeg) depuis ton ordinateur.   </p>
 </div>
-
 
 <?php $content = ob_get_clean(); ?>
 
