@@ -305,6 +305,7 @@ function sendMail($nom, $prenom, $email, $contenu) {
 
   // Send the message
   $result = $mailer->send($message);
+}
 
 function addMessageToThread() {
 	$subject = $_GET['id'];
