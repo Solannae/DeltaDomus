@@ -320,3 +320,13 @@ function addToForum() {
 	$username = $_SESSION['idUser'];
 	addSubjectToForum($title, $text, $username);
 }
+
+function getConsumption($idUser) {
+	$data = getConsumptionBack($idUser);
+	return $data;
+}
+
+function getConsumptionAdmin() {
+	$data = getConsumptionAdminBack();
+	return $data;
+}

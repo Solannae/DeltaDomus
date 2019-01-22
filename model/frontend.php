@@ -340,3 +340,32 @@ function addMessageToForum($subject, $username, $text) {
 	$date = date_create('now')->format('Y-m-d H:i:s');
 	$message->execute(array($subject, $username, $date, $date, $text));
 }
+
+function getConsumptionBack($idUser) {
+	$db = dbConnect();
+	$query = $db->prepare("SELECT id_appartement, conso_electricite, conso_gaz, date FROM table_consommation JOIN table_appartements ON table_appartements.ID = id_appartement JOIN table_utilisateur ON utilisateur.id = table_appartements.id_proprietaire WHERE table_utilisateur.ID = :id");
+	$query->execute(array('id' => $idUser));
+
+	$overall = [];
+
+	while ($donnees = $query->fetch()) {
+        $overall[] = array('id_appartement' => $donnees['id_appartement'], 'conso_electricite' => $donnees['conso_electricite'], 'conso_gaz' => $donnees['conso_gaz'], 'date' => $donnees['date']);
+    }
+
+	return $overall;
+}
+
+function getConsumptionAdminBack() {
+	$db = dbConnect();
+	#$query = $db->prepare("SELECT id_appartement, conso_electricite, conso_gaz, date FROM table_consommation WHERE YEAR(date) > YEAR(NOW()) - 2 ORDER BY id_appartement ASC");
+	$query = $db->prepare("SELECT id_appartement, AVG(conso_electricite) as conso_electricite, AVG(conso_gaz) as conso_gaz, date FROM table_consommation WHERE YEAR(date) > YEAR(NOW()) - 2  GROUP BY id_appartement ASC");
+	$query->execute();
+
+	$data = [];
+
+	while($donnees = $query->fetch()) {
+		$data[] = array('id_appartement' => $donnees['id_appartement'], 'conso_electricite' => $donnees['conso_electricite'], 'conso_gaz' => $donnees['conso_gaz'], 'date' => $donnees['date']);
+	}
+
+	return $data;
+}

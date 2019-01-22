@@ -18,6 +18,10 @@ try
                         $capteurDispo = getCapteurDispo();
                         require('view/backend/accueil.php');
                     }
+					elseif ($_GET['page'] == 'suivi-conso-admin.php') {
+						$dataConsos = getConsumptionAdmin();
+						require('view/frontend/suivi-conso-admin.php');
+					}
                 }
                 //Fin redirection page
 
@@ -97,6 +101,14 @@ try
 						elseif ($_GET['page'] == "forum.php") {
 							$threads = getThreads();
 							require('view/frontend/forum.php');
+						}
+						elseif ($_GET['page'] == "suivi-conso.php") {
+							$data = getConsumption($_SESSION['idUser']);
+							require('view/frontend/suivi-conso.php');
+						}
+						elseif ($_GET['page'] == 'suivi-conso-admin.php') {
+							$dataConsos = getConsumptionAdmin();
+							require('view/frontend/suivi-conso-admin.php');
 						}
                         elseif ($_GET['page'] == 'accueil.php') {
                             $capteurDispo = getCapteurDispo();
