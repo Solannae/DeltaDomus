@@ -97,7 +97,7 @@ INSERT INTO `table_capteur_dispo` (`ID`, `nom`, `description`, `image`) VALUES
 CREATE TABLE `table_consommation` (
   `ID` int(11) NOT NULL,
   `id_appartement` int(11) NOT NULL,
-  `conso_electricité` float NOT NULL,
+  `conso_electricite` float NOT NULL,
   `conso_gaz` float NOT NULL,
   `date` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -106,12 +106,17 @@ CREATE TABLE `table_consommation` (
 -- Dechargement des donnees `table_consommation`
 --
 
-INSERT INTO `table_consommation` (`ID`, `id_appartement`, `conso_electricité`, `conso_gaz`, `date`) VALUES
+INSERT INTO `table_consommation` (`ID`, `id_appartement`, `conso_electricite`, `conso_gaz`, `date`) VALUES
 (1, 1, 110, 114, '2019-01-15'),
 (2, 1, 116, 113.5, '2019-02-15'),
 (3, 1, 105, 109.5, '2019-03-15'),
 (4, 1, 92, 95.5, '2019-04-15'),
-(5, 1, 79, 76, '2019-05-15');
+(5, 1, 79, 76, '2019-05-15'),
+(6, 2, 108, 106, '2019-01-15'),
+(7, 2, 117, 107, '2019-02-15'),
+(8, 2, 99, 108.5, '2019-03-15'),
+(9, 2, 96, 99.5, '2019-04-15'),
+(10, 2, 87, 73, '2019-05-15');
 
 -- --------------------------------------------------------
 
@@ -124,6 +129,20 @@ CREATE TABLE `table_donnees_capteurs` (
   `id_capteur` int(11) NOT NULL,
   `valeur` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Structure de la table `table_preferences`
+--
+
+CREATE TABLE `table_preferences` (
+  `id` int(11) NOT NULL,
+  `id_capteur` int(11) NOT NULL,
+  `actif` boolean NOT NULL,
+  `heure_activation` time,
+  `heure_desactivation` time,
+  `valeur_cible` int(11)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 
@@ -435,6 +454,12 @@ ALTER TABLE `table_utilisateur`
 --
 ALTER TABLE `tr_role_utilisateur_maison`
   ADD KEY `id_role` (`id_role`);
+
+--
+-- Index pour la table `table_preferences`
+--
+ALTER TABLE `table_preferences`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
