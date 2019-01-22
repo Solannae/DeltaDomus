@@ -13,7 +13,7 @@ function verifyUser($idUser, $password)
     //Vérification de l'utilisateur dans la base de donnée
     $db = dbConnect();
     $query = $db->prepare("SELECT ID FROM table_utilisateur WHERE email = ? AND password = ?");
-	$hash = hash("sha256", $password);
+	  $hash = hash("sha256", $password);
     $query->execute(array($idUser, $hash));
     $id = $query->fetch();
     $query->closeCursor();
@@ -257,4 +257,24 @@ function setProfileImage($idUser) {
 function updatePassword($email, $password) {
     $db = dbConnect();
     $update = $db->prepare("UPDATE table_utilisateur SET password = :password WHERE email = :email");
+    $update->execute(array(
+      'password' => $password,
+      'email' => $email
+    ));
+}
+
+function updatePasswordFromId($id, $password) {
+  $db = dbConnect();
+  $update = $db->prepare("UPDATE table_utilisateur SET password = :password WHERE ID = :id");
+  $update->execute(array(
+    'password' => $password,
+    'id' => $id
+  ));
+}
+
+function verifyUserFromId($id, $password) {
+  $db = dbConnect();
+  $query = $db->prepare("SELECT ID FROM table_utilisateur WHERE ID = ? AND password = ?");
+  $query->execute(array($id, hash("sha256", $password)));
+  return $query->fetch();
 }

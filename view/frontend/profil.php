@@ -1,7 +1,7 @@
 <?php
     $title = 'Profil';
     $cssFile = 'style-profil.css';
-    $jsFile = '';
+    $jsFile = 'profil.js';
 ?>
 
 <?php ob_start(); ?>
@@ -26,6 +26,7 @@
             <input type="submit" class="bubbly-button" value="Sauvegarder">
     </div>
 </form>
+  <Button id="resetPassword" class="bubbly-button">Reset Password</Button>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

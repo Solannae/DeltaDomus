@@ -110,8 +110,6 @@ function save() {
         });
     }
 
-
-
     $.ajax({
         url:"index.php?action=saveSystems",
         method:"POST",
@@ -119,9 +117,6 @@ function save() {
         dataType:"text",
         success:callbackSuccess
     });
-
-
-
 }
 
 callbackSuccess = function(data)

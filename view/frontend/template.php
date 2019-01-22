@@ -11,7 +11,7 @@
     <title><?= $title ?></title>
 
     <script src="public/js/index.js" defer></script>
-    <?php if (isset($errors)): ?>
+    <?php if (isset($jsFile)): ?>
         <script src="public/js/<?= $jsFile ?>" defer></script>
     <?php endif; ?>
     <?php if (isset($errors)): ?>

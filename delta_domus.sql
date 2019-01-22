@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 18 déc. 2018 à 16:38
--- Version du serveur :  5.7.23
--- Version de PHP :  7.2.10
+-- Hôte : localhost
+-- Généré le :  mar. 22 jan. 2019 à 06:08
+-- Version du serveur :  10.1.37-MariaDB
+-- Version de PHP :  7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,15 +28,13 @@ SET time_zone = "+00:00";
 -- Structure de la table `table_appartements`
 --
 
-DROP TABLE IF EXISTS `table_appartements`;
-CREATE TABLE IF NOT EXISTS `table_appartements` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `table_appartements` (
+  `ID` int(11) NOT NULL,
   `id_proprietaire` int(11) NOT NULL,
   `nom` text NOT NULL,
   `adresse` text NOT NULL,
-  `superficie` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `superficie` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_appartements`
@@ -52,17 +50,12 @@ INSERT INTO `table_appartements` (`ID`, `id_proprietaire`, `nom`, `adresse`, `su
 -- Structure de la table `table_capteurs`
 --
 
-DROP TABLE IF EXISTS `table_capteurs`;
-CREATE TABLE IF NOT EXISTS `table_capteurs` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `table_capteurs` (
+  `ID` int(11) NOT NULL,
   `id_piece` int(11) NOT NULL,
   `id_type` int(11) NOT NULL,
-  `donnee` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `id_piece` (`id_piece`),
-  FOREIGN KEY (`id_type`)
-  REFERENCES table_type_capteurs(`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+  `donnee` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_capteurs`
@@ -80,53 +73,20 @@ INSERT INTO `table_capteurs` (`ID`, `id_piece`, `id_type`, `donnee`) VALUES
 -- Structure de la table `table_capteur_dispo`
 --
 
-DROP TABLE IF EXISTS `table_capteur_dispo`;
-CREATE TABLE IF NOT EXISTS `table_capteur_dispo` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `table_capteur_dispo` (
+  `ID` int(11) NOT NULL,
   `nom` text NOT NULL,
   `description` text NOT NULL,
-  `image` text,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `image` text
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_capteur_dispo`
 --
 
 INSERT INTO `table_capteur_dispo` (`ID`, `nom`, `description`, `image`) VALUES
-(1, 'Température', 'Controlez votre chauffage depuis notre site. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sem eu urna commodo, quis cursus magna luctus. Nulla pharetra mi ut urna varius laoreet. Quisque volutpat quam at nulla sagittis, pellentesque porttitor lectus\r\n                rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor fermentum tempus. Aliquam id tincidunt nisl. Quisque ac nisl id velit iaculis dapibus. Suspendisse malesuada vel odio vitae ultricies. Praesent quam enim,\r\n                imperdiet et volutpat ac, sagittis ut nulla. Ut id dolor nec purus vulputate ultrices lobortis vel augue. Proin iaculis leo et odio pharetra tristique. Ut at nisl erat. Nam porttitor sit amet ex vitae tempor. Vivamus ornare suscipit\r\n                felis, ut varius libero cursus pharetra. Ut facilisis imperdiet neque a dignissim.', 'logo-heat.png'),
-(2, 'Lumière', 'Lumière d\'un clic de souris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sem eu urna commodo, quis cursus magna luctus. Nulla pharetra mi ut urna varius laoreet. Quisque volutpat quam at nulla sagittis, pellentesque porttitor lectus\r\n                rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor fermentum tempus. Aliquam id tincidunt nisl. Quisque ac nisl id velit iaculis dapibus. Suspendisse malesuada vel odio vitae ultricies. Praesent quam enim,\r\n                imperdiet et volutpat ac, sagittis ut nulla. Ut id dolor nec purus vulputate ultrices lobortis vel augue. Proin iaculis leo et odio pharetra tristique. Ut at nisl erat. Nam porttitor sit amet ex vitae tempor. Vivamus ornare suscipit\r\n                felis, ut varius libero cursus pharetra. Ut facilisis imperdiet neque a dignissim.', 'logo-light.png');
-
---
--- structure de la table `table_donnees_capteurs`
---
-
-drop table if exists `table_donnees_capteurs`;
-create table if not exists `table_donnees_capteurs` (
-  `id` int(11) not null,
-  `id_capteur` int(11) not null,
-  `valeur` int(11) not null,
-  primary key (`id`),
-  foreign key (`id_capteur`)
-  references table_capteurs(`id`)
-) engine=myisam default charset=latin1;
-
---
--- structure de la table `table_type_capteurs`
---
-
-drop table if exists `table_type_capteurs`;
-create table if not exists `table_type_capteurs` (
-  `id` int(11) not null,
-  `valeur` text not null,
-  primary key (`id`)
-) engine=myisam default charset=latin1;
-
-INSERT INTO `table_type_capteurs` (`id`, `valeur`) VALUES
-(1, 'temperature'),
-(2, 'lumiere');
-
-
+(1, 'Température', 'Controlez votre chauffage depuis notre site. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sem eu urna commodo, quis cursus magna luctus. Nulla pharetra mi ut urna varius laoreet. Quisque volutpat quam at nulla sagittis, pellentesque porttitor lectus\r\n                rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor fermentum tempus. Aliquam id tincidunt nisl. Quisque ac nisl id velit iaculis dapibus. Suspendisse malesuada vel odio vitae ultricies. Praesent quam enim,\r\n                imperdiet et volutpat ac, sagittis ut nulla. Ut id dolor nec purus vulputate ultrices lobortis vel augue. Proin iaculis leo et odio pharetra tristique. Ut at nisl erat. Nam porttitor sit amet ex vitae tempor. Vivamus ornare suscipit\r\n                felis, ut varius libero cursus pharetra. Ut facilisis imperdiet neque a dignissim.', 'public/assets/imageCapteur/logo-heat.png'),
+(2, 'Lumière', 'Lumière d\'un clic de souris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque gravida sem eu urna commodo, quis cursus magna luctus. Nulla pharetra mi ut urna varius laoreet. Quisque volutpat quam at nulla sagittis, pellentesque porttitor lectus\r\n                rutrum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor fermentum tempus. Aliquam id tincidunt nisl. Quisque ac nisl id velit iaculis dapibus. Suspendisse malesuada vel odio vitae ultricies. Praesent quam enim,\r\n                imperdiet et volutpat ac, sagittis ut nulla. Ut id dolor nec purus vulputate ultrices lobortis vel augue. Proin iaculis leo et odio pharetra tristique. Ut at nisl erat. Nam porttitor sit amet ex vitae tempor. Vivamus ornare suscipit\r\n                felis, ut varius libero cursus pharetra. Ut facilisis imperdiet neque a dignissim.', 'public/assets/imageCapteur/logo-light.png');
 
 -- --------------------------------------------------------
 
@@ -134,8 +94,7 @@ INSERT INTO `table_type_capteurs` (`id`, `valeur`) VALUES
 -- Structure de la table `table_consommation`
 --
 
-DROP TABLE IF EXISTS `table_consommation`;
-CREATE TABLE IF NOT EXISTS `table_consommation` (
+CREATE TABLE `table_consommation` (
   `id_appartement` int(11) NOT NULL,
   `conso_electricité` float NOT NULL,
   `conso_gaz` float NOT NULL,
@@ -145,17 +104,27 @@ CREATE TABLE IF NOT EXISTS `table_consommation` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `table_donnees_capteurs`
+--
+
+CREATE TABLE `table_donnees_capteurs` (
+  `id` int(11) NOT NULL,
+  `id_capteur` int(11) NOT NULL,
+  `valeur` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `table_droit`
 --
 
-DROP TABLE IF EXISTS `table_droit`;
-CREATE TABLE IF NOT EXISTS `table_droit` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `table_droit` (
+  `ID` int(11) NOT NULL,
   `id_role` int(11) NOT NULL,
   `id_capteur` int(11) NOT NULL,
-  `droit` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+  `droit` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_droit`
@@ -179,12 +148,10 @@ INSERT INTO `table_droit` (`ID`, `id_role`, `id_capteur`, `droit`) VALUES
 -- Structure de la table `table_faq`
 --
 
-DROP TABLE IF EXISTS `table_faq`;
-CREATE TABLE IF NOT EXISTS `table_faq` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `table_faq` (
+  `ID` int(11) NOT NULL,
   `question` text NOT NULL,
-  `reponse` text NOT NULL,
-  PRIMARY KEY (`ID`)
+  `reponse` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -193,13 +160,11 @@ CREATE TABLE IF NOT EXISTS `table_faq` (
 -- Structure de la table `table_histo_capteur`
 --
 
-DROP TABLE IF EXISTS `table_histo_capteur`;
-CREATE TABLE IF NOT EXISTS `table_histo_capteur` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `table_histo_capteur` (
+  `ID` int(11) NOT NULL,
   `id_capteur` int(11) NOT NULL,
   `donnee` int(11) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`ID`)
+  `date` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -208,11 +173,9 @@ CREATE TABLE IF NOT EXISTS `table_histo_capteur` (
 -- Structure de la table `table_lotissement`
 --
 
-DROP TABLE IF EXISTS `table_lotissement`;
-CREATE TABLE IF NOT EXISTS `table_lotissement` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `id_gestionnnaire` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
+CREATE TABLE `table_lotissement` (
+  `ID` int(11) NOT NULL,
+  `id_gestionnnaire` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -221,15 +184,13 @@ CREATE TABLE IF NOT EXISTS `table_lotissement` (
 -- Structure de la table `table_message_forum`
 --
 
-DROP TABLE IF EXISTS `table_message_forum`;
-CREATE TABLE IF NOT EXISTS `table_message_forum` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `table_message_forum` (
+  `ID` int(11) NOT NULL,
   `id_sujet` int(11) NOT NULL,
   `auteur` text NOT NULL,
   `date_creation` date NOT NULL,
   `date_modification` date NOT NULL,
-  `contenu` text NOT NULL,
-  PRIMARY KEY (`ID`)
+  `contenu` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -238,14 +199,12 @@ CREATE TABLE IF NOT EXISTS `table_message_forum` (
 -- Structure de la table `table_pieces`
 --
 
-DROP TABLE IF EXISTS `table_pieces`;
-CREATE TABLE IF NOT EXISTS `table_pieces` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `table_pieces` (
+  `ID` int(11) NOT NULL,
   `id_appartement` int(11) NOT NULL,
   `nom` text NOT NULL,
-  `taille` float NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `taille` float NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_pieces`
@@ -261,12 +220,10 @@ INSERT INTO `table_pieces` (`ID`, `id_appartement`, `nom`, `taille`) VALUES
 -- Structure de la table `table_roles`
 --
 
-DROP TABLE IF EXISTS `table_roles`;
-CREATE TABLE IF NOT EXISTS `table_roles` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` text NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+CREATE TABLE `table_roles` (
+  `ID` int(11) NOT NULL,
+  `nom` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_roles`
@@ -282,14 +239,31 @@ INSERT INTO `table_roles` (`ID`, `nom`) VALUES
 -- Structure de la table `table_sujet_forum`
 --
 
-DROP TABLE IF EXISTS `table_sujet_forum`;
-CREATE TABLE IF NOT EXISTS `table_sujet_forum` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `table_sujet_forum` (
+  `ID` int(11) NOT NULL,
   `auteur` text NOT NULL,
   `date_creation` date NOT NULL,
-  `nom` text NOT NULL,
-  PRIMARY KEY (`ID`)
+  `nom` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `table_type_capteurs`
+--
+
+CREATE TABLE `table_type_capteurs` (
+  `id` int(11) NOT NULL,
+  `valeur` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `table_type_capteurs`
+--
+
+INSERT INTO `table_type_capteurs` (`id`, `valeur`) VALUES
+(1, 'temperature'),
+(2, 'lumiere');
 
 -- --------------------------------------------------------
 
@@ -297,17 +271,15 @@ CREATE TABLE IF NOT EXISTS `table_sujet_forum` (
 -- Structure de la table `table_utilisateur`
 --
 
-DROP TABLE IF EXISTS `table_utilisateur`;
-CREATE TABLE IF NOT EXISTS `table_utilisateur` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `table_utilisateur` (
+  `ID` int(11) NOT NULL,
   `nom` text NOT NULL,
   `prenom` text NOT NULL,
   `email` text NOT NULL,
   `image_profil` text,
   `password` text NOT NULL,
-  `admin` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=154 DEFAULT CHARSET=latin1;
+  `admin` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `table_utilisateur`
@@ -325,8 +297,7 @@ INSERT INTO `table_utilisateur` (`ID`, `nom`, `prenom`, `email`, `image_profil`,
 -- Structure de la table `tr_lotissement_appartement`
 --
 
-DROP TABLE IF EXISTS `tr_lotissement_appartement`;
-CREATE TABLE IF NOT EXISTS `tr_lotissement_appartement` (
+CREATE TABLE `tr_lotissement_appartement` (
   `id_lotissement` int(11) NOT NULL,
   `id_appartement` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -337,12 +308,10 @@ CREATE TABLE IF NOT EXISTS `tr_lotissement_appartement` (
 -- Structure de la table `tr_role_utilisateur_maison`
 --
 
-DROP TABLE IF EXISTS `tr_role_utilisateur_maison`;
-CREATE TABLE IF NOT EXISTS `tr_role_utilisateur_maison` (
+CREATE TABLE `tr_role_utilisateur_maison` (
   `id_role` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
-  `id_maison` int(11) NOT NULL,
-  KEY `id_role` (`id_role`)
+  `id_maison` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -354,6 +323,179 @@ INSERT INTO `tr_role_utilisateur_maison` (`id_role`, `id_utilisateur`, `id_maiso
 (2, 138, 1),
 (2, 139, 1),
 (3, 137, 2);
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `table_appartements`
+--
+ALTER TABLE `table_appartements`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `table_capteurs`
+--
+ALTER TABLE `table_capteurs`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `id_piece` (`id_piece`),
+  ADD KEY `id_type` (`id_type`);
+
+--
+-- Index pour la table `table_capteur_dispo`
+--
+ALTER TABLE `table_capteur_dispo`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `table_donnees_capteurs`
+--
+ALTER TABLE `table_donnees_capteurs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_capteur` (`id_capteur`);
+
+--
+-- Index pour la table `table_droit`
+--
+ALTER TABLE `table_droit`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `table_faq`
+--
+ALTER TABLE `table_faq`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `table_histo_capteur`
+--
+ALTER TABLE `table_histo_capteur`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `table_lotissement`
+--
+ALTER TABLE `table_lotissement`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `table_message_forum`
+--
+ALTER TABLE `table_message_forum`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `table_pieces`
+--
+ALTER TABLE `table_pieces`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `table_roles`
+--
+ALTER TABLE `table_roles`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `table_sujet_forum`
+--
+ALTER TABLE `table_sujet_forum`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `table_type_capteurs`
+--
+ALTER TABLE `table_type_capteurs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `table_utilisateur`
+--
+ALTER TABLE `table_utilisateur`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `tr_role_utilisateur_maison`
+--
+ALTER TABLE `tr_role_utilisateur_maison`
+  ADD KEY `id_role` (`id_role`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `table_appartements`
+--
+ALTER TABLE `table_appartements`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `table_capteurs`
+--
+ALTER TABLE `table_capteurs`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT pour la table `table_capteur_dispo`
+--
+ALTER TABLE `table_capteur_dispo`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT pour la table `table_droit`
+--
+ALTER TABLE `table_droit`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT pour la table `table_faq`
+--
+ALTER TABLE `table_faq`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `table_histo_capteur`
+--
+ALTER TABLE `table_histo_capteur`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `table_lotissement`
+--
+ALTER TABLE `table_lotissement`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `table_message_forum`
+--
+ALTER TABLE `table_message_forum`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `table_pieces`
+--
+ALTER TABLE `table_pieces`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `table_roles`
+--
+ALTER TABLE `table_roles`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `table_sujet_forum`
+--
+ALTER TABLE `table_sujet_forum`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `table_utilisateur`
+--
+ALTER TABLE `table_utilisateur`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

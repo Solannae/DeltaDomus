@@ -276,3 +276,13 @@ function sendPassword($email, $password) {
     // Send the message
     $result = $mailer->send($message);
 }
+
+function verifyPassword($id, $oldPassword, $newPassword) {
+  if (verifyUserFromId($id, $oldPassword)) {
+    updatePasswordFromId($id, hash("sha256", $newPassword));
+    header("Refresh:0; url=index.php?action=redirect&page=profil.php&updated");
+  }
+  else {
+    header("Refresh:0; url=index.php?action=redirect&page=profil.php");
+  }
+}
