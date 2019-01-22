@@ -10,7 +10,7 @@ for (var i = 0 ; i < pannels.length; i++) {
         document.getElementById('popup-title').innerHTML = elt.childNodes[0].data.trim();
         var popuptext = document.getElementById('popup-text');
         for (var i = 0 ; i < elt.children.length; i++) {
-            popuptext.innerHTML += elt.children[i].innerText + "<br>";
+            popuptext.innerHTML += elt.children[i].innerText + " <label class='switch'><input type='checkbox' checked><span class='slider round'></span></label><br>";
         }
         // affiche le popup
         document.getElementById('light').style.display='block';
