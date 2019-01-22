@@ -13,8 +13,8 @@ Je n'arrive pas à ajouter un nouveau capteur pour ma maison. J'aimerai le place
 <div class="content">
     <p class="answer"> Bonjour Jean, <br>
       C'est très simple, il faut que tu ailles dans l'onglet "Mes capteurs" puis que tu cliques sur le bouton "Ajouter un capteur" et enfin tu renseignes ton type de capteur ainsi que ta pièce.
-    <br> J'espere que ca t'as aidé :) 
-    <br>Bonne journée. 
+    <br> J'espere que ca t'as aidé :)
+    <br>Bonne journée.
      </p>
 </div>
 
@@ -23,10 +23,9 @@ Mon fils vient d'avoir 18 ans et il aimerais pouvoir avoir accès au contrôle d
 <div class="content">
     <p class="answer">Il faut aller dans l'onglet "Gestion des droits" puis décocher le contrôle parental.  </p>
 </div>
-<button class="collapsible"><h6>Bonjour, <br><br>
-Combien coute le site?  <br> Comment peut-on changer ses droits? <br><br>S'il vous plait signé Marie Duhamel <br> </h6></button>
+<button class="collapsible"><h6>What is Lorem Ipsum?</h6></button>
 <div class="content">
-    <p class="answer"> Je ne sais pas  </p>
+    <p class="answer"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.  </p>
 </div>
 
 <h1> Questions à poser </h1>
