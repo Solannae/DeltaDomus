@@ -199,6 +199,14 @@ try
                     header("Refresh:0; url=index.php?action=redirect&page=accueil.php");
                 }
             }
+			elseif ($_GET['action'] == 'addforum') {
+				addToForum();
+				header("Refresh:0; url=index.php?action=redirect&page=forum.php");
+			}
+			elseif ($_GET['action'] == 'addmessage') {
+				addMessageToThread();
+				header("Refresh:0; url=index.php?action=redirect&page=thread.php&id=".$_GET['id']);
+			}
 
             //Création de l'utilisateur
             elseif ($_GET['action'] == 'signin' AND isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) AND isset($_POST['password'])) {
@@ -231,6 +239,21 @@ try
                 elseif ($_GET['page'] == 'reset-password.php') {
                     require('view/frontend/reset-password.php');
                 }
+				elseif ($_GET['page'] == "thread.php") {
+					if (isset($_GET['id'])) {
+						$subject = getSubject($_GET['id']);
+						$messages = getMessages($_GET['id']);
+						require('view/frontend/thread.php');
+					}
+					else {
+						$threads = getThreads();
+						require('view/frontend/forum.php');
+					}
+				}
+				elseif ($_GET['page'] == "forum.php") {
+					$threads = getThreads();
+					require('view/frontend/forum.php');
+				}
             }
 
             //Creation d'un utilisateur avec toutes les infos

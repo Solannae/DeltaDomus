@@ -50,6 +50,7 @@
                 <li><a href="index.php?action=redirect&amp;page=login.php">Se connecter</a></li>
                 <li><a href="index.php?action=redirect&amp;page=ajout-total.php">Créer un compte</a></li>
                 <li><a href="index.php?action=redirect&amp;page=faq.php">FAQ</a></li>
+				<li><a href="index.php?action=redirect&amp;page=forum.php">Forum</a></li>
                 <li><a href="index.php?action=redirect&amp;page=contact.php">Contact</a></li>
             <?php } ?>
         </ul>
