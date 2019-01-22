@@ -28,37 +28,6 @@ Mon fils vient d'avoir 18 ans et il aimerais pouvoir avoir accès au contrôle d
     <p class="answer"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.  </p>
 </div>
 
-<h1> Questions à poser </h1>
-
- <div class="container">
-  <form action="faq.php">
-
-    <label for="fname">Prénom</label>
-    <input type="text" id="fname" name="firstname" placeholder="Prénom">
-
-    <label for="lname">Nom</label>
-    <input type="text" id="lname" name="lastname" placeholder="Nom">
-
-  <label for="username">Nom d'utilisateur</label>
-    <input type="text" id="username" name="useername" placeholder="Nom">
-
-    <label for="country">Pays</label>
-    <select id="country" name="country">
-      <option value="Brance">France</option>
-      <option value="Belgique">Belgique</option>
-      <option value="Autre pays Européen">Autre pays européen</option>
-    </select>
-
-    <label for="subject">Sujet</label>
-    <textarea id="subject" name="subject" placeholder="Posez votre question.." style="height:200px"></textarea>
-
-    <input type="submit" value="Envoyer">
-
-
-
-  </form>
-</div>
-
 
 <?php $content = ob_get_clean(); ?>
 
