@@ -25,3 +25,15 @@ input[type=text], textarea {
         width: 100%;
     }
 }
+
+td, th {
+    padding-right: 25px;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    background-color: #009688;
+}

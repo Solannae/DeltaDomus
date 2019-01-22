@@ -145,6 +145,49 @@ function getCapteur($idPiece) {
     return $capteur;
 }
 
+function getThreads() {
+	$db = dbConnect();
+	$query = $db->prepare("SELECT table_sujet_forum.ID, table_utilisateur.email, table_sujet_forum.date_creation, table_sujet_forum.nom FROM table_sujet_forum JOIN table_utilisateur ON table_utilisateur.ID = auteur ORDER BY table_sujet_forum.date_creation DESC");
+	$query->execute();
+
+	$threads = [];
+	while ($donnees = $query->fetch()) {
+		$threads[] = array(
+			'id' => $donnees['ID'],
+			'email' => $donnees['email'],
+			'date_creation' => $donnees['date_creation'],
+			'nom' => $donnees['nom']
+		);
+	}
+
+	return $threads;
+}
+
+function getSubject($id) {
+	$db = dbConnect();
+	$query = $db->prepare("SELECT nom FROM table_sujet_forum WHERE ID = :id");
+	$query->execute(array('id' => $id));
+	$info = $query->fetch();
+	return $info;
+}
+
+function getMessages($id) {
+	$db = dbConnect();
+	$query = $db->prepare("SELECT table_utilisateur.email, table_message_forum.date_creation, table_message_forum.contenu FROM table_message_forum JOIN table_utilisateur ON table_utilisateur.ID = auteur WHERE table_message_forum.id_sujet = :id ORDER BY table_message_forum.date_creation ASC");
+	$query->execute(array('id' => $id));
+
+	$messages = [];
+	while ($donnees = $query->fetch()) {
+		$messages[] = array(
+			'email' => $donnees['email'],
+			'date_creation' => $donnees['date_creation'],
+			'contenu' => $donnees['contenu']
+		);
+	}
+
+	return $messages;
+}
+
 function getRole($idUser, $idHouse) {
     $db = dbConnect();
     $query = $db->prepare("SELECT ID, nom FROM table_roles JOIN tr_role_utilisateur_maison ON ID = id_role WHERE id_utilisateur = :idUser AND id_maison = :idHouse");
@@ -277,4 +320,23 @@ function verifyUserFromId($id, $password) {
   $query = $db->prepare("SELECT ID FROM table_utilisateur WHERE ID = ? AND password = ?");
   $query->execute(array($id, hash("sha256", $password)));
   return $query->fetch();
+}
+
+function addSubjectToForum($title, $text, $username) {
+	$db = dbConnect();
+	$subject = $db->prepare("INSERT INTO table_sujet_forum(auteur, date_creation, nom) VALUES (?, ?, ?);");
+	$date = date_create('now')->format('Y-m-d H:i:s');
+	$subject->execute(array($username, $date, $title));
+
+	$id = $db->lastInsertId();
+	$subject->closeCursor();
+
+	addMessageToForum($id, $username, $text);
+}
+
+function addMessageToForum($subject, $username, $text) {
+	$db = dbConnect();
+	$message = $db->prepare("INSERT INTO table_message_forum(id_sujet, auteur, date_creation, date_modification, contenu) VALUES (?, ?, ?, ?, ?)");
+	$date = date_create('now')->format('Y-m-d H:i:s');
+	$message->execute(array($subject, $username, $date, $date, $text));
 }

@@ -83,6 +83,21 @@ try
                             $houseArray = getHouse($_SESSION['idUser']);
                             require('view/frontend/houses.php');
                         }
+						elseif ($_GET['page'] == "thread.php") {
+							if (isset($_GET['id'])) {
+								$subject = getSubject($_GET['id']);
+								$messages = getMessages($_GET['id']);
+								require('view/frontend/thread.php');
+							}
+							else {
+								$threads = getThreads();
+								require('view/frontend/forum.php');
+							}
+						}
+						elseif ($_GET['page'] == "forum.php") {
+							$threads = getThreads();
+							require('view/frontend/forum.php');
+						}
                         elseif ($_GET['page'] == 'accueil.php') {
                             $capteurDispo = getCapteurDispo();
                             require('view/frontend/accueil.php');
@@ -137,6 +152,14 @@ try
                   sendMail($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['contenu']);
                   header("Refresh:0; url=index.php?action=redirect&page=contact.php");
                 }
+				elseif ($_GET['action'] == 'addmessage') {
+					addMessageToThread();
+					header("Refresh:0; url=index.php?action=redirect&page=thread.php&id=".$_GET['id']);
+				}
+				elseif ($_GET['action'] == 'addforum') {
+					addToForum();
+					header("Refresh:0; url=index.php?action=redirect&page=forum.php");
+				}
 
                 //Page par défaut si problème de lien
                 else {

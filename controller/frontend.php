@@ -305,4 +305,17 @@ function sendMail($nom, $prenom, $email, $contenu) {
 
   // Send the message
   $result = $mailer->send($message);
+
+function addMessageToThread() {
+	$subject = $_GET['id'];
+	$username = $_SESSION['idUser'];
+	$text = $_POST['subject'];
+	addMessageToForum($subject, $username, $text);
+}
+
+function addToForum() {
+	$title = $_POST['title'];
+	$text = $_POST['subject'];
+	$username = $_SESSION['idUser'];
+	addSubjectToForum($title, $text, $username);
 }

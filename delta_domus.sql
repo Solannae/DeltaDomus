@@ -188,9 +188,10 @@ CREATE TABLE `table_message_forum` (
   `ID` int(11) NOT NULL,
   `id_sujet` int(11) NOT NULL,
   `auteur` text NOT NULL,
-  `date_creation` date NOT NULL,
-  `date_modification` date NOT NULL,
-  `contenu` text NOT NULL
+  `date_creation` datetime NOT NULL,
+  `date_modification` datetime NOT NULL,
+  `contenu` text NOT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -242,8 +243,14 @@ INSERT INTO `table_roles` (`ID`, `nom`) VALUES
 CREATE TABLE `table_sujet_forum` (
   `ID` int(11) NOT NULL,
   `auteur` text NOT NULL,
+<<<<<<< 41a168cea7ed239e0765db641adc207ec3b7c203
   `date_creation` date NOT NULL,
   `nom` text NOT NULL
+=======
+  `date_creation` datetime NOT NULL,
+  `nom` text NOT NULL,
+  PRIMARY KEY (`ID`)
+>>>>>>> Almost fully-working forum (missing update on last_modified date)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
