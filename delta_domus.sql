@@ -95,11 +95,23 @@ INSERT INTO `table_capteur_dispo` (`ID`, `nom`, `description`, `image`) VALUES
 --
 
 CREATE TABLE `table_consommation` (
+  `ID` int(11) NOT NULL,
   `id_appartement` int(11) NOT NULL,
   `conso_electricité` float NOT NULL,
   `conso_gaz` float NOT NULL,
   `date` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dechargement des donnees `table_consommation`
+--
+
+INSERT INTO `table_consommation` (`ID`, `id_appartement`, `conso_electricité`, `conso_gaz`, `date`) VALUES
+(1, 1, 110, 114, '2019-01-15'),
+(2, 1, 116, 113.5, '2019-02-15'),
+(3, 1, 105, 109.5, '2019-03-15'),
+(4, 1, 92, 95.5, '2019-04-15'),
+(5, 1, 79, 76, '2019-05-15');
 
 -- --------------------------------------------------------
 
@@ -190,8 +202,7 @@ CREATE TABLE `table_message_forum` (
   `auteur` text NOT NULL,
   `date_creation` datetime NOT NULL,
   `date_modification` datetime NOT NULL,
-  `contenu` text NOT NULL,
-  PRIMARY KEY (`ID`)
+  `contenu` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -243,14 +254,8 @@ INSERT INTO `table_roles` (`ID`, `nom`) VALUES
 CREATE TABLE `table_sujet_forum` (
   `ID` int(11) NOT NULL,
   `auteur` text NOT NULL,
-<<<<<<< 41a168cea7ed239e0765db641adc207ec3b7c203
   `date_creation` date NOT NULL,
   `nom` text NOT NULL
-=======
-  `date_creation` datetime NOT NULL,
-  `nom` text NOT NULL,
-  PRIMARY KEY (`ID`)
->>>>>>> Almost fully-working forum (missing update on last_modified date)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -362,6 +367,9 @@ ALTER TABLE `table_donnees_capteurs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_capteur` (`id_capteur`);
 
+ALTER TABLE `table_consommation`
+  ADD PRIMARY KEY (`ID`);
+
 --
 -- Index pour la table `table_droit`
 --
@@ -466,6 +474,12 @@ ALTER TABLE `table_faq`
 -- AUTO_INCREMENT pour la table `table_histo_capteur`
 --
 ALTER TABLE `table_histo_capteur`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `table_consommation`
+--
+ALTER TABLE `table_consommation`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
