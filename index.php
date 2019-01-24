@@ -18,6 +18,9 @@ try
                         $capteurDispo = getCapteurDispo();
                         require('view/backend/accueil.php');
                     }
+                    else {
+                      require('view/frontend/'.$_GET['page']);
+                    }
                 }
                 //Fin redirection page
 
