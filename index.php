@@ -19,14 +19,16 @@ try
                         require('view/backend/accueil.php');
                     }
 
+                    elseif ($_GET['page'] == 'suivi-conso-admin.php') {
+                      $dataConsos = getConsumptionAdmin();
+                      require('view/frontend/suivi-conso-admin.php');
+                    }
+                    
                     else {
                       require('view/frontend/'.$_GET['page']);
                     }
 
-					elseif ($_GET['page'] == 'suivi-conso-admin.php') {
-						$dataConsos = getConsumptionAdmin();
-						require('view/frontend/suivi-conso-admin.php');
-					}
+
 
                 }
                 //Fin redirection page
