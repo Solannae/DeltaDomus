@@ -95,11 +95,28 @@ INSERT INTO `table_capteur_dispo` (`ID`, `nom`, `description`, `image`) VALUES
 --
 
 CREATE TABLE `table_consommation` (
+  `ID` int(11) NOT NULL,
   `id_appartement` int(11) NOT NULL,
-  `conso_electricité` float NOT NULL,
+  `conso_electricite` float NOT NULL,
   `conso_gaz` float NOT NULL,
   `date` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dechargement des donnees `table_consommation`
+--
+
+INSERT INTO `table_consommation` (`ID`, `id_appartement`, `conso_electricite`, `conso_gaz`, `date`) VALUES
+(1, 1, 110, 114, '2019-01-15'),
+(2, 1, 116, 113.5, '2019-02-15'),
+(3, 1, 105, 109.5, '2019-03-15'),
+(4, 1, 92, 95.5, '2019-04-15'),
+(5, 1, 79, 76, '2019-05-15'),
+(6, 2, 108, 106, '2019-01-15'),
+(7, 2, 117, 107, '2019-02-15'),
+(8, 2, 99, 108.5, '2019-03-15'),
+(9, 2, 96, 99.5, '2019-04-15'),
+(10, 2, 87, 73, '2019-05-15');
 
 -- --------------------------------------------------------
 
@@ -112,6 +129,20 @@ CREATE TABLE `table_donnees_capteurs` (
   `id_capteur` int(11) NOT NULL,
   `valeur` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Structure de la table `table_preferences`
+--
+
+CREATE TABLE `table_preferences` (
+  `id` int(11) NOT NULL,
+  `id_capteur` int(11) NOT NULL,
+  `actif` boolean NOT NULL,
+  `heure_activation` time,
+  `heure_desactivation` time,
+  `valeur_cible` int(11)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 
 -- --------------------------------------------------------
 
@@ -190,8 +221,7 @@ CREATE TABLE `table_message_forum` (
   `auteur` text NOT NULL,
   `date_creation` datetime NOT NULL,
   `date_modification` datetime NOT NULL,
-  `contenu` text NOT NULL,
-  PRIMARY KEY (`ID`)
+  `contenu` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -243,14 +273,8 @@ INSERT INTO `table_roles` (`ID`, `nom`) VALUES
 CREATE TABLE `table_sujet_forum` (
   `ID` int(11) NOT NULL,
   `auteur` text NOT NULL,
-<<<<<<< 41a168cea7ed239e0765db641adc207ec3b7c203
   `date_creation` date NOT NULL,
   `nom` text NOT NULL
-=======
-  `date_creation` datetime NOT NULL,
-  `nom` text NOT NULL,
-  PRIMARY KEY (`ID`)
->>>>>>> Almost fully-working forum (missing update on last_modified date)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -293,6 +317,7 @@ CREATE TABLE `table_utilisateur` (
 --
 
 INSERT INTO `table_utilisateur` (`ID`, `nom`, `prenom`, `email`, `image_profil`, `password`, `admin`) VALUES
+(0, 'Invite', 'Invite', 'Invite', NULL, '776B5BE62A979BDEC6D9238F6E7E355E985B1CA506181EECBB703A3A97875B5E', 0),
 (137, 'nom_parent', 'prenom_parent', 'email', NULL, '07123e1f482356c415f684407a3b8723e10b2cbbc0b8fcd6282c49d37c9c1abc', 0),
 (1, 'nom_admin', 'prenom_admin', 'admin', NULL, '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 1),
 (138, 'nom_enfant', 'prenom_enfant2', 'email_enfant1', NULL, '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 0),
@@ -362,6 +387,9 @@ ALTER TABLE `table_donnees_capteurs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_capteur` (`id_capteur`);
 
+ALTER TABLE `table_consommation`
+  ADD PRIMARY KEY (`ID`);
+
 --
 -- Index pour la table `table_droit`
 --
@@ -429,6 +457,12 @@ ALTER TABLE `tr_role_utilisateur_maison`
   ADD KEY `id_role` (`id_role`);
 
 --
+-- Index pour la table `table_preferences`
+--
+ALTER TABLE `table_preferences`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -466,6 +500,12 @@ ALTER TABLE `table_faq`
 -- AUTO_INCREMENT pour la table `table_histo_capteur`
 --
 ALTER TABLE `table_histo_capteur`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `table_consommation`
+--
+ALTER TABLE `table_consommation`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --

@@ -37,9 +37,10 @@
                 <?php if (isset($_SESSION['droitAdmin']) && $_SESSION['droitAdmin']) { ?>
                     <li><a href="index.php?action=redirect&amp;page=ajout-utilisateur.php">Ajouter un utilisateur</a></li>
                     <li><a href="index.php?action=redirect&amp;page=gestion-droits.php">Gestion des droits</a></li>
-                    <li><a href="index.php?action=redirect&amp;page=suivi-conso.php">Mon suivi conso</a></li>
+					<li><a href="index.php?action=redirect&amp;page=suivi-conso-admin.php">Suivi conso Administrateur</a></li>
                 <?php } ?>
 
+                <li><a href="index.php?action=redirect&amp;page=suivi-conso.php">Mon suivi conso</a></li>
                 <li><a href="index.php?action=redirect&amp;page=faq.php">FAQ</a></li>
 				<li><a href="index.php?action=redirect&amp;page=forum.php">Forum</a></li>
                 <li><a href="index.php?action=redirect&amp;page=contact.php">Contact</a></li>
@@ -49,6 +50,7 @@
                 <li><a href="index.php?action=redirect&amp;page=login.php">Se connecter</a></li>
                 <li><a href="index.php?action=redirect&amp;page=ajout-total.php">Créer un compte</a></li>
                 <li><a href="index.php?action=redirect&amp;page=faq.php">FAQ</a></li>
+				<li><a href="index.php?action=redirect&amp;page=forum.php">Forum</a></li>
                 <li><a href="index.php?action=redirect&amp;page=contact.php">Contact</a></li>
             <?php } ?>
         </ul>

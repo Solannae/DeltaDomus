@@ -309,7 +309,12 @@ function sendMail($nom, $prenom, $email, $contenu) {
 
 function addMessageToThread() {
 	$subject = $_GET['id'];
-	$username = $_SESSION['idUser'];
+	if (isset($_SESSION['idUser'])) {
+		$username = $_SESSION['idUser'];
+	}
+	else {
+		$username = "Invite";
+	}
 	$text = $_POST['subject'];
 	addMessageToForum($subject, $username, $text);
 }
@@ -317,6 +322,21 @@ function addMessageToThread() {
 function addToForum() {
 	$title = $_POST['title'];
 	$text = $_POST['subject'];
-	$username = $_SESSION['idUser'];
+	if (isset($_SESSION['idUser'])) {
+		$username = $_SESSION['idUser'];
+	}
+	else {
+		$username = "Invite";
+	}
 	addSubjectToForum($title, $text, $username);
+}
+
+function getConsumption($idUser) {
+	$data = getConsumptionBack($idUser);
+	return $data;
+}
+
+function getConsumptionAdmin() {
+	$data = getConsumptionAdminBack();
+	return $data;
 }
