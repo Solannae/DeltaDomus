@@ -23,7 +23,7 @@ try
                       $dataConsos = getConsumptionAdmin();
                       require('view/frontend/suivi-conso-admin.php');
                     }
-                    
+
                     else {
                       require('view/frontend/'.$_GET['page']);
                     }
@@ -207,14 +207,14 @@ try
                     header("Refresh:0; url=index.php?action=redirect&page=accueil.php");
                 }
             }
-			elseif ($_GET['action'] == 'addforum') {
-				addToForum();
-				header("Refresh:0; url=index.php?action=redirect&page=forum.php");
-			}
-			elseif ($_GET['action'] == 'addmessage') {
-				addMessageToThread();
-				header("Refresh:0; url=index.php?action=redirect&page=thread.php&id=".$_GET['id']);
-			}
+            elseif ($_GET['action'] == 'addforum') {
+        				addToForum();
+        				header("Refresh:0; url=index.php?action=redirect&page=forum.php");
+            }
+      			elseif ($_GET['action'] == 'addmessage') {
+      				addMessageToThread();
+      				header("Refresh:0; url=index.php?action=redirect&page=thread.php&id=".$_GET['id']);
+      			}
 
             //Création de l'utilisateur
             elseif ($_GET['action'] == 'signin' AND isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) AND isset($_POST['password'])) {
@@ -232,6 +232,7 @@ try
                     require('view/frontend/'.$_GET['page']);
                 }
                 elseif ($_GET['page'] == 'ajout-total.php') {
+                    $capteurDispo = getCapteurDispo();
                     require('view/frontend/'.$_GET['page']);
                 }
                 elseif ($_GET['page'] == 'faq.php') {
@@ -275,8 +276,8 @@ try
                 header("Refresh:0; url=index.php");
             }
             elseif ($_GET['action'] == 'sendMail') {
-              sendMail($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['contenu']);
-              header("Refresh:0; url=index.php?action=redirect&page=contact.php");
+                sendMail($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['contenu']);
+                header("Refresh:0; url=index.php?action=redirect&page=contact.php");
             }
 
             else {

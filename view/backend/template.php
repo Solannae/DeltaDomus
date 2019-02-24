@@ -26,6 +26,8 @@
             <div class="toggle-icon-line third"></div>
         </a>
         <ul id="main-nav">
+          <li><a href="index.php?action=redirect&amp;page=suivi-conso-admin.php">Suivi conso Administrateur</a></li>
+          <li><a href="index.php?action=redirect&amp;page=forum.php">Forum</a></li>
             <li><a href="index.php?action=redirect&amp;page=faq.php">FAQ</a></li>
             <li><a href="index.php?action=redirect&amp;page=contact.php">Contact</a></li>
             <li><a href="index.php?action=disconnect">Se déconnecter</a></li>
