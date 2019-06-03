@@ -352,6 +352,27 @@ INSERT INTO `tr_role_utilisateur_maison` (`id_role`, `id_utilisateur`, `id_maiso
 (2, 139, 1),
 (3, 137, 2);
 
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `table_trames`
+--
+
+CREATE TABLE `table_trames` (
+  `ID` int(11) NOT NULL,
+  `type_trame` tinyint(1) NOT NULL,
+  `groupe` varchar(4) NOT NULL,
+  `type_requete` tinyint(1) NOT NULL,
+  `type_capteur` text(1),
+  `numero_capteur` tinyint(2) NOT NULL,
+  `valeur` text(4) NOT NULL,
+  `numero_trame` text(4) NOT NULL,
+  `timestamp` datetime NOT NULL,
+  `read` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
 --
 -- Index pour les tables déchargées
 --
@@ -456,6 +477,18 @@ ALTER TABLE `tr_role_utilisateur_maison`
   ADD KEY `id_role` (`id_role`);
 
 --
+-- Index pour la table `table_preferences`
+--
+ALTER TABLE `table_preferences`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `table_trames`
+--
+ALTER TABLE `table_trames`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -529,6 +562,12 @@ ALTER TABLE `table_roles`
 -- AUTO_INCREMENT pour la table `table_sujet_forum`
 --
 ALTER TABLE `table_sujet_forum`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `table_trames`
+--
+ALTER TABLE `table_trames`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
