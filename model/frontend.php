@@ -3,7 +3,7 @@
 function dbConnect()
 {
     //Connexion a la base de donnée
-    $db = new PDO('mysql:host=localhost;dbname=delta_domus;charset=utf8', 'root', 'root');
+	 $db = new PDO('mysql:host=localhost;dbname=delta_domus;charset=utf8', 'root', '');
     return $db;
 }
 
@@ -347,7 +347,6 @@ function getConsumptionBack($idUser) {
 	$query->execute(array('id' => $idUser));
 
 	$overall = [];
-
 	while ($donnees = $query->fetch()) {
         $overall[] = array('id_appartement' => $donnees['id_appartement'], 'conso_electricite' => $donnees['conso_electricite'], 'conso_gaz' => $donnees['conso_gaz'], 'date' => $donnees['date']);
     }
@@ -389,9 +388,7 @@ function getPackets() {
 	$table_size = $query->fetch();
 
 	$size = count($data_tab) - $table_size;
-
-
-	for($i = 0,; $i < $size; $i++) {
+	for($i = 0; $i < $size; $i++) {
 		list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) = sscanf($trame,"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
 		$message = $db->prepare("INSERT INTO table_trames(type_trame, groupe, type_requete, type_capteur, numero_capteur, valeur, numero_trame, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 		$date = new DateTime();
