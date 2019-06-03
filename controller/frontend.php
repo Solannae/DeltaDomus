@@ -59,33 +59,60 @@ function createCapteur() {
     }
 }
 
-function createTotal() {
-    $elt_utilisateur = explode(",", $_POST['input_utilisateur']);
-    $i = 1;
-    $temp = array();
-    foreach ($elt_utilisateur as $elt) {
-        $temp[] = $elt;
-        $i ++;
-        if ($i % 5 == 0) {
-            addUser($temp[0], $temp[1], $temp[2], $temp[3]);
-            $i = 1;
-            $temp = array();
+// function createTotal() {
+//     $elt_utilisateur = explode(",", $_POST['input_utilisateur']);
+//     $i = 1;
+//     $temp = array();
+//     foreach ($elt_utilisateur as $elt) {
+//         $temp[] = $elt;
+//         $i ++;
+//         if ($i % 5 == 0) {
+//             addUser($temp[0], $temp[1], $temp[2], $temp[3]);
+//             $i = 1;
+//             $temp = array();
+//         }
+//         // echo nl2br ("\n");
+//     }
+//     $elt_capteur = explode(",", $_POST['input_capteur']);
+//     $i = 1;
+//     $temp = array();
+//     foreach ($elt_capteur as $elt) {
+//         $temp[] = $elt;
+//         $i ++;
+//         if ($i % 3 == 0) {
+//             addCapteur($temp[1], $temp[0]);
+//             $i = 1;
+//             $temp = array();
+//         }
+//         // echo nl2br ("\n");
+//     }
+// }
+
+function createTotal($infos) {
+    $mainHouseUser = $infos['mainUser'];
+    $house = $infos['house'];
+    $secondaryUsersArray = $infos['users'];
+    $roomsArray = $infos['rooms'];
+    $capteursArray = $infos['sensors'];
+
+    //Adding the main account
+    $idMainUser = addUser($mainHouseUser[0], $mainHouseUser[1], $mainHouseUser[2], $mainHouseUser[3]);
+
+    //Adding the house
+    $idHouse = addHouse($idMainUser, $house[0], $house[1], $house[2]);
+
+    //Adding rooms
+    foreach ($roomsArray as $currentRoom) {
+        $idRoom = addRoom($idHouse, $currentRoom[0], $currentRoom[1]);
+
+        //Adding sensor in each room
+        foreach ($capteursArray as $currentSensor) {
+            if ($currentSensor[1] == $currentRoom[0]) {
+                addCapteur($idRoom, $currentSensor[0]);
+            }
         }
-        // echo nl2br ("\n");
     }
-    $elt_capteur = explode(",", $_POST['input_capteur']);
-    $i = 1;
-    $temp = array();
-    foreach ($elt_capteur as $elt) {
-        $temp[] = $elt;
-        $i ++;
-        if ($i % 3 == 0) {
-            addCapteur($temp[1], $temp[0]);
-            $i = 1;
-            $temp = array();
-        }
-        // echo nl2br ("\n");
-    }
+
 }
 
 function profil()
@@ -339,4 +366,10 @@ function getConsumption($idUser) {
 function getConsumptionAdmin() {
 	$data = getConsumptionAdminBack();
 	return $data;
+}
+
+function test() {
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
 }

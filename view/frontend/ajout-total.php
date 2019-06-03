@@ -23,6 +23,7 @@
                 <input type="text" name="mainEmail" placeholder="Adresse mail" id="mainEmail" required><br>
                 <input type="password" name="password" placeholder="Mot de passe" id="mdp" required><br>
                 <input type="password" name="pswVerify" placeholder="Confirmer le mot de passe" id="mdp2" required>
+                <p class="error"></p>
         </div>
         <!-- <div id="bouton-avatar">
             <button type="button" class="avatar-button">Ajouter un avatar</button>
@@ -49,6 +50,7 @@
 			<label id="error_message" style="visibility: hidden; color: red;">
 			</label>
 
+            <p class="error"></p>
         </div>
 
         <div class="continue">
@@ -79,6 +81,7 @@
                     <option value="2">Enfant</option>
                 </select> <br>
 
+                <p class="error"></p>
         </div>
         <!-- <div id="bouton-avatar">
             <button type="button" class="avatar-button">Ajouter un avatar</button>
@@ -111,6 +114,7 @@
             <input type="text" name="nomPiece" id="nomPiece" placeholder="Nom de la pièce">
             <input type="text" name="superficiePiece" id="superficiePiece" placeholder="Superficie">
 
+            <p class="error"></p>
         </div>
 
         <div class="submit">
@@ -139,13 +143,14 @@
 
             <select id="sensorTypeSelect" name="sensorTypeSelect">
                 <?php foreach ($capteurDispo as $capteur): ?>
-                    <option value=" <?= $capteur['nom'] ?>">Capteur de <?= $capteur['nom'] ?></option>
+                    <option value=" <?= $capteur['ID'] ?>">Capteur de <?= $capteur['nom'] ?></option>
                 <?php endforeach; ?>
             </select>
 
             <select id="roomSelect" name="roomSelect">
             </select>
 
+            <p class="error"></p>
         </div>
 
         <div class="submit">

@@ -21,6 +21,18 @@ function verifyUser($idUser, $password)
     return $id;
 }
 
+function verifyMail($mail)
+{
+    //Vérification de l'utilisateur dans la base de donnée
+    $db = dbConnect();
+    $query = $db->prepare("SELECT ID FROM table_utilisateur WHERE email = ?");
+    $query->execute(array($mail));
+    $id = $query->fetch();
+    $query->closeCursor();
+
+    return $id;
+}
+
 function isAdmin($idUser) {
     $db = dbConnect();
     $query = $db->prepare("SELECT admin FROM table_utilisateur WHERE ID = ?");
@@ -34,6 +46,9 @@ function isAdmin($idUser) {
 function addUser($nom, $prenom, $email, $password) {
     //Ajout d'un utilisateur dans la base de donnée
     $db = dbConnect();
+    if (verifyMail($email)) {
+        return;
+    }
 	$hash = hash("sha256", $password);
     $adding = $db->prepare("INSERT INTO table_utilisateur(nom, prenom, email, password) VALUES(:nom, :prenom, :email, :password)");
     $adding->execute(array(
@@ -42,12 +57,17 @@ function addUser($nom, $prenom, $email, $password) {
         'email' => $email,
         'password' => $hash
     ));
+
+    $max = $db->query("SELECT MAX(ID) FROM table_utilisateur");
+    $id = $max->fetch()['MAX(ID)'];
+    $max->closeCursor();
+    return $id;
 }
 
 function addCapteur($idPiece, $type) {
     //Ajout d'un capteur dans la base de donnée
     $db = dbConnect();
-    $adding = $db->prepare("INSERT INTO table_capteurs(id_piece, type) VALUES(?, ?)");
+    $adding = $db->prepare("INSERT INTO table_capteurs(id_piece, id_type) VALUES(?, ?)");
     $adding->execute(array($idPiece, $type));
 
     $max = $db->query("SELECT MAX(ID) FROM table_capteurs");
@@ -61,6 +81,28 @@ function addDroit($idRole, $idCapteur, $droit) {
     $db = dbConnect();
     $adding = $db->prepare("INSERT INTO table_droit(id_role, id_capteur, droit) VALUES(?, ?, ?)");
     $adding->execute(array($idRole, $idCapteur, $droit));
+}
+
+function addHouse($idHolder, $name, $adress, $area) {
+    $db = dbConnect();
+    $adding = $db->prepare("INSERT INTO table_appartements(id_proprietaire, nom, adresse, superficie) VALUES(?, ?, ?, ?)");
+    $adding->execute(array($idHolder, $name, $adress, $area));
+
+    $max = $db->query("SELECT MAX(ID) FROM table_appartements");
+    $id = $max->fetch()['MAX(ID)'];
+    $max->closeCursor();
+    return $id;
+}
+
+function addRoom($idHouse, $roomName, $roomSize) {
+    $db = dbConnect();
+    $adding = $db->prepare("INSERT INTO table_pieces(id_appartement, nom, taille) VALUES(?, ?, ?)");
+    $adding->execute(array($idHouse, $roomName, $roomSize));
+
+    $max = $db->query("SELECT MAX(ID) FROM table_pieces");
+    $id = $max->fetch()['MAX(ID)'];
+    $max->closeCursor();
+    return $id;
 }
 
 function getInfoUser($idUser)

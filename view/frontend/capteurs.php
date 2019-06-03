@@ -19,30 +19,32 @@
 
 <div id="capteurs-pannel">
     <?php foreach ($pieceArray as $piece) { ?>
-        <div class="piece-pannel">
-            <?=  $piece['nom'] ;?>
+        <form class="save" action="index.php?action" method="post">
+            <div class="piece-pannel">
+                <?=  $piece['nom'] ;?>
 
-            <?php foreach ($piece['capteurs'] as $capteur) { ?>
-                <div class="piece-pannel-sub" type_capteur="<?= $capteur['type']; ?>" donnee_capteur="<?= $capteur['donnee']; ?>">
-                    <?php
-                    if ($capteur['type'] == 1) {
-                        echo "Temperature = ";
-                        echo $capteur['donnee'];
-                    }
-                    elseif ($capteur['type'] == 2) {
-                        echo "Lumière = ";
-                        if ($capteur['donnee'] == 1) {
-                            echo "ON";
+                <?php foreach ($piece['capteurs'] as $capteur) { ?>
+                    <div class="piece-pannel-sub" type_capteur="<?= $capteur['type']; ?>" donnee_capteur="<?= $capteur['donnee']; ?>">
+                        <?php
+                        if ($capteur['type'] == 1) {
+                            echo "Temperature = ";
+                            echo $capteur['donnee'];
                         }
-                        else {
-                            echo "OFF";
+                        elseif ($capteur['type'] == 2) {
+                            echo "Lumière = ";
+                            if ($capteur['donnee'] == 1) {
+                                echo "ON";
+                            }
+                            else {
+                                echo "OFF";
+                            }
                         }
-                    }
-                    ?>
-                </div>
-            <?php } ?>
+                        ?>
+                    </div>
+                <?php } ?>
 
-        </div>
+            </div>
+        </form>
     <?php } ?>
 </div>
 

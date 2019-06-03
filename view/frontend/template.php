@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="stylesheet" href="public/css/<?= $cssFile ?>">
     <title><?= $title ?></title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 
     <script src="public/js/index.js" defer></script>
     <?php if (isset($jsFile)): ?>

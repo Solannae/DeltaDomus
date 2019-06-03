@@ -211,10 +211,10 @@ try
         				addToForum();
         				header("Refresh:0; url=index.php?action=redirect&page=forum.php");
             }
-      			elseif ($_GET['action'] == 'addmessage') {
-      				addMessageToThread();
-      				header("Refresh:0; url=index.php?action=redirect&page=thread.php&id=".$_GET['id']);
-      			}
+  			elseif ($_GET['action'] == 'addmessage') {
+  				addMessageToThread();
+  				header("Refresh:0; url=index.php?action=redirect&page=thread.php&id=".$_GET['id']);
+  			}
 
             //Création de l'utilisateur
             elseif ($_GET['action'] == 'signin' AND isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) AND isset($_POST['password'])) {
@@ -267,7 +267,8 @@ try
 
             //Creation d'un utilisateur avec toutes les infos
             elseif ($_GET['action'] == 'addTotal') {
-                createTotal();
+                createTotal($_POST['infos']);
+                test();
                 header("Refresh:0; url=index.php?action=redirect&page=accueil.php");
             }
 

@@ -100,7 +100,7 @@ function deleteSpan(element) {
 
 function save() {
     allSpans = document.getElementsByClassName('system');
-    var systems = new Array();
+    var systems = [];
     for (span of allSpans) {
         systems.push({
             id: span.getAttribute("id"),

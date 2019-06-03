@@ -39,7 +39,7 @@ var data = [[
 
 function getMaxY(values) {
     var max = 0;
-    
+
     for (var i = 0; i < values.length; ++i) {
         for (var j = 0; j < values[i].length; ++j) {
             if (values[i][j].Y > max)
@@ -81,7 +81,7 @@ function getYPixel(value) {
 //Values must be bidimensional array, with max 2 sets of values
 function drawGraph(graph, values) {
     var c = graph.getContext('2d');
-    
+
     maxY = getMaxY(values);
     scale = getScale();
 
@@ -105,8 +105,8 @@ function drawGraph(graph, values) {
 
     for (var i = 0; i < maxY; i += scale) {
         c.fillText(i, xPadding - 10, getYPixel(i));
-    }   
-    
+    }
+
     var offset = 0;
     if (values.length == 2)
         offset = (barWidth + barSpace) / 2;

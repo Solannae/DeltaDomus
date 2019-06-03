@@ -1,7 +1,7 @@
 <?php
     $title = 'Accueil';
     $cssFile = 'style-accueil.css';
-    $jsFile = 'accueil-backend.php';
+    $jsFile = 'accueil-backend.js';
 ?>
 
 <?php ob_start(); ?>

@@ -224,6 +224,53 @@ function finalise() {
 }
 
 function confirm() {
-    var all = [[mainNom.value, mainPrenom.value, mainEmail.value, mdp.value, mdp2.value], [nomHouse.value, adresse.value, superficie.value], utilisateurs, pieces, capteurs];
-    console.log(all);
+    if (!mainNom.value || !mainPrenom.value || !mainEmail.value || !mdp.value || !mdp2.value) {
+        //Erreur champs non renseigné
+        slides[0].getElementsByClassName('error')[0].innerText = "Veuillez remplir tous les champs";
+        slideIndex = 0;
+        showDivs(0);
+    }
+    else if (mdp.value != mdp2.value) {
+        //Mots de passe différents
+        slides[0].getElementsByClassName('error')[0].innerText = "Confirmez le mot de passe";
+        slideIndex = 0;
+        showDivs(0);
+    }
+    // else if () {
+    //     //Pas mail
+    //     slides[0].getElementsByClassName('error')[0].innerText = "Renseignez une adresse email valide";
+    //     slideIndex = 0;
+    //     showDivs(0);
+    // }
+    else if (!nomHouse.value || !adresse.value || !superficie.value){
+        slides[1].getElementsByClassName('error')[0].innerText = "Veuillez remplir tous les champs";
+        slideIndex = 1;
+        showDivs(1);
+    }
+    // else if () {
+        //Superficie pas en int
+        //     slides[1].getElementsByClassName('error')[0].innerText = "Renseignez une adresse valide";
+        //     slideIndex = 1;
+        //     showDivs(1);
+    // }
+
+
+
+    // var all = {"mainUser" : [mainNom.value, mainPrenom.value, mainEmail.value, mdp.value, mdp2.value],
+    // "house" : [nomHouse.value, adresse.value, superficie.value],
+    // "users" : utilisateurs,
+    // "rooms": pieces,
+    // "sensors": capteurs};
+    //
+    // $.ajax({
+    //     url:"index.php?action=addTotal",
+    //     method:"POST",
+    //     data:{infos:all},
+    //     dataType:"text",
+    //     success:callbackSuccess
+    // });
+}
+
+callbackSuccess = function(data)
+{
 }
