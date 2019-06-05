@@ -1,0 +1,33 @@
+label {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: left;
+    margin: 10px;
+}
+
+input {
+    display: inline-block;
+    float: left;
+    padding: 10px;
+}
+
+#maison {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#maison-text {
+    font-size: 1.5em;
+    margin: 50 0 0 0;
+}
+
+#submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

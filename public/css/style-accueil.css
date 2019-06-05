@@ -1,0 +1,160 @@
+#offers
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+#offers img
+{
+    height: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+}
+
+#offers h4
+{
+    text-align: center;
+    margin-top: 2%;
+}
+
+#offers span
+{
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 75%;
+}
+
+.section h3
+{
+    text-align: center;
+}
+
+.section
+{
+    margin: 10px;
+    margin-left: 5%;
+    margin-right: 2%;
+}
+
+#review
+{
+    width: 70%;
+    margin: auto;
+}
+
+.section p
+{
+    text-align: justify;
+}
+
+#diapo-media {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: visible;
+    width: 100%;
+    height: 50%;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+
+    /* animation: slider 20s infinite */
+}
+
+figure {
+    position:relative;
+	display:inline-block;
+	padding:0; margin:0;
+    width: 49.9%;
+}
+
+.media {
+    width: 100%;
+}
+
+#footer {
+    display: none;
+}
+
+@keyframes slider {
+    0%, 45%, 100% {left: 0}
+    50%, 95% {left: -100%}
+}
+
+.mySlides {
+    display: none;
+    text-align: center;
+}
+img {vertical-align: middle;}
+
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+/* Caption */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
