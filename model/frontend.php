@@ -3,7 +3,7 @@
 function dbConnect()
 {
     //Connexion a la base de donnée
-    $db = new PDO('mysql:host=localhost;dbname=delta_domus;charset=utf8', 'root', '');
+    $db = new PDO('mysql:host=localhost;dbname=delta_domus;charset=utf8', 'root', 'root');
     return $db;
 }
 
@@ -169,11 +169,24 @@ function getCapteur($idPiece) {
     $query->execute(array('id' => $idPiece));
     $capteur = [];
     while ($donnees = $query->fetch()) {
-        $capteur[] = array(
-            'id' => $donnees['ID'],
-            'type' => $donnees['id_type'],
-            'donnee' => $donnees['donnee']
-        );
+		if ($donnees['id_type'] == '1') {	
+			$query2 = $db->prepare("SELECT valeur FROM table_trames WHERE type_capteur = 3 ORDER BY date_heure DESC LIMIT 1");
+			$query2->execute();
+			$data2 = $query2->fetch();
+			$capteur[] = array(
+				'id' => $donnees['ID'],
+				'type' => $donnees['id_type'],
+				'donnee' => hexdec($data2['valeur'])
+			);
+		}
+
+		else {
+			$capteur[] = array(
+				'id' => $donnees['ID'],
+				'type' => $donnees['id_type'],
+				'donnee' => $donnees['donnee']
+			);
+		}
     }
 
     /*Return
@@ -426,7 +439,7 @@ function getPackets() {
 	$query = $db->prepare("SELECT COUNT(*) FROM table_trames;");
 	$query->execute();
 	$table_size = $query->fetch();
-
+	
 	$size = count($data_tab);
 
 
