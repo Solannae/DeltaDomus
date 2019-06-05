@@ -139,6 +139,8 @@ function profil()
 
 function infosCapteurs()
 {
+	getPackets();
+
     //Appel des infos pour la page profil
     if (isset($_SESSION['idHouse'])) {
         $pieceArray = getPieces($_SESSION['idHouse']);
@@ -158,8 +160,7 @@ function infosCapteurs()
                     }
                 }
             }
-        }
-        */
+        }*/
         return $pieceArray;
     }
     else {

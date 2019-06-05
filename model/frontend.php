@@ -3,7 +3,7 @@
 function dbConnect()
 {
     //Connexion a la base de donnée
-	 $db = new PDO('mysql:host=localhost;dbname=delta_domus;charset=utf8', 'root', '');
+    $db = new PDO('mysql:host=localhost;dbname=delta_domus;charset=utf8', 'root', '');
     return $db;
 }
 
@@ -411,13 +411,11 @@ function getConsumptionAdminBack() {
 	return $data;
 }
 
-
-
 function getPackets() {
 	$db = dbConnect();
 
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, "http://projets-tomcat.isep.fr:8080/appService?ACTION=GETLOG&TEAM=003E");
+	curl_setopt($ch, CURLOPT_URL, "http://projets-tomcat.isep.fr:8080/appService/?ACTION=GETLOG&TEAM=003E");
 	curl_setopt($ch, CURLOPT_HEADER, FALSE);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 	$data = curl_exec($ch);
@@ -429,13 +427,16 @@ function getPackets() {
 	$query->execute();
 	$table_size = $query->fetch();
 
-	$size = count($data_tab) - $table_size;
-	for($i = 0; $i < $size; $i++) {
-		list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) = sscanf($trame,"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
-		$message = $db->prepare("INSERT INTO table_trames(type_trame, groupe, type_requete, type_capteur, numero_capteur, valeur, numero_trame, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+	$size = count($data_tab);
+
+
+	for($i = $table_size; $i < $size; $i++) {
+		list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) = sscanf($data_tab[$i],"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");
+		$message = $db->prepare("INSERT INTO table_trames(type_trame, groupe, type_requete, type_capteur, numero_capteur, valeur, numero_trame, date_heure) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 		$date = new DateTime();
 		$date->setDate($year, $month, $day);
 		$date->setTime($hour, $min, $sec);
+		$date = $date->format('Y-m-d H:i:s');
 		$message->execute(array($t, $o, $r, $c, $n, $v, $a, $date));
 	}
 }
