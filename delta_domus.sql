@@ -368,7 +368,7 @@ CREATE TABLE `table_trames` (
   `numero_capteur` tinyint(2) NOT NULL,
   `valeur` text(4) NOT NULL,
   `numero_trame` text(4) NOT NULL,
-  `timestamp` datetime NOT NULL,
+  `date_heure` datetime NOT NULL,
   `read` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -475,12 +475,6 @@ ALTER TABLE `table_utilisateur`
 --
 ALTER TABLE `tr_role_utilisateur_maison`
   ADD KEY `id_role` (`id_role`);
-
---
--- Index pour la table `table_preferences`
---
-ALTER TABLE `table_preferences`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `table_trames`
