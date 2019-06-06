@@ -155,6 +155,12 @@ try
                         throw new Exception("errorFile");
                     }
                 }
+                elseif ($_GET['action'] == 'saveCapteurs') {
+                    require('file.php');
+                    echo "<pre>";
+                    print_r($_POST);
+                    echo "</pre>";
+                }
                 elseif ($_GET['action'] == 'addCapteur') {
                     createCapteur();
                     header("Refresh:0; url=index.php?action=redirect&page=ajout-capteur.php&capteurAjoute");

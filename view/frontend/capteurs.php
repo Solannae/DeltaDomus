@@ -19,7 +19,6 @@
 
 <div id="capteurs-pannel">
     <?php foreach ($pieceArray as $piece) { ?>
-        <form class="save" action="index.php?action" method="post">
             <div class="piece-pannel">
                 <?=  $piece['nom'] ;?>
 
@@ -44,13 +43,14 @@
                 <?php } ?>
 
             </div>
-        </form>
     <?php } ?>
 </div>
 
 <div id="light">
-    <div id="popup-title"></div>
-    <div id="popup-text"></div>
+    <form class="save" action="index.php?action=saveCapteurs" method="post">
+        <div id="popup-title"></div>
+        <div id="popup-text"></div>
+    </form>
 </div>
 <div id="fade"></div>
 

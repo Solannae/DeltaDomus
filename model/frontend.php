@@ -88,6 +88,7 @@ function addHouse($idHolder, $name, $adress, $area) {
     $adding = $db->prepare("INSERT INTO table_appartements(id_proprietaire, nom, adresse, superficie) VALUES(?, ?, ?, ?)");
     $adding->execute(array($idHolder, $name, $adress, $area));
 
+
     $max = $db->query("SELECT MAX(ID) FROM table_appartements");
     $id = $max->fetch()['MAX(ID)'];
     $max->closeCursor();
@@ -98,6 +99,7 @@ function addRoom($idHouse, $roomName, $roomSize) {
     $db = dbConnect();
     $adding = $db->prepare("INSERT INTO table_pieces(id_appartement, nom, taille) VALUES(?, ?, ?)");
     $adding->execute(array($idHouse, $roomName, $roomSize));
+    
 
     $max = $db->query("SELECT MAX(ID) FROM table_pieces");
     $id = $max->fetch()['MAX(ID)'];

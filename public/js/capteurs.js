@@ -16,7 +16,7 @@ for (var i = 0 ; i < pannels.length; i++) {
 			}
             else if (elt.children[i].attributes[1].value == 2) {
                 if (elt.children[i].attributes[2].value == 1)
-                    var text =  "<label class='switch'><input type='checkbox' checked><span class='slider round'></span></label><br>"
+                    var text =  "<label class='switch'><input type='checkbox' name='checkbox' checked><span class='slider round'></span></label><br>"
                 else {
                     var text =  "<label class='switch'><input type='checkbox'><span class='slider round'></span></label><br>"
                 }
@@ -24,7 +24,7 @@ for (var i = 0 ; i < pannels.length; i++) {
             }
         }
 		// popuptext.innerHTML += "<button type='button' class='bubbly-button' style='font-size:0.7em; align'>Submit</button>"
-		popuptext.innerHTML += "<div id='buttonDiv' style='display: flex;align-items: center;justify-content: center;'><button type='button' class='bubbly-button' style='font-size:0.7em'>Submit</button></div>"
+		popuptext.innerHTML += "<div id='buttonDiv' style='display: flex;align-items: center;justify-content: center;'><input type='submit' class='bubbly-button' style='font-size:0.7em' value='Submit'></div>"
         // affiche le popup
         document.getElementById('light').style.display='block';
         document.getElementById('fade').style.display='block';

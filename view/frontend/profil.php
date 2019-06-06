@@ -16,17 +16,21 @@
             <label>Prénom: </label><input type="text" name="prenom" value="<?= $prenomUser ?>"><br>
             <label>Adresse mail: </label><input type="text" name="email" value="<?= $emailUser ?>"><br>
             <label>Statut: </label><input type="text" name="statut" value="<?= $role ?>" disabled><br>
+            <p id="idUser" hidden=true;><?= $_SESSION['idUser'] ?></p>
         </div>
 
 </div>
-<?php if (isset($_GET['updated'])) {
+<?php if (isset($_GET['updated']) && $_GET['updated'] == 1) {
     echo "<p>Modifications enregistrées</p>";
+}
+    elseif (isset($_GET['updated']) && $_GET['updated'] == 0) {
+        echo "<p>Mot de passe invalide</p>";
 } ?>
     <div id="submit">
             <input type="submit" class="bubbly-button" value="Sauvegarder">
     </div>
 </form>
-  <Button id="resetPassword" class="bubbly-button">Reset Password</Button>
+  <Button id="resetPassword" class="bubbly-button" >Reset Password</Button>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

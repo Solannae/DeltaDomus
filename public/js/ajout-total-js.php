@@ -256,19 +256,19 @@ function confirm() {
 
 
 
-    // var all = {"mainUser" : [mainNom.value, mainPrenom.value, mainEmail.value, mdp.value, mdp2.value],
-    // "house" : [nomHouse.value, adresse.value, superficie.value],
-    // "users" : utilisateurs,
-    // "rooms": pieces,
-    // "sensors": capteurs};
-    //
-    // $.ajax({
-    //     url:"index.php?action=addTotal",
-    //     method:"POST",
-    //     data:{infos:all},
-    //     dataType:"text",
-    //     success:callbackSuccess
-    // });
+    var all = {"mainUser" : [mainNom.value, mainPrenom.value, mainEmail.value, mdp.value, mdp2.value],
+    "house" : [nomHouse.value, adresse.value, superficie.value],
+    "users" : utilisateurs,
+    "rooms": pieces,
+    "sensors": capteurs};
+
+    $.ajax({
+        url:"index.php?action=addTotal",
+        method:"POST",
+        data:{infos:all},
+        dataType:"text",
+        success:callbackSuccess
+    });
 }
 
 callbackSuccess = function(data)

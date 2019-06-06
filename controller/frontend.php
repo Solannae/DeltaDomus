@@ -104,7 +104,8 @@ function createTotal($infos) {
     //Adding rooms
     foreach ($roomsArray as $currentRoom) {
         $idRoom = addRoom($idHouse, $currentRoom[0], $currentRoom[1]);
-
+        echo $idHouse;
+        echo "   ||   ";
         //Adding sensor in each room
         foreach ($capteursArray as $currentSensor) {
             if ($currentSensor[1] == $currentRoom[0]) {
@@ -308,10 +309,10 @@ function sendPassword($email, $password) {
 function verifyPassword($id, $oldPassword, $newPassword) {
   if (verifyUserFromId($id, $oldPassword)) {
     updatePasswordFromId($id, hash("sha256", $newPassword));
-    header("Refresh:0; url=index.php?action=redirect&page=profil.php&updated");
+    header("Refresh:0; url=index.php?action=redirect&page=profil.php&updated=1");
   }
   else {
-    header("Refresh:0; url=index.php?action=redirect&page=profil.php");
+    header("Refresh:0; url=index.php?action=redirect&page=profil.php&updated=0");
   }
 }
 function sendMail($nom, $prenom, $email, $contenu) {
