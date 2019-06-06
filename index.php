@@ -21,7 +21,7 @@ try
 
                     elseif ($_GET['page'] == 'suivi-conso-admin.php') {
                       $dataConsos = getConsumptionAdmin();
-                      require('view/frontend/suivi-conso-admin.php');
+                      require('view/backend/suivi-conso-admin.php');
                     }
 
                     else {
