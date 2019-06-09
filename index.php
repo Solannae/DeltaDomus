@@ -24,6 +24,11 @@ try
                       require('view/backend/suivi-conso-admin.php');
                     }
 
+                    elseif ($_GET['page'] == 'user-list.php') {
+                        $users = getUserList();
+                        require('view/backend/user-list.php');
+                    }
+
                     else {
                       require('view/frontend/'.$_GET['page']);
                     }

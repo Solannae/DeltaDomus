@@ -20,3 +20,16 @@ function deleteCapteurDispo($system) {
     $delete = $db->prepare("DELETE FROM table_capteur_dispo WHERE ID = ?");
     $delete->execute(array($system['ID']));
 }
+
+function getUserArray() {
+    $db = dbConnect();
+    $query = $db->prepare("SELECT ID, nom, prenom, email FROM table_utilisateur");
+    $query->execute();
+
+    while ($user = $query->fetch()) {
+        $userArray[] = $user;
+    }
+    $query->closeCursor();
+
+    return $userArray;
+}

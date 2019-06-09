@@ -26,3 +26,13 @@ function saveSystems($systemArray) {
         }
     }
 }
+
+function getUserList() {
+    $userArray = getUserArray();
+
+    foreach ($userArray as &$user) {
+        $user['house'] = getHouse($user['ID']);
+    }
+
+    return $userArray;
+}
