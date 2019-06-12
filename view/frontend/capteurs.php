@@ -10,15 +10,6 @@
         <h1>Mes capteurs</h1>
     </div>
     <div id="title-button">
-        <button type="button" class="bubbly-button" onclick="moteurSensUn()">Tourner le moteur</button>
-    </div>
-    <div id="title-button">
-        <button type="button" class="bubbly-button" onclick="moteurSensDeux()">Tourner le moteur inverse</button>
-    </div>
-    <div id="title-button">
-        <button type="button" class="bubbly-button" onclick="moteurStop()">Stopper le moteur</button>
-    </div>
-    <div id="title-button">
         <a href="index.php?action=redirect&amp;page=ajout-capteur.php"><button type="button" class="bubbly-button">Ajouter un capteur</button></a>
     </div>
     <div id="house-button">
@@ -41,13 +32,20 @@
                         }
                         elseif ($capteur['type'] == 2) {
                             echo "Lumière = ";
-                            if ($capteur['donnee'] == 1) {
+                            if ($capteur['donnee'] < 18) {
                                 echo "ON";
                             }
                             else {
                                 echo "OFF";
                             }
                         }
+                        elseif ($capteur['type'] == 12) {
+                            echo "Moteur = ";?>
+							<button type="button" class="bubbly-button" onclick="moteurSensUn()">Sens 1</button>
+							<button type="button" class="bubbly-button" onclick="moteurSensDeux()">Sens 2</button>
+							<button type="button" class="bubbly-button" onclick="moteurStop()">Stop</button>
+                        <?php
+						}
                         ?>
                     </div>
                 <?php } ?>

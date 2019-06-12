@@ -12,15 +12,19 @@ for (var i = 0 ; i < pannels.length; i++) {
         for (var i = 0 ; i < elt.children.length; i++) {
 			if (elt.children[i].attributes[1].value == 1) {
 				captValue = elt.children[i].attributes.donnee_capteur.value;
-				popuptext.innerHTML += elt.children[i].innerText.split("=")[0] + " = " + "<span id='value-capt'>" + captValue + "</span>" + "<input type='range' min='0' max='150' value='" + captValue + "' class='slider-temp' oninput='updateInput(this.value)' style='float:right'><br>";
+				popuptext.innerHTML += elt.children[i].innerText.split("=")[0] + " = " + "<span id='value-capt'>" + captValue + "</span>" + "<input type='range' min='0' max='150' value='" + captValue + "' class='slider-temp' oninput='updateInput(this.value)' style='float:right'><br><br><br>";
 			}
             else if (elt.children[i].attributes[1].value == 2) {
                 if (elt.children[i].attributes[2].value == 1)
-                    var text =  "<label class='switch'><input type='checkbox' checked><span class='slider round'></span></label><br>"
+                    var text =  "<label class='switch'><input type='checkbox' checked><span class='slider round'></span></label><br><br><br>"
                 else {
-                    var text =  "<label class='switch'><input type='checkbox'><span class='slider round'></span></label><br>"
+                    var text =  "<label class='switch'><input type='checkbox'><span class='slider round'></span></label><br><br><br>"
                 }
                 popuptext.innerHTML += elt.children[i].innerText + text;
+            }
+            else if (elt.children[i].attributes[1].value == 12) {
+                var text = "<button type='button' class='bubbly-button' onclick='moteurSensUn()'>Sens 1</button><button type='button' class='bubbly-button' onclick='moteurSensDeux()'>Sens 2</button><button type='button' class='bubbly-button' onclick='moteurStop()'>Stop</button>";
+                popuptext.innerHTML += "Moteur: " + text;
             }
         }
 		// popuptext.innerHTML += "<button type='button' class='bubbly-button' style='font-size:0.7em; align'>Submit</button>"
