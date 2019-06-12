@@ -29,6 +29,21 @@ try
                         require('view/backend/user-list.php');
                     }
 
+                    elseif ($_GET['page'] == "houses.php") {
+                        $houseArray = getHouse($_GET['id']);
+                        require('view/backend/houses.php');
+                    }
+
+                    elseif ($_GET['page'] == "capteurs.php") {
+                        if (isset($_GET['id'])) {
+                            $pieceArray = infosCapteurs($_GET['id']);
+                        }
+                        else {
+                            $pieceArray = [];
+                        }
+                        require('view/frontend/capteurs.php');
+                    }
+
                     else {
                       require('view/frontend/'.$_GET['page']);
                     }
@@ -73,7 +88,12 @@ try
                             profil();
                         }
                         elseif ($_GET['page'] == "capteurs.php") {
-                            $pieceArray = infosCapteurs();
+                            if (isset($_SESSION['idHouse'])) {
+                                $pieceArray = infosCapteurs($_SESSION['idHouse']);
+                            }
+                            else {
+                                $pieceArray = [];
+                            }
                             require('view/frontend/capteurs.php');
                         }
                         elseif ($_GET['page'] == "gestion-droits.php") {

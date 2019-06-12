@@ -27,7 +27,7 @@ input[type=text], textarea {
 }
 
 td, th {
-    padding-right: 25px;
+    padding: 0px;
     margin: 0px;
     border-style: solid;
 }
@@ -40,4 +40,13 @@ table {
 
 th {
     background-color: #009688;
+}
+
+.link {
+  display: inline-block;
+  width: 100%;
+  height: inherit;
+  color: black;
+  text-decoration: none;
+  padding: 5px;
 }

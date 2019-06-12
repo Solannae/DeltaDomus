@@ -18,13 +18,17 @@
     </tr>
     <?php foreach ($users as $user): ?>
         <tr>
-            <td><?= $user['ID'] ?></td>
-            <td><?= $user['nom'] ?></td>
-            <td><?= $user['prenom'] ?></td>
-            <td><?= $user['email'] ?></td>
+            <td><a class="link" href="index.php?action=redirect&amp;page=houses.php&amp;id=<?= $user['ID'] ?>"><?= $user['ID'] ?></a></td>
+            <td><a class="link" href="index.php?action=redirect&amp;page=houses.php&amp;id=<?= $user['ID'] ?>"><?= $user['nom'] ?></a></td>
+            <td><a class="link" href="index.php?action=redirect&amp;page=houses.php&amp;id=<?= $user['ID'] ?>"><?= $user['prenom'] ?></a></td>
+            <td><a class="link" href="index.php?action=redirect&amp;page=houses.php&amp;id=<?= $user['ID'] ?>"><?= $user['email'] ?></a></td>
             <td>
             <?php foreach ($user['house'] as $house):
+                echo '<a class="link" href="index.php?action=redirect&amp;page=capteurs.php&amp;id=';
+                echo $house['ID'];
+                echo '">';
                 echo $house['adresse'];
+                echo "</a>";
                 echo "<br>";
             endforeach; ?>
             </td>

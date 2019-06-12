@@ -52,6 +52,7 @@ function createUser()
 }
 
 function createCapteur() {
+    echo $_POST['sensorTypeSelect'];
     $idCapteur = addCapteur($_POST['roomSelect'], $_POST['sensorTypeSelect']);
     $roles = getRolesHouse($_SESSION['idHouse']);
     foreach ($roles as $role) {
@@ -138,13 +139,13 @@ function profil()
     require('view/frontend/profil.php');
 }
 
-function infosCapteurs()
+function infosCapteurs($idHouse)
 {
 	getPackets();
 
     //Appel des infos pour la page profil
-    if (isset($_SESSION['idHouse'])) {
-        $pieceArray = getPieces($_SESSION['idHouse']);
+
+        $pieceArray = getPieces($idHouse);
         foreach ($pieceArray as &$piece) {
             $piece['capteurs'] = getCapteur($piece['id']);
         }
@@ -163,10 +164,6 @@ function infosCapteurs()
             }
         }*/
         return $pieceArray;
-    }
-    else {
-        return array();
-    }
 }
 
 function infosDroits() {
