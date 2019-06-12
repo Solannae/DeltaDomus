@@ -171,11 +171,33 @@ function getCapteur($idPiece) {
     $query->execute(array('id' => $idPiece));
     $capteur = [];
     while ($donnees = $query->fetch()) {
-        $capteur[] = array(
-            'id' => $donnees['ID'],
-            'type' => $donnees['id_type'],
-            'donnee' => $donnees['donnee']
-        );
+		if ($donnees['id_type'] == '1') {	
+			$query2 = $db->prepare("SELECT valeur FROM table_trames WHERE type_capteur = 3 ORDER BY date_heure DESC LIMIT 1");
+			$query2->execute();
+			$data2 = $query2->fetch();
+			$capteur[] = array(
+				'id' => $donnees['ID'],
+				'type' => $donnees['id_type'],
+				'donnee' => hexdec($data2['valeur'])
+			);
+		}
+		else if ($donnees['id_type'] == '2') {	
+			$query2 = $db->prepare("SELECT valeur FROM table_trames WHERE type_capteur = 2 ORDER BY date_heure DESC LIMIT 1");
+			$query2->execute();
+			$data2 = $query2->fetch();
+			$capteur[] = array(
+				'id' => $donnees['ID'],
+				'type' => $donnees['id_type'],
+				'donnee' => hexdec($data2['valeur'])
+			);
+		}
+		else {
+			$capteur[] = array(
+				'id' => $donnees['ID'],
+				'type' => $donnees['id_type'],
+				'donnee' => $donnees['donnee']
+			);
+		}
     }
 
     /*Return
@@ -425,12 +447,11 @@ function getPackets() {
 
 	$data_tab = str_split($data, 33);
 
-	$query = $db->prepare("SELECT COUNT(*) FROM table_trames;");
+	$query = $db->prepare("SELECT COUNT(*) AS count FROM table_trames;");
 	$query->execute();
-	$table_size = $query->fetch();
-
+	$table_size = $query->fetch()['count'];
+	
 	$size = count($data_tab);
-
 
 	for($i = $table_size; $i < $size; $i++) {
 		list($t, $o, $r, $c, $n, $v, $a, $x, $year, $month, $day, $hour, $min, $sec) = sscanf($data_tab[$i],"%1s%4s%1s%1s%2s%4s%4s%2s%4s%2s%2s%2s%2s%2s");

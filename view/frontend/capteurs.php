@@ -31,13 +31,20 @@
                         }
                         elseif ($capteur['type'] == 2) {
                             echo "Lumière = ";
-                            if ($capteur['donnee'] == 1) {
+                            if ($capteur['donnee'] < 18) {
                                 echo "ON";
                             }
                             else {
                                 echo "OFF";
                             }
                         }
+                        elseif ($capteur['type'] == 12) {
+                            echo "Moteur = ";?>
+							<button type="button" class="bubbly-button" onclick="moteurSensUn()">Sens 1</button>
+							<button type="button" class="bubbly-button" onclick="moteurSensDeux()">Sens 2</button>
+							<button type="button" class="bubbly-button" onclick="moteurStop()">Stop</button>
+                        <?php
+						}
                         ?>
                     </div>
                 <?php } ?>
