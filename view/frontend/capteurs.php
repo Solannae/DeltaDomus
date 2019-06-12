@@ -10,6 +10,15 @@
         <h1>Mes capteurs</h1>
     </div>
     <div id="title-button">
+        <button type="button" class="bubbly-button" onclick="moteurSensUn()">Tourner le moteur</button>
+    </div>
+    <div id="title-button">
+        <button type="button" class="bubbly-button" onclick="moteurSensDeux()">Tourner le moteur inverse</button>
+    </div>
+    <div id="title-button">
+        <button type="button" class="bubbly-button" onclick="moteurStop()">Stopper le moteur</button>
+    </div>
+    <div id="title-button">
         <a href="index.php?action=redirect&amp;page=ajout-capteur.php"><button type="button" class="bubbly-button">Ajouter un capteur</button></a>
     </div>
     <div id="house-button">

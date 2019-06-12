@@ -3,7 +3,7 @@
 function dbConnect()
 {
     //Connexion a la base de donnée
-    $db = new PDO('mysql:host=localhost;dbname=delta_domus;charset=utf8', 'root', 'root');
+    $db = new PDO('mysql:host=localhost;dbname=delta_domus;charset=utf8', 'root', '');
     return $db;
 }
 

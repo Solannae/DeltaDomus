@@ -41,3 +41,15 @@ document.getElementById('fade').addEventListener('click', function (event) {
 function updateInput(value){
     document.getElementById("value-capt").innerHTML = value;
 }
+
+function moteurSensUn() {
+    fetch('http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003E&TRAME=1003E1301000101251B');
+}
+
+function moteurSensDeux() {
+    fetch('http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003E&TRAME=1003E1301000201251B');
+}
+
+function moteurStop() {
+    fetch('http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003E&TRAME=1003E1301000301251B');
+}
