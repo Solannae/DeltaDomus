@@ -12,11 +12,7 @@
 <form class="" action="index.php?action=addCapteur" method="post">
     <select id="sensorTypeSelect" name="sensorTypeSelect">
         <?php foreach ($capteurDispo as $capteur): ?>
-<<<<<<< HEAD
             <option value="<?= $capteur['ID'] ?>">Capteur de <?= $capteur['nom'] ?></option>
-=======
-            <option value=" <?= $capteur['ID'] ?>">Capteur de <?= $capteur['nom'] ?></option>
->>>>>>> fb5a213423820bf73f762e842b7e5c378a0c0695
         <?php endforeach; ?>
     </select>
 

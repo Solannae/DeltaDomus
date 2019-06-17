@@ -16,18 +16,14 @@ for (var i = 0 ; i < pannels.length; i++) {
 			}
             else if (elt.children[i].attributes[1].value == 2) {
                 if (elt.children[i].attributes[2].value == 1)
-<<<<<<< HEAD
                     var text =  "<label class='switch'><input type='checkbox' name='checkbox' checked><span class='slider round'></span></label><br>"
-=======
-                    var text =  "<label class='switch'><input type='checkbox' checked><span class='slider round'></span></label><br><br><br>"
->>>>>>> fb5a213423820bf73f762e842b7e5c378a0c0695
                 else {
                     var text =  "<label class='switch'><input type='checkbox'><span class='slider round'></span></label><br><br><br>"
                 }
                 popuptext.innerHTML += elt.children[i].innerText + text;
             }
             else if (elt.children[i].attributes[1].value == 12) {
-                var text = "<button type='button' class='bubbly-button' onclick='moteurSensUn()'>Sens 1</button><button type='button' class='bubbly-button' onclick='moteurSensDeux()'>Sens 2</button><button type='button' class='bubbly-button' onclick='moteurStop()'>Stop</button>";
+                var text = "<a href='index.php?action=saveMotor&motor=1'><button type='button' class='bubbly-button' onclick='moteurSensUn()'>Sens 1</button></a><a href='index.php?action=saveMotor&motor=2'><button type='button' class='bubbly-button' onclick='moteurSensDeux()'>Sens 2</button></a><a href='index.php?action=saveMotor&motor=0'><button type='button' class='bubbly-button' onclick='moteurStop()'>Stop</button></a>";
                 popuptext.innerHTML += "Moteur: " + text;
             }
         }
@@ -52,10 +48,12 @@ function updateInput(value){
 
 function moteurSensUn() {
     fetch('http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003E&TRAME=1003E1301000101251B');
+
 }
 
 function moteurSensDeux() {
     fetch('http://projets-tomcat.isep.fr:8080/appService/?ACTION=COMMAND&TEAM=003E&TRAME=1003E1301000201251B');
+
 }
 
 function moteurStop() {

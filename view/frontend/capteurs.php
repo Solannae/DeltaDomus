@@ -39,11 +39,16 @@
                             }
                         }
                         elseif ($capteur['type'] == 12) {
-                            echo "Moteur = ";?>
-							<button type="button" class="bubbly-button" onclick="moteurSensUn()">Sens 1</button>
-							<button type="button" class="bubbly-button" onclick="moteurSensDeux()">Sens 2</button>
-							<button type="button" class="bubbly-button" onclick="moteurStop()">Stop</button>
-                        <?php
+                            echo "Moteur = ";
+                            if ($capteur['donnee'] == 0) {
+                                echo "OFF";
+                            }
+                            else if ($capteur['donnee'] == 1) {
+                                echo "SENS 1";
+                            }
+                            else {
+                                echo "SENS 2";
+                            }
 						}
                         ?>
                     </div>

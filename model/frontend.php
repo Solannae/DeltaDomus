@@ -99,7 +99,7 @@ function addRoom($idHouse, $roomName, $roomSize) {
     $db = dbConnect();
     $adding = $db->prepare("INSERT INTO table_pieces(id_appartement, nom, taille) VALUES(?, ?, ?)");
     $adding->execute(array($idHouse, $roomName, $roomSize));
-    
+
 
     $max = $db->query("SELECT MAX(ID) FROM table_pieces");
     $id = $max->fetch()['MAX(ID)'];
@@ -171,7 +171,7 @@ function getCapteur($idPiece) {
     $query->execute(array('id' => $idPiece));
     $capteur = [];
     while ($donnees = $query->fetch()) {
-		if ($donnees['id_type'] == '1') {	
+		if ($donnees['id_type'] == '1') {
 			$query2 = $db->prepare("SELECT valeur FROM table_trames WHERE type_capteur = 3 ORDER BY date_heure DESC LIMIT 1");
 			$query2->execute();
 			$data2 = $query2->fetch();
@@ -181,7 +181,7 @@ function getCapteur($idPiece) {
 				'donnee' => hexdec($data2['valeur'])
 			);
 		}
-		else if ($donnees['id_type'] == '2') {	
+		else if ($donnees['id_type'] == '2') {
 			$query2 = $db->prepare("SELECT valeur FROM table_trames WHERE type_capteur = 2 ORDER BY date_heure DESC LIMIT 1");
 			$query2->execute();
 			$data2 = $query2->fetch();
@@ -363,6 +363,12 @@ function setProfileImage($idUser) {
     $query->execute(array('image' => $idUser.".jpg", 'idUser' => $idUser));
 }
 
+function setMotor($action) {
+    $db = dbConnect();
+    $query = $db->prepare("UPDATE table_capteurs SET donnee = ? WHERE id_type = 12");
+    $query->execute(array($action));
+}
+
 function updatePassword($email, $password) {
     $db = dbConnect();
     $update = $db->prepare("UPDATE table_utilisateur SET password = :password WHERE email = :email");
@@ -450,7 +456,7 @@ function getPackets() {
 	$query = $db->prepare("SELECT COUNT(*) AS count FROM table_trames;");
 	$query->execute();
 	$table_size = $query->fetch()['count'];
-	
+
 	$size = count($data_tab);
 
 	for($i = $table_size; $i < $size; $i++) {

@@ -211,6 +211,10 @@ try
 					addToForum();
 					header("Refresh:0; url=index.php?action=redirect&page=forum.php");
 				}
+                elseif ($_GET['action'] == 'saveMotor') {
+                    setMotor($_GET['motor']);
+                    header("Refresh:0; url=index.php?action=redirect&page=capteurs.php");
+                }
 
                 //Page par défaut si problème de lien
                 else {
